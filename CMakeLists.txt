@@ -17,6 +17,14 @@ find_package(Qt5Widgets CONFIG REQUIRED)
 set(SOURCES
     GUI/main_window.cpp
     GUI/main_window.h
+    Utils/algebra.cpp
+    Utils/algebra.h
+    Utils/column_vector.cpp
+    Utils/column_vector.h
+    Utils/matrix.cpp
+    Utils/matrix.h
+    Utils/row_vector.cpp
+    Utils/row_vector.h
     main.cpp)
 
 add_executable(Merger ${SOURCES})

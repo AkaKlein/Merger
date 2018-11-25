@@ -17,6 +17,8 @@ find_package(Qt5Widgets CONFIG REQUIRED)
 set(SOURCES
     GUI/main_window.cpp
     GUI/main_window.h
+    Models/linear_demands_constant_costs.cpp
+    Models/linear_demands_constant_costs.h
     Utils/algebra.cpp
     Utils/algebra.h
     Utils/column_vector.cpp

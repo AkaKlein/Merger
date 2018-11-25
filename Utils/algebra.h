@@ -13,6 +13,9 @@ ColumnVector Transpose(RowVector const& v);
 RowVector Transpose(ColumnVector const& v);
 
 Matrix operator*(double k, Matrix const& matrix);
+
 ColumnVector operator*(double k, ColumnVector const& v);
+
 RowVector operator*(double k, RowVector const& v);
 
+ColumnVector Diagonal(Matrix const& matrix);

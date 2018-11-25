@@ -44,5 +44,15 @@ RowVector Transpose(ColumnVector const& v)
 }
 
 Matrix operator*(double k, Matrix const& matrix) { return matrix * k; }
+
 ColumnVector operator*(double k, ColumnVector const& v) { return v * k; }
+
 RowVector operator*(double k, RowVector const& v) { return v * k; }
+
+ColumnVector Diagonal(Matrix const& matrix)
+{
+    ColumnVector diagonal(matrix.Rows());
+    for (int i = 0; i < matrix.Rows(); ++i)
+        diagonal[i] = matrix[i][i];
+    return diagonal;
+}

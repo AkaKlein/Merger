@@ -41,5 +41,9 @@ int main(int argc, char *argv[])
 
     LinearDemandsConstantCosts model1(a, c, B);
 
-    cout << model1.ComputePrices() << endl;
+    ColumnVector prices = model1.ComputePrices();
+    cout << "Prices " << prices << endl;
+    cout << "Quantities " << model1.ComputeQuantities(prices) << endl;
+    cout << "Profit " << model1.ComputeProfits(prices) << endl;
+    cout << "Consumer Welfare " << model1.ComputeConsumerWelfare(prices) << endl;
 }

@@ -111,41 +111,45 @@ Matrix Matrix::Transpose() const
 
 Matrix Matrix::Inverse() const
 {
-    /*int n = Rows();
+    int n = Rows();
 
+    Matrix a(Rows(), 2 * Columns());
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < n; ++j)
+            a[i][j] = m_data[i][j];
 
-    for(int i = 0; i < n; ++i)
+    for (int i = 0; i < n; ++i)
     {
-        for(int j = n; j < 2*n; ++j)
+        for (int j = n; j < 2 * n; ++j)
         {
             if (i == j - n)
-                a[i][j]  = 1;
+                a[i][j] = 1;
             else
                 a[i][j] = 0;
         }
     }
 
-   for(i=0;i<n;i++)
+   for (int i = 0; i < n; ++i)
    {
-      t=a[i][i];
-      for(j=i;j<2*n;j++)
-          a[i][j]=a[i][j]/t;
-      for(j=0;j<n;j++)
-      {
-         if(i!=j)
-         {
-            t=a[j][i];
-            for(k=0;k<2*n;k++)
-                a[j][k]=a[j][k]-t*a[i][k];
-          }
-      }
-   }
-   cout<<"\n\nInverse matrix\n\n";
-   for(i=0;i<n;i++)
-   {
-      for(j=n;j<2*n;j++)
-         cout<<"\t"<<a[i][j];
-      cout<<"\n";
+        double t = a[i][i];
+        for (int j = i; j < 2 * n; ++j)
+            a[i][j] = a[i][j] / t;
+
+        for (int j = 0; j < n; ++j)
+        {
+            if (i != j)
+            {
+                t = a[j][i];
+                for (int k = 0; k < 2 * n; ++k)
+                    a[j][k] = a[j][k] - t * a[i][k];
+            }
+        }
     }
-    */
+
+    Matrix result(n, n);
+    for (int i = 0; i < n; ++i)
+        for (int j = n; j < 2 * n; ++j)
+            result[i][j - n] = a[i][j];
+
+    return result;
 }

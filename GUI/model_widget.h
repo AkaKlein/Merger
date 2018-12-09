@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include <QLineEdit>
-#include <QVBoxLayout>
 
 class ModelWidget : public QWidget
 {
@@ -18,9 +17,7 @@ private slots:
     void LoadData();
 
 private:
-    QVBoxLayout* m_main_layout;
-
-    QHBoxLayout* m_load_data_layout;
+    QHBoxLayout* m_main_layout;
     QLineEdit* m_file_path_text;
     QPushButton* m_select_file_button;
     QPushButton* m_load_button;

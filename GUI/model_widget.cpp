@@ -6,8 +6,6 @@
 
 ModelWidget::ModelWidget()
 {
-    /** First row of elements: related to loading the data. **/
-
     // Text to display the path that has been selected.
     m_file_path_text = new QLineEdit;
     m_file_path_text->setReadOnly(true);
@@ -25,23 +23,16 @@ ModelWidget::ModelWidget()
     m_load_button->setFixedWidth(100);
 
     // Add the elements to the layout
-    m_load_data_layout = new QHBoxLayout;
-    m_load_data_layout->addWidget(m_file_path_text, 0);
-    m_load_data_layout->addWidget(m_select_file_button, 1);
-    m_load_data_layout->addWidget(m_load_button, 2);
+    m_main_layout = new QHBoxLayout;
+    m_main_layout->addWidget(m_file_path_text, 0);
+    m_main_layout->addWidget(m_select_file_button, 1);
+    m_main_layout->addWidget(m_load_button, 2);
 
     // Add the connections
     connect(m_select_file_button, &QPushButton::clicked, this, &ModelWidget::SelectFile);
     connect(m_load_button, &QPushButton::clicked, this, &ModelWidget::LoadData);
 
-
-    /** Main layout **/
-
-    m_main_layout = new QVBoxLayout;
-    m_main_layout->addLayout(m_load_data_layout, 0);
-
     setLayout(m_main_layout);
-
 }
 
 void ModelWidget::SelectFile()

@@ -1,21 +1,20 @@
 #include <iostream>
 
-//#include <QtWidgets>
+#include <QtWidgets>
 
-//#include "GUI/main_window.h"
+#include "GUI/main_window.h"
 #include "Models/linear_demands_constant_costs.h"
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-    /*
     QApplication app(argc, argv);
 
     MainWindow main_window;
     main_window.show();
 
-    return app.exec();*/
+    return app.exec();
 
     int n = 3;
     ColumnVector a(n);

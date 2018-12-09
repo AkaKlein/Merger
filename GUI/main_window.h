@@ -1,20 +1,14 @@
 #pragma once
 
-#include <QGridLayout>
 #include <QMainWindow>
-#include <QPushButton>
+
+#include "model_widget.h"
 
 class MainWindow : public QMainWindow
 {
-    Q_OBJECT
-
 public:
     MainWindow();
 
-    QWidget* m_central_widget;
-    QGridLayout* m_main_layout;
-    QPushButton* m_load_button;
-
-private slots:
-    void LoadData();
+private:
+    ModelWidget* m_model_widget;
 };

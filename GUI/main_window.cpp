@@ -1,32 +1,33 @@
 #include "main_window.h"
 
-#include <iostream>
-
-#include <QFileDialog>
+#include <QActionGroup>
+#include <QApplication>
+#include <QMenu>
+#include <QMenuBar>
 
 MainWindow::MainWindow()
 {
-    m_central_widget = new QWidget;
+    // Add the menus
+    QMenu* file_menu = menuBar()->addMenu(tr("&File"));
+    file_menu->addAction(tr("E&xit"), []() { QApplication::quit(); });
 
-    m_main_layout = new QGridLayout;
+    QMenu* model_menu = menuBar()->addMenu(tr("&Model"));
 
-    m_load_button = new QPushButton(tr("&Load data"));
-    m_load_button->setToolTip(tr("Load data from a file"));
+    model_menu->addSeparator()->setText(tr("Model type"));
+    
+    QAction* ldwcc = model_menu->addAction("Linear demands with constant costs");
+    ldwcc->setCheckable(true);
 
-    m_main_layout->addWidget(m_load_button, 0, 1);
+    QAction* ldwlc = model_menu->addAction("Linear demands with linear costs");
+    ldwlc->setCheckable(true);
 
-    m_central_widget->setLayout(m_main_layout);
+    QActionGroup* model_type_group = new QActionGroup(this);
+    model_type_group->addAction(ldwcc);
+    model_type_group->addAction(ldwlc);
+    ldwcc->setChecked(true);
 
-    setCentralWidget(m_central_widget);
 
-    connect(m_load_button, &QPushButton::clicked, this, &MainWindow::LoadData);
-}
-
-void MainWindow::LoadData()
-{
-    QString file_name = QFileDialog::getOpenFileName(this,
-        tr("Open data file"), "",
-        tr("Data file (*.txt);;All Files (*)"));
-
-    std::cout << file_name.toStdString() << std::endl;
+    // Add the model widget
+    m_model_widget = new ModelWidget;
+    setCentralWidget(m_model_widget);
 }

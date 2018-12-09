@@ -1,1 +1,4 @@
 build
+Latex/*.pdf
+Latex/*.log
+Latex/*.gz

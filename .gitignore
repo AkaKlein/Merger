@@ -2,3 +2,6 @@ build
 Latex/*.pdf
 Latex/*.log
 Latex/*.gz
+Latex/*.aux
+Latex/*.idx
+Latex/*.toc

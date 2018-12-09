@@ -1,4 +1,4 @@
-%% FMETFM DOCUMENT CLASS -- version 1.0 (26-Oct-08)
+%% TFG DOCUMENT CLASS -- version 1.0 (26-Oct-08)
 %%
 %%%==========================================================
 %% \CharacterTable
@@ -58,8 +58,8 @@
 %%% ====================================================================
 \NeedsTeXFormat{LaTeX2e}% LaTeX 2.09 can't be used (nor non-LaTeX)
 [1995/06/01]% LaTeX date must be June 1995 or later
-\ProvidesClass{fmetfm}[2008/01/26 v1.0
-^^JFMETFM global LaTeX document class for multi authored books]
+\ProvidesClass{tfg}[2008/01/26 v1.0
+^^JTFG global LaTeX document class for multi authored books]
 \global\expandafter\let\csname ver@amsthm.sty\expandafter\endcsname
   \csname ver@\@currname.\@currext\endcsname
 \let\@xp=\expandafter
@@ -92,15 +92,15 @@
 % languages
 %
 \let\switcht@@therlang\relax
-\let\fmetfmlanginfo\relax
+\let\tfglanginfo\relax
 \def\ds@deutsch{\def\switcht@@therlang{\switcht@deutsch}%
-\gdef\fmetfmlanginfo{\typeout{Man spricht deutsch.}\global\let\fmetfmlanginfo\relax}}
+\gdef\tfglanginfo{\typeout{Man spricht deutsch.}\global\let\tfglanginfo\relax}}
 \def\ds@francais{\def\switcht@@therlang{\switcht@francais}%
-\gdef\fmetfmlanginfo{\typeout{On parle francais.}\global\let\fmetfmlanginfo\relax}}
+\gdef\tfglanginfo{\typeout{On parle francais.}\global\let\tfglanginfo\relax}}
 \def\ds@catala{\def\switcht@@therlang{\switcht@catala}%
-\gdef\fmetfmlanginfo{\typeout{Es parla catal\'a.}\global\let\fmetfmlanginfo\relax}}
+\gdef\tfglanginfo{\typeout{Es parla catal\'a.}\global\let\tfglanginfo\relax}}
 \def\ds@castellano{\def\switcht@@therlang{\switcht@castellano}%
-\gdef\fmetfmlanginfo{\typeout{Se habla castellano.}\global\let\fmetfmlanginfo\relax}}
+\gdef\tfglanginfo{\typeout{Se habla castellano.}\global\let\tfglanginfo\relax}}
 %
 \AtBeginDocument{\@ifpackageloaded{babel}{%
 \@ifundefined{extrasenglish}{}{\addto\extrasenglish{\switcht@albion}}%
@@ -136,7 +136,6 @@
 \def\exercisename{Exercise}%
 \def\figurename{Fig.}%
 \def\keywordname{{\bf Key words:}}%
-\def\mscname{{\bf MSC2000:}}%
 \def\indexname{Index}%
 \def\lemmaname{Lemma}%
 \def\contriblistname{List of Contributors}%
@@ -165,7 +164,7 @@
 % but must be translated if another language is chosen
 %
 % French section
-\def\switcht@francais{\fmetfmlanginfo
+\def\switcht@francais{\tfglanginfo
  \def\abbrsymbname{Liste des abbr\'eviations et symboles}%
  \def\abstractname{R\'esum\'e}%
  \def\ackname{Remerciements.}%
@@ -209,7 +208,7 @@
 }
 %
 % Catalan section
-\def\switcht@catala{\fmetfmlanginfo
+\def\switcht@catala{\tfglanginfo
  \def\abbrsymbname{\'Index d'abreujaments i s\'{\i}mbols}%
  \def\abstractname{Resum}%
  \def\advisorname{Director:}%
@@ -255,7 +254,7 @@
 }
 %
 % German section
-\def\switcht@deutsch{\fmetfmlanginfo
+\def\switcht@deutsch{\tfglanginfo
  \def\abbrsymbname{Abk\"urzungs- und Symbolverzeichnis}%
  \def\abstractname{Zusammenfassung}%
  \def\ackname{Danksagung.}%
@@ -297,7 +296,7 @@
  \def\theoremname{Theorem}%
 }
 % Spanish section
-\def\switcht@castellano{\fmetfmlanginfo
+\def\switcht@castellano{\tfglanginfo
  \def\abbrsymbname{\'Indice de abreviaciones y s\'{\i}mbolos}%
  \def\abstractname{Resumen}%
  \def\advisorname{Director:}%
@@ -371,8 +370,8 @@
     \null
     %\vskip 2em 
     \begin{center}
-    \textsf{\LARGE Universitat Polit\`ecnica de Catalunya\\[0.5em]
-    Facultat de Matem\`atiques i Estad\'{\i}stica}\vskip 8em
+    \textsf{\LARGE Universitat Aut\`onoma de Barcelona\\[0.5em]
+    Facultat d'Economia i Empresa}\vskip 8em
     {\LARGE \treball\par} \vskip 8em
     {\bfseries \huge \@title \par} \vskip 1.5em 
     {\LARGE \lineskip .5em
@@ -2261,4 +2260,4 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
 \newenvironment{pf*}[1]{\@newpf[#1]}{\popQED\endtrivlist}
 \endinput
 %%
-%% End of file `fmetfm.cls'.
+%% End of file `tfg.cls'.

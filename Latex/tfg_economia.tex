@@ -1,7 +1,7 @@
-\documentclass{fmetfm}
+\documentclass{tfg}
 
 %%%%%%%%%%packages
-\usepackage[catalan,spanish,english]{babel}
+\usepackage[english]{babel}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[latin1]{inputenc}
@@ -18,7 +18,6 @@
 \usepackage[postscript]{ucs}
 \usepackage{fancyhdr}
 \usepackage{listings}
-\usepackage[]{algorithm2e}
 \usepackage[a4paper]{geometry}
 \usepackage{url}
 \usepackage{pdfpages}
@@ -37,18 +36,18 @@
 \selectlanguage{english}
 
 
-\title{Library-Free Technology Mapping for VLSI Circuits with Regular Layouts}
+\title{Merger Simulations: A Theoretical and Practical Approach}
 
 
 \def\autor{Andrea Dana Klein Villalba}
 
-\def\treball{Master's Degree Thesis}
+\def\treball{Bachelor's Degree Thesis}
 
-\def\advisor{Jordi Cortadella Fortuny, Sachin Sapatnekar}
+\def\advisor{Jordi Perdiguero Garc\'ia}
 
 \vfill
 
-\def\departament{Departament de Llenguatges i Sistemes Inform\`atics}
+\def\departament{Departament d'Economia Aplicada}
 
 
 
@@ -60,11 +59,11 @@
 %-------------------------------------------------------------%
 %%%Dedicatoria (opcional)
 %-------------------------------------------------------------%
-\dedicatoria{To my family, advisors and everyone that has made this thesis possible}
+%\dedicatoria{To my family, advisors and everyone that has made this thesis possible}
 
-\dedicatoria{\textit{If you find that you're spending almost all your time on theory, start turning some attention to practical things; it will improve your theories. If you find that you're spending almost all your time on practice, start turning some attention to theoretical things; it will improve your practice.}}
+%\dedicatoria{\textit{If you find that you're spending almost all your time on theory, start turning some attention to practical things; it will improve your theories. If you find that you're spending almost all your time on practice, start turning some attention to theoretical things; it will improve your practice.}}
 
-\hfill Donald Knuth
+%\hfill Donald Knuth
 
 %-------------------------------------------------------------%
 %-------------------------------------------------------------%
@@ -91,19 +90,12 @@
 
 \begin{abstracteng}
 
-\keywordseng{algorithms, technology mapping, graphs, optimization}
-\msc2000{68W35, 68R10}
+\keywordseng{}
 
 \vspace{1cm}
 %%%Here the text
 
-Technology mapping is the task to transform a technology independent logic network into a mapped network using gates from a library, optimizing some objective function such as total area, delay or power consumption. As stated, the problem is completely intractable. Therefore, different techniques are applied to solve the problem, such as using different simplified representations.
-
-The usual approach consists of using a fixed library, typically partially handmade. Designing such libraries is a costly process, specially because of the lack of good automatic techniques to perform it. This is the main motivation for this work and the goal is to move from fixed-library technology mapping to library-free technology mapping. 
-
-The idea of this is simple: design a new and specific library for each network instead of using a fixed library for all of them and then perform the technology mapping. Although simple, this idea presents several difficulties to overcome. As technology mapping is a hard problem, libraries have to be small enough to be tractable and the models used to generate them need to be both efficient and accurate enough. Finally, networks may have sizes of about billions nowadays, which means that the algorithms for all the process have to be very efficient.
-
-This thesis presents different algorithms and techniques to move to library-free technology mapping for area and for delay optimization. The structure of this document is as follows. The first chapter contains an introduction to the problem and to the physical design of gates using transistors. Chapter 2 is focused on area optimization while chapter 3 covers delay optimization. Last chapter presents the results obtained using those methods and some conclusions.
+Hello, it's me.
  
 
 \end{abstracteng}
@@ -124,58 +116,72 @@ This thesis presents different algorithms and techniques to move to library-free
 \pagenumbering{arabic}
 
 \chapter{Introduction}
-This thesis is centered in the study of library-free technology mapping. The standard problem of technology mapping is the following: given a library of gates $L$ and a Boolean network $G$, represent $G$ as a network constructed using just the gates in $L$. This new network is called mapped network. But the technology mapping does not consist only in finding such a representation, but in minimizing some objective function (typically area, delay or power consumption).
+I was wondering if after all these years you'd like to meet.
 
-Technology mapping usually uses a fixed library, which in most cases is either totally or partially handmade designed. The goal of this thesis is overcoming those two properties of libraries: instead of using fixed libraries, library-free technology mapping techniques are presented. The term library-free means that the library is generated specially for the circuit to be designed. Therefore, that obliges to develop automatic methods for constructing those libraries instead of designing them by hand.
+\section{Linear Demands with Constant Costs}
+Let $N$ be the number of products, and $\mathcal{N} = \{1, 2, \dots, N\}$.
 
-The next sections include a brief introduction to the design of gates at physical level, as this is a key point to understand the rest of the work. The next two chapters will be focused on the minimization of area (Chapter 2) and delay (Chapter 3). Chapter 4 presents the results along with conclusions on future work.
+Let $q_k (p)$ be the demand of the $k$-th good. Because it is a linear demand, its curve is defined as
 
-\section{The design of gates using transistors}
+\begin{equation*}
+q_k(p) = a_k + \sum_{j=1}^N b_{kj}p_j
+\end{equation*}
 
-In the project, circuits are going to be present at every moment, starting at the level of gates. Therefore, it is important to have a basic idea on how gates are designed and as the main element is the MOS transistor, a brief introduction to their types and how they work is presented here.
+Let $m$ be a firm that produces $\mathcal{N}_m \subseteq \mathcal{N}$. Then, its profit is defined by
 
-A MOSFET (Metal-Oxide-Semiconductor Field-Effect Transistor) is the most common transistor in circuits nowadays. A cross section of a general MOSFET is shown in Figure \ref{mosfet}. W.l.o.g. MOS transistors can be seen as switches.
+\begin{equation*}
+\pi_m(p) = \sum_{j \in \mathcal{N}_m} (p_j - c_j)\cdot q_j(p)
+\end{equation*}
 
+The firm, then, seeks to maximize its profit by setting their prices according to the following formula
 
-Depending on how they work, there are two different types of MOS transistors: pMOS and nMOS. The difference is based on the type of doping. Pure semiconductors are called intrinsic. Doping refers to the process of intentionally adding impurities to the semiconductors to modify their electrical properties, obtaining extrinsic semiconductors. n-type semiconductors are those doped to have a larger electron concentration than hole concentration while p-type semiconductors have a larger hole concentration than electron concentration.
+\begin{equation*}
+\max_{\{p_j ~ | ~ j \in \mathcal{N}_m\}} \pi_m(p)
+\end{equation*}
 
-Figure \ref{cmos} shows a cross section of a pMOS and an nMOS transistor. In the case of an nMOS, both the source and the drain are n+ regions (the ``+'' sign is just a notation to indicate that the semiconductor is highly doped) and the body is a p region. Therefore, by applying a positive voltage to the gate, the electrons of the body are attracted, thus forming a channel from source to drain. pMOS transistors work just the opposite, as shown in the figure.
+If we derive with respect to $p_k$ where $k\in \mathcal{N}_m$, then we obtain
 
-The transistor in the upper part is of type p and the other of type n. $Vdd$ is the  power supply voltage (logic 1) and $Vss$ stands for the logic 0 or ground (also noted as GND). Now let us analyze what happens with the value of $Z$ depending on the value of $A$. If $A = 1$, the n transistor acts as a closed switch, but the p transistor acts as an open one. Then, the logic 0 propagates to $Z$. If $A = 0$, then the state of the transistors is reversed, thus propagating a 1.
-
-This scheme can be used to produce any logic function $f$ in which every input is negated and there are no negations affecting anything apart from single variables. De Morgan's laws are useful to put a function in that way. 
-
-\begin{theorem}[De Morgan's laws] If $x$ and $y$ are boolean variables , then
 \begin{eqnarray*}
-(xy)' &=& x' + y'\\
-(x + y)' &=& x'y'
+\frac{\partial\pi_m(p)}{\partial p_k} &=& \frac{\partial}{\partial p_k} \sum_{j \in \mathcal{N}_m} (p_j - c_j) \cdot q_j(p) \\
+&=& \sum_{j \in \mathcal{N}_m} \frac{\partial}{\partial p_k} \left[(p_j - c_j) \cdot q_j(p)\right] \\
+&=& \sum_{j \in \mathcal{N}_m} \frac{\partial (p_j - c_j)}{\partial p_k} \cdot q_j(p) + \frac{\partial q_j(p)}{\partial p_k} \cdot (p_j - c_j)\\
+&=& q_k(p) + \sum_{j \in \mathcal{N}_m} b_{jk} \cdot (p_j - c_j) 
 \end{eqnarray*}
-\end{theorem}
 
-where the $'$ operator just denotes the negation of the Boolean formula affected.
+From here we obtain the first order condition
 
-Then, consider $f(x_1, \dots, x_n)$ such that $x_i$ appears always negated in the function for every $i$. $f$ can be recursively constructed using pMOS transistors, as Figure \ref{cmos_ops} shows:
+\begin{equation*}
+q_k(p) + \sum_{j \in \mathcal{N}_m} b_{jk} \cdot (p_j - c_j) = 0
+\end{equation*}
 
-\begin{itemize}
-\item $f(x_1, \dots, x_n) = x_i'$. Then a single p transistor with input $x_i$ encodes that.
-\item $f(x_1, \dots, x_n) = f_1(x_1, \dots, x_n)f_2(x_1, \dots, x_n)$. Then connect in series the circuits for $f_1$ and $f_2$.
-\item $f(x_1, \dots, x_n) = f_1(x_1, \dots, x_n) + f_2(x_1, \dots, x_n)$. Then connect in parallel the circuits for $f_1$ and $f_2$.
-\end{itemize}
+It is useful, now, to introduce a matrix $D$ of size $N \times N$ such that
 
-That construction leads to a circuit which connects the logic 1 to the output when the function evaluates to one and acts as an open switch otherwise.
+\begin{equation*}
+d_{ij} = \left\{
+\begin{tabular}{ll}
+1 & if $i,j$ produced by the same firm\\
+0 & otherwise
+\end{tabular}\right.
+\end{equation*}
 
-Considering $f'$ and by applying De Morgan's laws, a function with no negations is obtained and therefore, with every variable appearing with positive sign. With a similar procedure a circuit for $f'$ using nMOS transistors can be constructed: the rules for the addition and the product are equivalent, and the case of a single variable (which now is not negated) is designed with a single n transistor.
+With $D$ we can write the previous first order condition as
 
-The circuit for $f$ is called the pull-up network and the circuit for $f'$ is called the pull-down network and one is the dual of the other. Notice that as they are complementary, for each possible combination of values for the inputs exactly one of them acts as an open switch and the other as a closed switch. The circuit obtained by connecting the outputs of $f$ and $f'$ realizes the function $f$. In Figure \ref{nand_nor} there are a couple of examples constructing a NAND and a NOR function of two inputs each.
+\begin{equation*}
+q_k(p) + \sum_{j = 1}^N d_{jk}b_{jk} \cdot (p_j - c_j) = 0
+\end{equation*}
 
+In this model each product is produced by exactly one firm. Therefore, we have one such first order condition for each product. Thus, we can write the system in a more compact way. 
 
-With the series-parallel graph, it is easy to present the final form of the constructed gate and argue why the graph is important. To construct the gate the transistors need to be placed in some order, connected as the graph shows. Figure \ref{cmos_final} shows possible implementations for the graphs in Figure \ref{cmos_graph}, that can be seen as paths or cycles inside the graphs. For a complete design of a gate, see Figure \ref{NAND2_X1}. 
+\begin{equation*}
+a + B^t p + (D \circ B)(p - c) = 0
+\end{equation*}
 
-But as the reader may notice, such a path will not always exists. Therefore, sometimes is needed to add diffusion breaks to isolate a couple of chains of transistors. Figure \ref{diffusion_break} shows an example of such a case.
+where $\circ$ denotes the Hadamard product.
+Isolating for $p$, we obtain the optimum prices
 
-Therefore, the properties of the graph have a direct impact in the area of the physical implementation of the circuit. This will be covered in the section about area estimation in the next chapter.
-
-This chapter has presented the process of technology mapping and how gates are physically designed. To finish this introduction, let us end with the design of a real circuit in terms of gates, i.e. a mapped network, as shown in Figure \ref{circuit}.
+\begin{equation*}
+p = (B^t + (D \circ B))^{-1}((D \circ B) c - a)
+\end{equation*}
 
 
 

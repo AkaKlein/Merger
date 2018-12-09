@@ -21,6 +21,7 @@ int main(int argc, char *argv[])
     ColumnVector a(n);
     ColumnVector c(n);
     Matrix B(n, n);
+    Matrix D(n, n);
 
     for (int i = 0; i < n; ++i)
     {
@@ -46,4 +47,11 @@ int main(int argc, char *argv[])
     cout << "Quantities " << model1.ComputeQuantities(prices) << endl;
     cout << "Profit " << model1.ComputeProfits(prices) << endl;
     cout << "Consumer Welfare " << model1.ComputeConsumerWelfare(prices) << endl;
+
+    model1.Merge(1, 2);
+    prices = model1.ComputePrices();
+    cout << "Prices Post " << prices << endl;
+    cout << "Quantities Post " << model1.ComputeQuantities(prices) << endl;
+    cout << "Profit Post" << model1.ComputeProfits(prices) << endl;
+    cout << "Consumer Welfare Post " << model1.ComputeConsumerWelfare(prices) << endl;
 }

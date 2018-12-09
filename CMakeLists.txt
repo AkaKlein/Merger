@@ -17,7 +17,6 @@ endif()
 
 #find_package(Qt5Widgets CONFIG REQUIRED)
 
-
 set(SOURCES
     #GUI/main_window.cpp
     #GUI/main_window.h

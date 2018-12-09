@@ -24,7 +24,7 @@ ColumnVector LinearDemandsConstantCosts::ComputePrices() const
 
 ColumnVector LinearDemandsConstantCosts::ComputeQuantities(ColumnVector const& prices) const
 {
-    return m_a + m_B * prices;
+    return m_a + m_B.Transpose() * prices;
 }
 
 ColumnVector LinearDemandsConstantCosts::ComputeProfits(ColumnVector const& prices) const
@@ -40,4 +40,9 @@ ColumnVector LinearDemandsConstantCosts::ComputeConsumerWelfare(ColumnVector con
         neg_diag_inv[i] = -1 / diagonal[i];
 
     return ComputeQuantities(prices) % ((m_a + m_B * prices) % neg_diag_inv) * 0.5;
+}
+
+void LinearDemandsConstantCosts::Merge(int i, int j)
+{
+    m_D[i][j] = m_D[j][i] = 1;
 }

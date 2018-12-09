@@ -11,6 +11,7 @@ public:
     ColumnVector ComputeQuantities(ColumnVector const& prices) const;
     ColumnVector ComputeProfits(ColumnVector const& prices) const;
     ColumnVector ComputeConsumerWelfare(ColumnVector const& prices) const;
+    void Merge(int i, int j);
 
 private:
     ColumnVector m_a;

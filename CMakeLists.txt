@@ -2,6 +2,8 @@ cmake_minimum_required (VERSION 2.6)
 project (Merger)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_BUILD_TYPE Debug)
 
 # Instruct CMake to run moc automatically when needed
 set(CMAKE_AUTOMOC ON)

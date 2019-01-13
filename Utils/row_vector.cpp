@@ -85,7 +85,30 @@ RowVector& RowVector::operator*=(double other)
     return *this;
 }
 
+std::ostream& operator<<(std::ostream& out, RowVector const& v)
+{
+    int n = v.Size();
+    out << n << endl;
 
+    for (int i = 0; i < n; ++i)
+    {
+        if (i != 0)
+            out << ' ';
+        out << v[i];
+    }
+    out << endl;
+    
+    return out;
+}
 
+std::istream& operator>>(std::istream& in, RowVector& v)
+{
+    int n;
+    in >> n;
 
-
+    v = RowVector(n);
+    for (int i = 0; i < n; ++i)
+        in >> v[i];
+    
+    return in;
+}

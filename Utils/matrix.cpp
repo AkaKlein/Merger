@@ -153,3 +153,36 @@ Matrix Matrix::Inverse() const
 
     return result;
 }
+
+ostream& operator <<(ostream& out, Matrix const& matrix)
+{
+    int n = matrix.Rows();
+    int m = matrix.Columns();
+
+    out << n << ' ' << m << endl;
+    for (int i = 0; i < n; ++i)
+    {
+        for (int j = 0; j < m; ++j)
+        {
+            out << matrix[i][j];
+            if (j != m - 1)
+                out << ' ';
+        }
+        out << endl;
+    }
+
+    return out;
+}
+
+istream& operator >>(istream& in, Matrix& matrix)
+{
+    int n, m;
+    in >> n >> m;
+
+    matrix = Matrix(n, m);
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < m; ++j)
+            in >> matrix[i][j];
+
+    return in;
+}

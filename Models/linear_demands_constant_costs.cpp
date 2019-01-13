@@ -46,3 +46,22 @@ void LinearDemandsConstantCosts::Merge(int i, int j)
 {
     m_D[i][j] = m_D[j][i] = 1;
 }
+
+void LinearDemandsConstantCosts::SaveToFile(string const& file_path) const
+{
+    ofstream fout(file_path);
+
+    fout << "LinearDemandsConstantCosts " << m_a << ' ' << m_c << ' ' << m_B << ' ' << m_D << endl;
+}
+
+void LinearDemandsConstantCosts::LoadFromFile(string const& file_path)
+{
+    ifstream fin(file_path);
+
+    string type;
+    fin >> type;
+    if (type != "LinearDemandsConstantCosts")
+        throw runtime_error("The model is not correct");
+        
+    fin >> m_a >> m_c >> m_B >> m_D;
+}

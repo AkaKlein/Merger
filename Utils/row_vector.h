@@ -1,5 +1,6 @@
 #pragma one
 
+#include <fstream>
 #include <vector>
 
 class Matrix;
@@ -8,6 +9,7 @@ class ColumnVector;
 class RowVector
 {
 public:
+    RowVector() = default;
     RowVector(int n);
 
 
@@ -33,3 +35,6 @@ public:
 private:
     std::vector<double> m_data;
 };
+
+std::ostream& operator>>(std::istream& in, RowVector const& v);
+std::istream& operator>>(std::istream& in, RowVector& v);

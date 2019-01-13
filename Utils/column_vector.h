@@ -1,5 +1,6 @@
 #pragma one
 
+#include <fstream>
 #include <iostream>
 #include <vector>
 
@@ -9,6 +10,7 @@ class RowVector;
 class ColumnVector
 {
 public:
+    ColumnVector() = default;
     ColumnVector(int n);
 
 
@@ -34,3 +36,4 @@ private:
 };
 
 std::ostream& operator<<(std::ostream& out, ColumnVector const& v);
+std::istream& operator>>(std::istream& in, ColumnVector& v);

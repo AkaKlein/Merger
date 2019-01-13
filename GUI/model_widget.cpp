@@ -2,6 +2,7 @@
 
 #include <QFileDialog>
 
+#include "Models/linear_demands_constant_costs.h"
 #include "model_result.h"
 
 ModelWidget::ModelWidget()
@@ -35,6 +36,11 @@ ModelWidget::ModelWidget()
     setLayout(m_main_layout);
 }
 
+void ModelWidget::SetCurrentModel(ModelType type)
+{
+    m_model_type = type;
+}
+
 void ModelWidget::SelectFile()
 {
     QString file_name = QFileDialog::getOpenFileName(this,
@@ -47,6 +53,21 @@ void ModelWidget::SelectFile()
 
 void ModelWidget::LoadData()
 {
-    ModelResult* result = new ModelResult(this);
+    // Create a model object with the selected type from the selected path.
+    std::unique_ptr<ModelInterface> model;
+    switch (m_model_type)
+    {
+        case ModelType::LinearDemandsConstantCosts:
+        {
+            model = std::make_unique<LinearDemandsConstantCosts>();
+            model->LoadFromFile(m_file_path_text->text().toStdString());
+            break;
+        }
+        case ModelType::LinearDemandsLinearCosts:
+            throw std::runtime_error("Not implemented yet");
+    }
+
+    // Create and show the results window.
+    ModelResult* result = new ModelResult(this, std::move(model), m_model_index++);
     result->show();
 }

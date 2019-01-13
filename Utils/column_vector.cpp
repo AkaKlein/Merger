@@ -72,17 +72,23 @@ ColumnVector& ColumnVector::operator%=(ColumnVector const& other)
 
 std::ostream& operator<<(std::ostream& out, ColumnVector const& v)
 {
-    out << '(';
-    for (int i = 0; i < v.Size(); ++i)
-    {
-        if (i != 0)
-            out << ' ';
-        out << v[i];
-    }
-    out << ')';
+    int n = v.Size();
+    out << n << endl;
+
+    for (int i = 0; i < n; ++i)
+        out << v[i] << endl;
+    
     return out;
 }
 
+std::istream& operator>>(std::istream& in, ColumnVector& v)
+{
+    int n;
+    in >> n;
 
-
-
+    v = ColumnVector(n);
+    for (int i = 0; i < n; ++i)
+        in >> v[i];
+    
+    return in;
+}

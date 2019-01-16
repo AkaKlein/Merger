@@ -5,3 +5,16 @@ Latex/*.gz
 Latex/*.aux
 Latex/*.idx
 Latex/*.toc
+Doxygen/latex/*.ps 
+Doxygen/latex/*.dvi 
+Doxygen/latex/*.aux 
+Doxygen/latex/*.toc 
+Doxygen/latex/*.idx 
+Doxygen/latex/*.ind 
+Doxygen/latex/*.ilg 
+Doxygen/latex/*.log 
+Doxygen/latex/*.out 
+Doxygen/latex/*.brf 
+Doxygen/latex/*.blg 
+Doxygen/latex/*.bbl 
+Doxygen/latex/refman.pdf

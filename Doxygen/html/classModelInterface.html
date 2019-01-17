@@ -75,7 +75,7 @@ Inheritance diagram for ModelInterface:</div>
 <div class="dyncontent">
 <div class="center"><img src="classModelInterface__inherit__graph.png" border="0" usemap="#ModelInterface_inherit__map" alt="Inheritance graph"/></div>
 <map name="ModelInterface_inherit__map" id="ModelInterface_inherit__map">
-<area shape="rect" id="node2" href="classLinearDemandsConstantCosts.html" title="Model in which demands follow a linear function and costs are constant. " alt="" coords="5,80,207,107"/>
+<area shape="rect" id="node2" href="classLinearDemandsConstantCosts.html" title="LinearDemandsConstantCosts" alt="" coords="5,80,207,107"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -83,7 +83,7 @@ Inheritance diagram for ModelInterface:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad2d37b05bed8ef0663a4e75221c31e7d"><td class="memItemLeft" align="right" valign="top"><a id="ad2d37b05bed8ef0663a4e75221c31e7d"></a>
 virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelInterface.html#ad2d37b05bed8ef0663a4e75221c31e7d">GetName</a> () const =0</td></tr>
-<tr class="memdesc:ad2d37b05bed8ef0663a4e75221c31e7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the model. <br /></td></tr>
+<tr class="memdesc:ad2d37b05bed8ef0663a4e75221c31e7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the model for displaying purposes. <br /></td></tr>
 <tr class="separator:ad2d37b05bed8ef0663a4e75221c31e7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb173c60dc16ba8b0e087f8edbbeb5b9"><td class="memItemLeft" align="right" valign="top"><a id="abb173c60dc16ba8b0e087f8edbbeb5b9"></a>
 virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelInterface.html#abb173c60dc16ba8b0e087f8edbbeb5b9">GetNumberOfProducts</a> () const =0</td></tr>
@@ -103,6 +103,8 @@ virtual <a class="el" href="classColumnVector.html">ColumnVector</a>&#160;</td><
 <tr class="separator:a094ebb85618fb13bf38f6faff1f5dd7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9aa52643da1fe9e74750e31a6c6ec469"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelInterface.html#a9aa52643da1fe9e74750e31a6c6ec469">Merge</a> (int i, int j)=0</td></tr>
 <tr class="separator:a9aa52643da1fe9e74750e31a6c6ec469"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbc3c44c6d41b596b6201a9e61e1ff83"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelInterface.html#abbc3c44c6d41b596b6201a9e61e1ff83">AreProducedBySameFirm</a> (int i, int j) const =0</td></tr>
+<tr class="separator:abbc3c44c6d41b596b6201a9e61e1ff83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5709db8ecb96fd9efd02f4777d5502a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelInterface.html#ab5709db8ecb96fd9efd02f4777d5502a">SaveToFile</a> (std::string const &amp;file_path) const =0</td></tr>
 <tr class="separator:ab5709db8ecb96fd9efd02f4777d5502a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f408fdb15c10ce8cabf6b942bbc9c38"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelInterface.html#a7f408fdb15c10ce8cabf6b942bbc9c38">LoadFromFile</a> (std::string const &amp;file_path)=0</td></tr>
@@ -111,6 +113,52 @@ virtual <a class="el" href="classColumnVector.html">ColumnVector</a>&#160;</td><
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>An interface for any model. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="abbc3c44c6d41b596b6201a9e61e1ff83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbc3c44c6d41b596b6201a9e61e1ff83">&#9670;&nbsp;</a></span>AreProducedBySameFirm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool ModelInterface::AreProducedBySameFirm </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns true iff the two given products are produced by the same firm.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>The index of the first product. </td></tr>
+    <tr><td class="paramname">j</td><td>The index of the second product. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classLinearDemandsConstantCosts.html#a91ba117b740d0e5cb5d6efd63d61a5f6">LinearDemandsConstantCosts</a>.</p>
+
+</div>
+</div>
 <a id="a094ebb85618fb13bf38f6faff1f5dd7b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a094ebb85618fb13bf38f6faff1f5dd7b">&#9670;&nbsp;</a></span>ComputeConsumerWelfare()</h2>
 
@@ -319,11 +367,11 @@ virtual <a class="el" href="classColumnVector.html">ColumnVector</a>&#160;</td><
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Merges two different firms.</p>
+<p>Sets the two given products to be produced by the same firm.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">i</td><td>The index of the first firm to merge. </td></tr>
-    <tr><td class="paramname">j</td><td>The index of the second firm to merge. </td></tr>
+    <tr><td class="paramname">i</td><td>The index of the first product. </td></tr>
+    <tr><td class="paramname">j</td><td>The index of the second product. </td></tr>
   </table>
   </dd>
 </dl>

@@ -8,7 +8,7 @@ class ModelInterface
 public:
     /*** Functions to get information about the model ***/
 
-    /// Returns the name of the model.
+    /// Returns the name of the model for displaying purposes.
     virtual std::string GetName() const = 0;
 
     /// Returns the number of products.
@@ -41,13 +41,19 @@ public:
     virtual ColumnVector ComputeConsumerWelfare(ColumnVector const& prices) const = 0;
 
 
-    /*** Functions to perform mergers ***/
+    /*** Functions related to mergers ***/
 
-    /// Merges two different firms.
+    /// Sets the two given products to be produced by the same firm.
     ///
-    /// @param i The index of the first firm to merge.
-    /// @param j The index of the second firm to merge.
+    /// @param i The index of the first product.
+    /// @param j The index of the second product.
     virtual void Merge(int i, int j) = 0;
+
+    /// Returns true iff the two given products are produced by the same firm.
+    ///
+    /// @param i The index of the first product.
+    /// @param j The index of the second product.
+    virtual bool AreProducedBySameFirm(int i, int j) const = 0;
 
 
     /*** Functions for serialization ***/

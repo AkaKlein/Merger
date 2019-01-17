@@ -11,8 +11,7 @@ An interface for any model.
 
 
 
-Inheritance diagram for Model\+Interface\+:
-\nopagebreak
+Inheritance diagram for Model\+Interface\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -24,7 +23,7 @@ Inheritance diagram for Model\+Interface\+:
 \item 
 \mbox{\Hypertarget{classModelInterface_ad2d37b05bed8ef0663a4e75221c31e7d}\label{classModelInterface_ad2d37b05bed8ef0663a4e75221c31e7d}} 
 virtual std\+::string \hyperlink{classModelInterface_ad2d37b05bed8ef0663a4e75221c31e7d}{Get\+Name} () const =0
-\begin{DoxyCompactList}\small\item\em Returns the name of the model. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the name of the model for displaying purposes. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classModelInterface_abb173c60dc16ba8b0e087f8edbbeb5b9}\label{classModelInterface_abb173c60dc16ba8b0e087f8edbbeb5b9}} 
 virtual int \hyperlink{classModelInterface_abb173c60dc16ba8b0e087f8edbbeb5b9}{Get\+Number\+Of\+Products} () const =0
 \begin{DoxyCompactList}\small\item\em Returns the number of products. \end{DoxyCompactList}\item 
@@ -41,6 +40,8 @@ virtual \hyperlink{classColumnVector}{Column\+Vector} \hyperlink{classModelInter
 \item 
 virtual void \hyperlink{classModelInterface_a9aa52643da1fe9e74750e31a6c6ec469}{Merge} (int i, int j)=0
 \item 
+virtual bool \hyperlink{classModelInterface_abbc3c44c6d41b596b6201a9e61e1ff83}{Are\+Produced\+By\+Same\+Firm} (int i, int j) const =0
+\item 
 virtual void \hyperlink{classModelInterface_ab5709db8ecb96fd9efd02f4777d5502a}{Save\+To\+File} (std\+::string const \&file\+\_\+path) const =0
 \item 
 virtual void \hyperlink{classModelInterface_a7f408fdb15c10ce8cabf6b942bbc9c38}{Load\+From\+File} (std\+::string const \&file\+\_\+path)=0
@@ -51,6 +52,25 @@ virtual void \hyperlink{classModelInterface_a7f408fdb15c10ce8cabf6b942bbc9c38}{L
 An interface for any model. 
 
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classModelInterface_abbc3c44c6d41b596b6201a9e61e1ff83}\label{classModelInterface_abbc3c44c6d41b596b6201a9e61e1ff83}} 
+\index{Model\+Interface@{Model\+Interface}!Are\+Produced\+By\+Same\+Firm@{Are\+Produced\+By\+Same\+Firm}}
+\index{Are\+Produced\+By\+Same\+Firm@{Are\+Produced\+By\+Same\+Firm}!Model\+Interface@{Model\+Interface}}
+\subsubsection{\texorpdfstring{Are\+Produced\+By\+Same\+Firm()}{AreProducedBySameFirm()}}
+{\footnotesize\ttfamily virtual bool Model\+Interface\+::\+Are\+Produced\+By\+Same\+Firm (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Returns true iff the two given products are produced by the same firm.
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & The index of the first product. \\
+\hline
+{\em j} & The index of the second product. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classLinearDemandsConstantCosts_a91ba117b740d0e5cb5d6efd63d61a5f6}{Linear\+Demands\+Constant\+Costs}.
+
 \mbox{\Hypertarget{classModelInterface_a094ebb85618fb13bf38f6faff1f5dd7b}\label{classModelInterface_a094ebb85618fb13bf38f6faff1f5dd7b}} 
 \index{Model\+Interface@{Model\+Interface}!Compute\+Consumer\+Welfare@{Compute\+Consumer\+Welfare}}
 \index{Compute\+Consumer\+Welfare@{Compute\+Consumer\+Welfare}!Model\+Interface@{Model\+Interface}}
@@ -142,13 +162,13 @@ Implemented in \hyperlink{classLinearDemandsConstantCosts_a075add461e368629b9dfd
 \subsubsection{\texorpdfstring{Merge()}{Merge()}}
 {\footnotesize\ttfamily virtual void Model\+Interface\+::\+Merge (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
-Merges two different firms.
+Sets the two given products to be produced by the same firm.
 
 
 \begin{DoxyParams}{Parameters}
-{\em i} & The index of the first firm to merge. \\
+{\em i} & The index of the first product. \\
 \hline
-{\em j} & The index of the second firm to merge. \\
+{\em j} & The index of the second product. \\
 \hline
 \end{DoxyParams}
 

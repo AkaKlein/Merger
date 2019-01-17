@@ -2,17 +2,11 @@
 \label{classLinearDemandsConstantCosts}\index{Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}}
 
 
-Model in which demands follow a linear function and costs are constant.  
-
-
-
-
 {\ttfamily \#include $<$linear\+\_\+demands\+\_\+constant\+\_\+costs.\+h$>$}
 
 
 
-Inheritance diagram for Linear\+Demands\+Constant\+Costs\+:
-\nopagebreak
+Inheritance diagram for Linear\+Demands\+Constant\+Costs\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +15,7 @@ Inheritance diagram for Linear\+Demands\+Constant\+Costs\+:
 \end{figure}
 
 
-Collaboration diagram for Linear\+Demands\+Constant\+Costs\+:
-\nopagebreak
+Collaboration diagram for Linear\+Demands\+Constant\+Costs\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -32,8 +25,9 @@ Collaboration diagram for Linear\+Demands\+Constant\+Costs\+:
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classLinearDemandsConstantCosts_a0a7e9c271148594fdc0e4024cfd521a9}\label{classLinearDemandsConstantCosts_a0a7e9c271148594fdc0e4024cfd521a9}} 
-{\bfseries Linear\+Demands\+Constant\+Costs} (\hyperlink{classColumnVector}{Column\+Vector} const \&income, \hyperlink{classColumnVector}{Column\+Vector} const \&costs, \hyperlink{classMatrix}{Matrix} const \&elasticities)
+\hyperlink{classLinearDemandsConstantCosts_a79e3cc71f551a3ad3ecfd5ea3818a6c0}{Linear\+Demands\+Constant\+Costs} ()=default
+\item 
+\hyperlink{classLinearDemandsConstantCosts_a0a7e9c271148594fdc0e4024cfd521a9}{Linear\+Demands\+Constant\+Costs} (\hyperlink{classColumnVector}{Column\+Vector} const \&income, \hyperlink{classColumnVector}{Column\+Vector} const \&costs, \hyperlink{classMatrix}{Matrix} const \&elasticities)
 \item 
 \mbox{\Hypertarget{classLinearDemandsConstantCosts_a5b137f8fe14c712fba111a5ddb62ca49}\label{classLinearDemandsConstantCosts_a5b137f8fe14c712fba111a5ddb62ca49}} 
 virtual std\+::string \hyperlink{classLinearDemandsConstantCosts_a5b137f8fe14c712fba111a5ddb62ca49}{Get\+Name} () const
@@ -54,6 +48,8 @@ virtual \hyperlink{classColumnVector}{Column\+Vector} \hyperlink{classLinearDema
 \item 
 virtual void \hyperlink{classLinearDemandsConstantCosts_a0ee422d927b5a85f9aba8782b02f537b}{Merge} (int i, int j) override final
 \item 
+virtual bool \hyperlink{classLinearDemandsConstantCosts_a91ba117b740d0e5cb5d6efd63d61a5f6}{Are\+Produced\+By\+Same\+Firm} (int i, int j) const override final
+\item 
 virtual void \hyperlink{classLinearDemandsConstantCosts_aef2823751866a4933a8611dd4622d78b}{Save\+To\+File} (std\+::string const \&file\+\_\+path) const override final
 \item 
 virtual void \hyperlink{classLinearDemandsConstantCosts_a075add461e368629b9dfd8f72033e2ad}{Load\+From\+File} (std\+::string const \&file\+\_\+path) override final
@@ -61,9 +57,60 @@ virtual void \hyperlink{classLinearDemandsConstantCosts_a075add461e368629b9dfd8f
 
 
 \subsection{Detailed Description}
-Model in which demands follow a linear function and costs are constant. 
+A model in which demands follow a linear function and costs are constant.
+
+More specifically, in this model the demands vector can be written as
+
+\begin{equation} q = a + B' p \end{equation}
+
+where $ a $ is the income vector, $ p $ is the vector of prices and $ B $ is the elasticities\textquotesingle{} matrix. Besides, it defines a $ c $ vector that is constant. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLinearDemandsConstantCosts_a79e3cc71f551a3ad3ecfd5ea3818a6c0}\label{classLinearDemandsConstantCosts_a79e3cc71f551a3ad3ecfd5ea3818a6c0}} 
+\index{Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}!Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}}
+\index{Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}!Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}}
+\subsubsection{\texorpdfstring{Linear\+Demands\+Constant\+Costs()}{LinearDemandsConstantCosts()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Linear\+Demands\+Constant\+Costs\+::\+Linear\+Demands\+Constant\+Costs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+Creates a model with no products. It should only be used to load the model from a file after calling it. \mbox{\Hypertarget{classLinearDemandsConstantCosts_a0a7e9c271148594fdc0e4024cfd521a9}\label{classLinearDemandsConstantCosts_a0a7e9c271148594fdc0e4024cfd521a9}} 
+\index{Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}!Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}}
+\index{Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}!Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}}
+\subsubsection{\texorpdfstring{Linear\+Demands\+Constant\+Costs()}{LinearDemandsConstantCosts()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Linear\+Demands\+Constant\+Costs\+::\+Linear\+Demands\+Constant\+Costs (\begin{DoxyParamCaption}\item[{\hyperlink{classColumnVector}{Column\+Vector} const \&}]{income,  }\item[{\hyperlink{classColumnVector}{Column\+Vector} const \&}]{costs,  }\item[{\hyperlink{classMatrix}{Matrix} const \&}]{elasticities }\end{DoxyParamCaption})}
+
+Creates a model with {\ttfamily income} being $ a $, {\ttfamily costs} being $ c $ and {\ttfamily elasticities} being $ B $ in the model definition.
+
+
+\begin{DoxyParams}{Parameters}
+{\em income} & The income vector as defined in the model. \\
+\hline
+{\em costs} & The costs vector as defined in the model. \\
+\hline
+{\em elasticities} & The matrix of elasticities as defined in the model. \\
+\hline
+\end{DoxyParams}
+
 
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classLinearDemandsConstantCosts_a91ba117b740d0e5cb5d6efd63d61a5f6}\label{classLinearDemandsConstantCosts_a91ba117b740d0e5cb5d6efd63d61a5f6}} 
+\index{Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}!Are\+Produced\+By\+Same\+Firm@{Are\+Produced\+By\+Same\+Firm}}
+\index{Are\+Produced\+By\+Same\+Firm@{Are\+Produced\+By\+Same\+Firm}!Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}}
+\subsubsection{\texorpdfstring{Are\+Produced\+By\+Same\+Firm()}{AreProducedBySameFirm()}}
+{\footnotesize\ttfamily bool Linear\+Demands\+Constant\+Costs\+::\+Are\+Produced\+By\+Same\+Firm (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Returns true iff the two given products are produced by the same firm.
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & The index of the first product. \\
+\hline
+{\em j} & The index of the second product. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classModelInterface_abbc3c44c6d41b596b6201a9e61e1ff83}{Model\+Interface}.
+
 \mbox{\Hypertarget{classLinearDemandsConstantCosts_a9d3fa6a3b151c2f1703f23bbee6954cb}\label{classLinearDemandsConstantCosts_a9d3fa6a3b151c2f1703f23bbee6954cb}} 
 \index{Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}!Compute\+Consumer\+Welfare@{Compute\+Consumer\+Welfare}}
 \index{Compute\+Consumer\+Welfare@{Compute\+Consumer\+Welfare}!Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}}
@@ -155,13 +202,13 @@ Implements \hyperlink{classModelInterface_a7f408fdb15c10ce8cabf6b942bbc9c38}{Mod
 \subsubsection{\texorpdfstring{Merge()}{Merge()}}
 {\footnotesize\ttfamily void Linear\+Demands\+Constant\+Costs\+::\+Merge (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
 
-Merges two different firms.
+Sets the two given products to be produced by the same firm.
 
 
 \begin{DoxyParams}{Parameters}
-{\em i} & The index of the first firm to merge. \\
+{\em i} & The index of the first product. \\
 \hline
-{\em j} & The index of the second firm to merge. \\
+{\em j} & The index of the second product. \\
 \hline
 \end{DoxyParams}
 

@@ -3,11 +3,30 @@
 #include "Utils/algebra.h"
 #include "model_interface.h"
 
-/// Model in which demands follow a linear function and costs are constant.
+/// @brief A model in which demands follow a linear function and costs are constant.
+///
+/// A model in which the demands vector can be written as
+///
+/// @f{equation}{
+///     q = a + B' p   
+/// @f}
+///
+/// where @f$ a @f$ is the income vector, @f$ p @f$ is the vector of prices
+/// and @f$ B @f$ is the elasticities' matrix. Besides, it defines a @f$ c @f$
+/// vector that is constant.
 class LinearDemandsConstantCosts : public ModelInterface
 {
 public:
+    /// Creates a model with no products. It should only be used to load the model
+    /// from a file after calling it.
     LinearDemandsConstantCosts() = default;
+
+    /// Creates a model with @p income being @f$ a @f$, @p costs being @f$ c @f$ and @p elasticities
+    /// being @f$ B @f$ in the model definition.
+    ///
+    /// @param income The income vector as defined in the model.
+    /// @param costs The costs vector as defined in the model.
+    /// @param elasticities The matrix of elasticities as defined in the model.
     LinearDemandsConstantCosts(ColumnVector const& income, ColumnVector const& costs, Matrix const& elasticities);
 
 
@@ -46,11 +65,17 @@ public:
 
     /*** Functions to perform mergers ***/
 
-    /// Merges two different firms.
+    /// Sets the two given products to be produced by the same firm.
     ///
-    /// @param i The index of the first firm to merge.
-    /// @param j The index of the second firm to merge.
+    /// @param i The index of the first product.
+    /// @param j The index of the second product.
     virtual void Merge(int i, int j) override final;
+
+    /// Returns true iff the two given products are produced by the same firm.
+    ///
+    /// @param i The index of the first product.
+    /// @param j The index of the second product.
+    virtual bool AreProducedBySameFirm(int i, int j) const override final;
 
     
     /*** Functions for serialization ***/

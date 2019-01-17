@@ -66,9 +66,6 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Model in which demands follow a linear function and costs are constant.  
- <a href="classLinearDemandsConstantCosts.html#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="linear__demands__constant__costs_8h_source.html">linear_demands_constant_costs.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for LinearDemandsConstantCosts:</div>
@@ -89,8 +86,9 @@ Collaboration diagram for LinearDemandsConstantCosts:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0a7e9c271148594fdc0e4024cfd521a9"><td class="memItemLeft" align="right" valign="top"><a id="a0a7e9c271148594fdc0e4024cfd521a9"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>LinearDemandsConstantCosts</b> (<a class="el" href="classColumnVector.html">ColumnVector</a> const &amp;income, <a class="el" href="classColumnVector.html">ColumnVector</a> const &amp;costs, <a class="el" href="classMatrix.html">Matrix</a> const &amp;elasticities)</td></tr>
+<tr class="memitem:a79e3cc71f551a3ad3ecfd5ea3818a6c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinearDemandsConstantCosts.html#a79e3cc71f551a3ad3ecfd5ea3818a6c0">LinearDemandsConstantCosts</a> ()=default</td></tr>
+<tr class="separator:a79e3cc71f551a3ad3ecfd5ea3818a6c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a7e9c271148594fdc0e4024cfd521a9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinearDemandsConstantCosts.html#a0a7e9c271148594fdc0e4024cfd521a9">LinearDemandsConstantCosts</a> (<a class="el" href="classColumnVector.html">ColumnVector</a> const &amp;income, <a class="el" href="classColumnVector.html">ColumnVector</a> const &amp;costs, <a class="el" href="classMatrix.html">Matrix</a> const &amp;elasticities)</td></tr>
 <tr class="separator:a0a7e9c271148594fdc0e4024cfd521a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b137f8fe14c712fba111a5ddb62ca49"><td class="memItemLeft" align="right" valign="top"><a id="a5b137f8fe14c712fba111a5ddb62ca49"></a>
 virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinearDemandsConstantCosts.html#a5b137f8fe14c712fba111a5ddb62ca49">GetName</a> () const</td></tr>
@@ -114,14 +112,137 @@ virtual <a class="el" href="classColumnVector.html">ColumnVector</a>&#160;</td><
 <tr class="separator:a9d3fa6a3b151c2f1703f23bbee6954cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ee422d927b5a85f9aba8782b02f537b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinearDemandsConstantCosts.html#a0ee422d927b5a85f9aba8782b02f537b">Merge</a> (int i, int j) override final</td></tr>
 <tr class="separator:a0ee422d927b5a85f9aba8782b02f537b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91ba117b740d0e5cb5d6efd63d61a5f6"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinearDemandsConstantCosts.html#a91ba117b740d0e5cb5d6efd63d61a5f6">AreProducedBySameFirm</a> (int i, int j) const override final</td></tr>
+<tr class="separator:a91ba117b740d0e5cb5d6efd63d61a5f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef2823751866a4933a8611dd4622d78b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinearDemandsConstantCosts.html#aef2823751866a4933a8611dd4622d78b">SaveToFile</a> (std::string const &amp;file_path) const override final</td></tr>
 <tr class="separator:aef2823751866a4933a8611dd4622d78b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a075add461e368629b9dfd8f72033e2ad"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinearDemandsConstantCosts.html#a075add461e368629b9dfd8f72033e2ad">LoadFromFile</a> (std::string const &amp;file_path) override final</td></tr>
 <tr class="separator:a075add461e368629b9dfd8f72033e2ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Model in which demands follow a linear function and costs are constant. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<div class="textblock"><p>A model in which demands follow a linear function and costs are constant.</p>
+<p>More specifically, in this model the demands vector can be written as</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{equation} q = a + B' p \end{equation}" src="form_1.png"/>
+</p>
+<p>where <img class="formulaInl" alt="$ a $" src="form_3.png"/> is the income vector, <img class="formulaInl" alt="$ p $" src="form_4.png"/> is the vector of prices and <img class="formulaInl" alt="$ B $" src="form_5.png"/> is the elasticities' matrix. Besides, it defines a <img class="formulaInl" alt="$ c $" src="form_6.png"/> vector that is constant. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a79e3cc71f551a3ad3ecfd5ea3818a6c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79e3cc71f551a3ad3ecfd5ea3818a6c0">&#9670;&nbsp;</a></span>LinearDemandsConstantCosts() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">LinearDemandsConstantCosts::LinearDemandsConstantCosts </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Creates a model with no products. It should only be used to load the model from a file after calling it. </p>
+
+</div>
+</div>
+<a id="a0a7e9c271148594fdc0e4024cfd521a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a7e9c271148594fdc0e4024cfd521a9">&#9670;&nbsp;</a></span>LinearDemandsConstantCosts() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LinearDemandsConstantCosts::LinearDemandsConstantCosts </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classColumnVector.html">ColumnVector</a> const &amp;&#160;</td>
+          <td class="paramname"><em>income</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classColumnVector.html">ColumnVector</a> const &amp;&#160;</td>
+          <td class="paramname"><em>costs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classMatrix.html">Matrix</a> const &amp;&#160;</td>
+          <td class="paramname"><em>elasticities</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates a model with <code>income</code> being <img class="formulaInl" alt="$ a $" src="form_3.png"/>, <code>costs</code> being <img class="formulaInl" alt="$ c $" src="form_6.png"/> and <code>elasticities</code> being <img class="formulaInl" alt="$ B $" src="form_5.png"/> in the model definition.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">income</td><td>The income vector as defined in the model. </td></tr>
+    <tr><td class="paramname">costs</td><td>The costs vector as defined in the model. </td></tr>
+    <tr><td class="paramname">elasticities</td><td>The matrix of elasticities as defined in the model. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a91ba117b740d0e5cb5d6efd63d61a5f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91ba117b740d0e5cb5d6efd63d61a5f6">&#9670;&nbsp;</a></span>AreProducedBySameFirm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LinearDemandsConstantCosts::AreProducedBySameFirm </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">final</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns true iff the two given products are produced by the same firm.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>The index of the first product. </td></tr>
+    <tr><td class="paramname">j</td><td>The index of the second product. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="classModelInterface.html#abbc3c44c6d41b596b6201a9e61e1ff83">ModelInterface</a>.</p>
+
+</div>
+</div>
 <a id="a9d3fa6a3b151c2f1703f23bbee6954cb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9d3fa6a3b151c2f1703f23bbee6954cb">&#9670;&nbsp;</a></span>ComputeConsumerWelfare()</h2>
 
@@ -330,11 +451,11 @@ virtual <a class="el" href="classColumnVector.html">ColumnVector</a>&#160;</td><
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Merges two different firms.</p>
+<p>Sets the two given products to be produced by the same firm.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">i</td><td>The index of the first firm to merge. </td></tr>
-    <tr><td class="paramname">j</td><td>The index of the second firm to merge. </td></tr>
+    <tr><td class="paramname">i</td><td>The index of the first product. </td></tr>
+    <tr><td class="paramname">j</td><td>The index of the second product. </td></tr>
   </table>
   </dd>
 </dl>

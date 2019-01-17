@@ -1,4 +1,9 @@
 var searchData=
 [
-  ['savetofile',['SaveToFile',['../classLinearDemandsConstantCosts.html#aef2823751866a4933a8611dd4622d78b',1,'LinearDemandsConstantCosts::SaveToFile()'],['../classModelInterface.html#ab5709db8ecb96fd9efd02f4777d5502a',1,'ModelInterface::SaveToFile()']]]
+  ['mainwindow',['MainWindow',['../classMainWindow.html',1,'']]],
+  ['matrix',['Matrix',['../classMatrix.html',1,'Matrix'],['../classMatrix.html#a12d35ef1824cd847868a8703035b0d5d',1,'Matrix::Matrix()=default'],['../classMatrix.html#ae157f910061b3e1155b17b62583bde57',1,'Matrix::Matrix(int n, int m)']]],
+  ['merge',['Merge',['../classLinearDemandsConstantCosts.html#a0ee422d927b5a85f9aba8782b02f537b',1,'LinearDemandsConstantCosts::Merge()'],['../classModelInterface.html#a9aa52643da1fe9e74750e31a6c6ec469',1,'ModelInterface::Merge()']]],
+  ['modelinterface',['ModelInterface',['../classModelInterface.html',1,'']]],
+  ['modelresult',['ModelResult',['../classModelResult.html',1,'']]],
+  ['modelwidget',['ModelWidget',['../classModelWidget.html',1,'']]]
 ];

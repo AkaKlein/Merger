@@ -65,61 +65,417 @@ $(function() {
 <div class="title">Matrix Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Represents a matrix with real numbers.  
+ <a href="classMatrix.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="matrix_8h_source.html">matrix.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae157f910061b3e1155b17b62583bde57"><td class="memItemLeft" align="right" valign="top"><a id="ae157f910061b3e1155b17b62583bde57"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Matrix</b> (int n, int m)</td></tr>
+<tr class="memitem:a12d35ef1824cd847868a8703035b0d5d"><td class="memItemLeft" align="right" valign="top"><a id="a12d35ef1824cd847868a8703035b0d5d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#a12d35ef1824cd847868a8703035b0d5d">Matrix</a> ()=default</td></tr>
+<tr class="memdesc:a12d35ef1824cd847868a8703035b0d5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an empty matrix. <br /></td></tr>
+<tr class="separator:a12d35ef1824cd847868a8703035b0d5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae157f910061b3e1155b17b62583bde57"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#ae157f910061b3e1155b17b62583bde57">Matrix</a> (int n, int m)</td></tr>
 <tr class="separator:ae157f910061b3e1155b17b62583bde57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a409518fdf191a193bf544e0148fdc9cc"><td class="memItemLeft" align="right" valign="top"><a id="a409518fdf191a193bf544e0148fdc9cc"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Rows</b> () const</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#a409518fdf191a193bf544e0148fdc9cc">Rows</a> () const</td></tr>
+<tr class="memdesc:a409518fdf191a193bf544e0148fdc9cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of rows of the matrix. <br /></td></tr>
 <tr class="separator:a409518fdf191a193bf544e0148fdc9cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a742ff4cea157cd4d7a1943ddbc702028"><td class="memItemLeft" align="right" valign="top"><a id="a742ff4cea157cd4d7a1943ddbc702028"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Columns</b> () const</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#a742ff4cea157cd4d7a1943ddbc702028">Columns</a> () const</td></tr>
+<tr class="memdesc:a742ff4cea157cd4d7a1943ddbc702028"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of columns of the matrix. <br /></td></tr>
 <tr class="separator:a742ff4cea157cd4d7a1943ddbc702028"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c888c6a7fe7a4ea3b603d17fe3f77e0"><td class="memItemLeft" align="right" valign="top"><a id="a2c888c6a7fe7a4ea3b603d17fe3f77e0"></a>
-<a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator+</b> (<a class="el" href="classMatrix.html">Matrix</a> const &amp;other) const</td></tr>
+<tr class="memitem:a2c888c6a7fe7a4ea3b603d17fe3f77e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#a2c888c6a7fe7a4ea3b603d17fe3f77e0">operator+</a> (<a class="el" href="classMatrix.html">Matrix</a> const &amp;other) const</td></tr>
 <tr class="separator:a2c888c6a7fe7a4ea3b603d17fe3f77e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f5d62f853a2ed97f2ba437036b1724d"><td class="memItemLeft" align="right" valign="top"><a id="a5f5d62f853a2ed97f2ba437036b1724d"></a>
-<a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator+=</b> (<a class="el" href="classMatrix.html">Matrix</a> const &amp;other)</td></tr>
+<tr class="memitem:a5f5d62f853a2ed97f2ba437036b1724d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#a5f5d62f853a2ed97f2ba437036b1724d">operator+=</a> (<a class="el" href="classMatrix.html">Matrix</a> const &amp;other)</td></tr>
 <tr class="separator:a5f5d62f853a2ed97f2ba437036b1724d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f7129af600c22b69abdcb2c3b204e5a"><td class="memItemLeft" align="right" valign="top"><a id="a5f7129af600c22b69abdcb2c3b204e5a"></a>
-<a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> (<a class="el" href="classMatrix.html">Matrix</a> const &amp;other) const</td></tr>
+<tr class="memitem:a5f7129af600c22b69abdcb2c3b204e5a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#a5f7129af600c22b69abdcb2c3b204e5a">operator-</a> (<a class="el" href="classMatrix.html">Matrix</a> const &amp;other) const</td></tr>
 <tr class="separator:a5f7129af600c22b69abdcb2c3b204e5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5871f028dc8b3ae8043a942b5840cdec"><td class="memItemLeft" align="right" valign="top"><a id="a5871f028dc8b3ae8043a942b5840cdec"></a>
-<a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator-=</b> (<a class="el" href="classMatrix.html">Matrix</a> const &amp;other)</td></tr>
+<tr class="memitem:a5871f028dc8b3ae8043a942b5840cdec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#a5871f028dc8b3ae8043a942b5840cdec">operator-=</a> (<a class="el" href="classMatrix.html">Matrix</a> const &amp;other)</td></tr>
 <tr class="separator:a5871f028dc8b3ae8043a942b5840cdec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a087f5fbe295229d2790871bb14b6a2a5"><td class="memItemLeft" align="right" valign="top"><a id="a087f5fbe295229d2790871bb14b6a2a5"></a>
-<a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> (<a class="el" href="classMatrix.html">Matrix</a> const &amp;other) const</td></tr>
+<tr class="memitem:a087f5fbe295229d2790871bb14b6a2a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#a087f5fbe295229d2790871bb14b6a2a5">operator*</a> (<a class="el" href="classMatrix.html">Matrix</a> const &amp;other) const</td></tr>
 <tr class="separator:a087f5fbe295229d2790871bb14b6a2a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d3c514ae15700397053fd3402552b1c"><td class="memItemLeft" align="right" valign="top"><a id="a8d3c514ae15700397053fd3402552b1c"></a>
-<a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*=</b> (<a class="el" href="classMatrix.html">Matrix</a> const &amp;other)</td></tr>
+<tr class="memitem:a8d3c514ae15700397053fd3402552b1c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#a8d3c514ae15700397053fd3402552b1c">operator*=</a> (<a class="el" href="classMatrix.html">Matrix</a> const &amp;other)</td></tr>
 <tr class="separator:a8d3c514ae15700397053fd3402552b1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdd6cdea30961d5ce34be67332c1d0dd"><td class="memItemLeft" align="right" valign="top"><a id="afdd6cdea30961d5ce34be67332c1d0dd"></a>
-<a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> (double other) const</td></tr>
+<tr class="memitem:afdd6cdea30961d5ce34be67332c1d0dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#afdd6cdea30961d5ce34be67332c1d0dd">operator*</a> (double other) const</td></tr>
 <tr class="separator:afdd6cdea30961d5ce34be67332c1d0dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2fd5772e288eb07a404907e6e1a1dd6"><td class="memItemLeft" align="right" valign="top"><a id="ad2fd5772e288eb07a404907e6e1a1dd6"></a>
-<a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*=</b> (double other)</td></tr>
+<tr class="memitem:ad2fd5772e288eb07a404907e6e1a1dd6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#ad2fd5772e288eb07a404907e6e1a1dd6">operator*=</a> (double other)</td></tr>
 <tr class="separator:ad2fd5772e288eb07a404907e6e1a1dd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef843067e6c43218c7c909b6367706c2"><td class="memItemLeft" align="right" valign="top"><a id="aef843067e6c43218c7c909b6367706c2"></a>
-<a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator%</b> (<a class="el" href="classMatrix.html">Matrix</a> const &amp;other) const</td></tr>
+<tr class="memitem:aef843067e6c43218c7c909b6367706c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#aef843067e6c43218c7c909b6367706c2">operator%</a> (<a class="el" href="classMatrix.html">Matrix</a> const &amp;other) const</td></tr>
 <tr class="separator:aef843067e6c43218c7c909b6367706c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac391b0910e9f0fc0a6e23c9346cee2ad"><td class="memItemLeft" align="right" valign="top"><a id="ac391b0910e9f0fc0a6e23c9346cee2ad"></a>
-<a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator%=</b> (<a class="el" href="classMatrix.html">Matrix</a> const &amp;other)</td></tr>
+<tr class="memitem:ac391b0910e9f0fc0a6e23c9346cee2ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#ac391b0910e9f0fc0a6e23c9346cee2ad">operator%=</a> (<a class="el" href="classMatrix.html">Matrix</a> const &amp;other)</td></tr>
 <tr class="separator:ac391b0910e9f0fc0a6e23c9346cee2ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0c96cdea0d2ae3403653ca90aa70796"><td class="memItemLeft" align="right" valign="top"><a id="ad0c96cdea0d2ae3403653ca90aa70796"></a>
-<a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Transpose</b> () const</td></tr>
+<a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#ad0c96cdea0d2ae3403653ca90aa70796">Transpose</a> () const</td></tr>
+<tr class="memdesc:ad0c96cdea0d2ae3403653ca90aa70796"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the transposed matrix. <br /></td></tr>
 <tr class="separator:ad0c96cdea0d2ae3403653ca90aa70796"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5f101877c4a10988bf7f128a9c248d8"><td class="memItemLeft" align="right" valign="top"><a id="ad5f101877c4a10988bf7f128a9c248d8"></a>
-<a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Inverse</b> () const</td></tr>
+<a class="el" href="classMatrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#ad5f101877c4a10988bf7f128a9c248d8">Inverse</a> () const</td></tr>
+<tr class="memdesc:ad5f101877c4a10988bf7f128a9c248d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the inverse matrix. <br /></td></tr>
 <tr class="separator:ad5f101877c4a10988bf7f128a9c248d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25cb20c90560327240a07d81ed11c746"><td class="memItemLeft" align="right" valign="top"><a id="a25cb20c90560327240a07d81ed11c746"></a>
-std::vector&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (int row)</td></tr>
+<tr class="memitem:a25cb20c90560327240a07d81ed11c746"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#a25cb20c90560327240a07d81ed11c746">operator[]</a> (int row)</td></tr>
 <tr class="separator:a25cb20c90560327240a07d81ed11c746"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a120efaa8b3a945230e8a601927cb0e47"><td class="memItemLeft" align="right" valign="top"><a id="a120efaa8b3a945230e8a601927cb0e47"></a>
-std::vector&lt; double &gt; const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (int row) const</td></tr>
+<tr class="memitem:a120efaa8b3a945230e8a601927cb0e47"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt; const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#a120efaa8b3a945230e8a601927cb0e47">operator[]</a> (int row) const</td></tr>
 <tr class="separator:a120efaa8b3a945230e8a601927cb0e47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a matrix with real numbers. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae157f910061b3e1155b17b62583bde57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae157f910061b3e1155b17b62583bde57">&#9670;&nbsp;</a></span>Matrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Matrix::Matrix </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>m</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates a matrix of <code>n</code> rows and <code>m</code> columns.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>The number of rows. </td></tr>
+    <tr><td class="paramname">m</td><td>The number of columns. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aef843067e6c43218c7c909b6367706c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef843067e6c43218c7c909b6367706c2">&#9670;&nbsp;</a></span>operator%()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> Matrix::operator% </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classMatrix.html">Matrix</a> const &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Applies the Hadamard product to the object and the matrix <code>other</code> and returns the resulting matrix. The object is left unchanges.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The matrix to be multiplied to the object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac391b0910e9f0fc0a6e23c9346cee2ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac391b0910e9f0fc0a6e23c9346cee2ad">&#9670;&nbsp;</a></span>operator%=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> &amp; Matrix::operator%= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classMatrix.html">Matrix</a> const &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Applies the Hadamard product to the object and the matrix <code>other</code> and overwrites the current value of the object.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The matrix to be multiplied to the object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a087f5fbe295229d2790871bb14b6a2a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a087f5fbe295229d2790871bb14b6a2a5">&#9670;&nbsp;</a></span>operator*() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> Matrix::operator* </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classMatrix.html">Matrix</a> const &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Multiplies the matrix <code>other</code> to this object and returns the resulting matrix. The object is left unchanged.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The matrix to be multiplied to the object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afdd6cdea30961d5ce34be67332c1d0dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdd6cdea30961d5ce34be67332c1d0dd">&#9670;&nbsp;</a></span>operator*() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> Matrix::operator* </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Multiplies the real number <code>other</code> to this object and returns the resulting matrix. The object is left unchanged.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The real number to be multiplied to the object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8d3c514ae15700397053fd3402552b1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d3c514ae15700397053fd3402552b1c">&#9670;&nbsp;</a></span>operator*=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> &amp; Matrix::operator*= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classMatrix.html">Matrix</a> const &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Multiplies the matrix <code>other</code> into this object.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The matrix to be multiplied to the object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad2fd5772e288eb07a404907e6e1a1dd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2fd5772e288eb07a404907e6e1a1dd6">&#9670;&nbsp;</a></span>operator*=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> &amp; Matrix::operator*= </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Multiplies the real number <code>other</code> into this object.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The real number to be multiplied to the object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2c888c6a7fe7a4ea3b603d17fe3f77e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c888c6a7fe7a4ea3b603d17fe3f77e0">&#9670;&nbsp;</a></span>operator+()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> Matrix::operator+ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classMatrix.html">Matrix</a> const &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds the matrix <code>other</code> to this object and returns the resulting matrix. The object is left unchanged.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The matrix to be added to the object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5f5d62f853a2ed97f2ba437036b1724d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f5d62f853a2ed97f2ba437036b1724d">&#9670;&nbsp;</a></span>operator+=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> &amp; Matrix::operator+= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classMatrix.html">Matrix</a> const &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds the matrix <code>other</code> into this object.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The matrix to be added to the object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5f7129af600c22b69abdcb2c3b204e5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f7129af600c22b69abdcb2c3b204e5a">&#9670;&nbsp;</a></span>operator-()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> Matrix::operator- </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classMatrix.html">Matrix</a> const &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Subtracts the matrix <code>other</code> to this object and returns the resulting matrix. The object is left unchanged.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The matrix to be subtracted to the object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5871f028dc8b3ae8043a942b5840cdec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5871f028dc8b3ae8043a942b5840cdec">&#9670;&nbsp;</a></span>operator-=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMatrix.html">Matrix</a> &amp; Matrix::operator-= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classMatrix.html">Matrix</a> const &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Subtracts the matrix <code>other</code> into this object.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The matrix to be subtracted to the object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a25cb20c90560327240a07d81ed11c746"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25cb20c90560327240a07d81ed11c746">&#9670;&nbsp;</a></span>operator[]() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;double&gt;&amp; Matrix::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>row</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the row of numbers indicated by <code>row</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>The index of the row. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a120efaa8b3a945230e8a601927cb0e47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a120efaa8b3a945230e8a601927cb0e47">&#9670;&nbsp;</a></span>operator[]() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;double&gt; const&amp; Matrix::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>row</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the row of numbers indicated by <code>row</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>The index of the row. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Utils/<a class="el" href="matrix_8h_source.html">matrix.h</a></li>
 <li>Utils/matrix.cpp</li>

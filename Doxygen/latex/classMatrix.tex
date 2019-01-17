@@ -1,59 +1,238 @@
 \hypertarget{classMatrix}{}\section{Matrix Class Reference}
 \label{classMatrix}\index{Matrix@{Matrix}}
+
+
+Represents a matrix with real numbers.  
+
+
+
+
+{\ttfamily \#include $<$matrix.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classMatrix_ae157f910061b3e1155b17b62583bde57}\label{classMatrix_ae157f910061b3e1155b17b62583bde57}} 
-{\bfseries Matrix} (int n, int m)
+\mbox{\Hypertarget{classMatrix_a12d35ef1824cd847868a8703035b0d5d}\label{classMatrix_a12d35ef1824cd847868a8703035b0d5d}} 
+\hyperlink{classMatrix_a12d35ef1824cd847868a8703035b0d5d}{Matrix} ()=default
+\begin{DoxyCompactList}\small\item\em Creates an empty matrix. \end{DoxyCompactList}\item 
+\hyperlink{classMatrix_ae157f910061b3e1155b17b62583bde57}{Matrix} (int n, int m)
 \item 
 \mbox{\Hypertarget{classMatrix_a409518fdf191a193bf544e0148fdc9cc}\label{classMatrix_a409518fdf191a193bf544e0148fdc9cc}} 
-int {\bfseries Rows} () const
-\item 
+int \hyperlink{classMatrix_a409518fdf191a193bf544e0148fdc9cc}{Rows} () const
+\begin{DoxyCompactList}\small\item\em Returns the number of rows of the matrix. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMatrix_a742ff4cea157cd4d7a1943ddbc702028}\label{classMatrix_a742ff4cea157cd4d7a1943ddbc702028}} 
-int {\bfseries Columns} () const
+int \hyperlink{classMatrix_a742ff4cea157cd4d7a1943ddbc702028}{Columns} () const
+\begin{DoxyCompactList}\small\item\em Returns the number of columns of the matrix. \end{DoxyCompactList}\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_a2c888c6a7fe7a4ea3b603d17fe3f77e0}{operator+} (\hyperlink{classMatrix}{Matrix} const \&other) const
 \item 
-\mbox{\Hypertarget{classMatrix_a2c888c6a7fe7a4ea3b603d17fe3f77e0}\label{classMatrix_a2c888c6a7fe7a4ea3b603d17fe3f77e0}} 
-\hyperlink{classMatrix}{Matrix} {\bfseries operator+} (\hyperlink{classMatrix}{Matrix} const \&other) const
+\hyperlink{classMatrix}{Matrix} \& \hyperlink{classMatrix_a5f5d62f853a2ed97f2ba437036b1724d}{operator+=} (\hyperlink{classMatrix}{Matrix} const \&other)
 \item 
-\mbox{\Hypertarget{classMatrix_a5f5d62f853a2ed97f2ba437036b1724d}\label{classMatrix_a5f5d62f853a2ed97f2ba437036b1724d}} 
-\hyperlink{classMatrix}{Matrix} \& {\bfseries operator+=} (\hyperlink{classMatrix}{Matrix} const \&other)
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_a5f7129af600c22b69abdcb2c3b204e5a}{operator-\/} (\hyperlink{classMatrix}{Matrix} const \&other) const
 \item 
-\mbox{\Hypertarget{classMatrix_a5f7129af600c22b69abdcb2c3b204e5a}\label{classMatrix_a5f7129af600c22b69abdcb2c3b204e5a}} 
-\hyperlink{classMatrix}{Matrix} {\bfseries operator-\/} (\hyperlink{classMatrix}{Matrix} const \&other) const
+\hyperlink{classMatrix}{Matrix} \& \hyperlink{classMatrix_a5871f028dc8b3ae8043a942b5840cdec}{operator-\/=} (\hyperlink{classMatrix}{Matrix} const \&other)
 \item 
-\mbox{\Hypertarget{classMatrix_a5871f028dc8b3ae8043a942b5840cdec}\label{classMatrix_a5871f028dc8b3ae8043a942b5840cdec}} 
-\hyperlink{classMatrix}{Matrix} \& {\bfseries operator-\/=} (\hyperlink{classMatrix}{Matrix} const \&other)
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_a087f5fbe295229d2790871bb14b6a2a5}{operator$\ast$} (\hyperlink{classMatrix}{Matrix} const \&other) const
 \item 
-\mbox{\Hypertarget{classMatrix_a087f5fbe295229d2790871bb14b6a2a5}\label{classMatrix_a087f5fbe295229d2790871bb14b6a2a5}} 
-\hyperlink{classMatrix}{Matrix} {\bfseries operator$\ast$} (\hyperlink{classMatrix}{Matrix} const \&other) const
+\hyperlink{classMatrix}{Matrix} \& \hyperlink{classMatrix_a8d3c514ae15700397053fd3402552b1c}{operator$\ast$=} (\hyperlink{classMatrix}{Matrix} const \&other)
 \item 
-\mbox{\Hypertarget{classMatrix_a8d3c514ae15700397053fd3402552b1c}\label{classMatrix_a8d3c514ae15700397053fd3402552b1c}} 
-\hyperlink{classMatrix}{Matrix} \& {\bfseries operator$\ast$=} (\hyperlink{classMatrix}{Matrix} const \&other)
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_afdd6cdea30961d5ce34be67332c1d0dd}{operator$\ast$} (double other) const
 \item 
-\mbox{\Hypertarget{classMatrix_afdd6cdea30961d5ce34be67332c1d0dd}\label{classMatrix_afdd6cdea30961d5ce34be67332c1d0dd}} 
-\hyperlink{classMatrix}{Matrix} {\bfseries operator$\ast$} (double other) const
+\hyperlink{classMatrix}{Matrix} \& \hyperlink{classMatrix_ad2fd5772e288eb07a404907e6e1a1dd6}{operator$\ast$=} (double other)
 \item 
-\mbox{\Hypertarget{classMatrix_ad2fd5772e288eb07a404907e6e1a1dd6}\label{classMatrix_ad2fd5772e288eb07a404907e6e1a1dd6}} 
-\hyperlink{classMatrix}{Matrix} \& {\bfseries operator$\ast$=} (double other)
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_aef843067e6c43218c7c909b6367706c2}{operator\%} (\hyperlink{classMatrix}{Matrix} const \&other) const
 \item 
-\mbox{\Hypertarget{classMatrix_aef843067e6c43218c7c909b6367706c2}\label{classMatrix_aef843067e6c43218c7c909b6367706c2}} 
-\hyperlink{classMatrix}{Matrix} {\bfseries operator\%} (\hyperlink{classMatrix}{Matrix} const \&other) const
-\item 
-\mbox{\Hypertarget{classMatrix_ac391b0910e9f0fc0a6e23c9346cee2ad}\label{classMatrix_ac391b0910e9f0fc0a6e23c9346cee2ad}} 
-\hyperlink{classMatrix}{Matrix} \& {\bfseries operator\%=} (\hyperlink{classMatrix}{Matrix} const \&other)
+\hyperlink{classMatrix}{Matrix} \& \hyperlink{classMatrix_ac391b0910e9f0fc0a6e23c9346cee2ad}{operator\%=} (\hyperlink{classMatrix}{Matrix} const \&other)
 \item 
 \mbox{\Hypertarget{classMatrix_ad0c96cdea0d2ae3403653ca90aa70796}\label{classMatrix_ad0c96cdea0d2ae3403653ca90aa70796}} 
-\hyperlink{classMatrix}{Matrix} {\bfseries Transpose} () const
-\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_ad0c96cdea0d2ae3403653ca90aa70796}{Transpose} () const
+\begin{DoxyCompactList}\small\item\em Returns the transposed matrix. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMatrix_ad5f101877c4a10988bf7f128a9c248d8}\label{classMatrix_ad5f101877c4a10988bf7f128a9c248d8}} 
-\hyperlink{classMatrix}{Matrix} {\bfseries Inverse} () const
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_ad5f101877c4a10988bf7f128a9c248d8}{Inverse} () const
+\begin{DoxyCompactList}\small\item\em Returns the inverse matrix. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \& \hyperlink{classMatrix_a25cb20c90560327240a07d81ed11c746}{operator\mbox{[}$\,$\mbox{]}} (int row)
 \item 
-\mbox{\Hypertarget{classMatrix_a25cb20c90560327240a07d81ed11c746}\label{classMatrix_a25cb20c90560327240a07d81ed11c746}} 
-std\+::vector$<$ double $>$ \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (int row)
-\item 
-\mbox{\Hypertarget{classMatrix_a120efaa8b3a945230e8a601927cb0e47}\label{classMatrix_a120efaa8b3a945230e8a601927cb0e47}} 
-std\+::vector$<$ double $>$ const  \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (int row) const
+std\+::vector$<$ double $>$ const  \& \hyperlink{classMatrix_a120efaa8b3a945230e8a601927cb0e47}{operator\mbox{[}$\,$\mbox{]}} (int row) const
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents a matrix with real numbers. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMatrix_ae157f910061b3e1155b17b62583bde57}\label{classMatrix_ae157f910061b3e1155b17b62583bde57}} 
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{Matrix()}{Matrix()}}
+{\footnotesize\ttfamily Matrix\+::\+Matrix (\begin{DoxyParamCaption}\item[{int}]{n,  }\item[{int}]{m }\end{DoxyParamCaption})}
+
+Creates a matrix of {\ttfamily n} rows and {\ttfamily m} columns.
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & The number of rows. \\
+\hline
+{\em m} & The number of columns. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classMatrix_aef843067e6c43218c7c909b6367706c2}\label{classMatrix_aef843067e6c43218c7c909b6367706c2}} 
+\index{Matrix@{Matrix}!operator\%@{operator\%}}
+\index{operator\%@{operator\%}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{operator\%()}{operator\%()}}
+{\footnotesize\ttfamily \hyperlink{classMatrix}{Matrix} Matrix\+::operator\% (\begin{DoxyParamCaption}\item[{\hyperlink{classMatrix}{Matrix} const \&}]{other }\end{DoxyParamCaption}) const}
+
+Applies the Hadamard product to the object and the matrix {\ttfamily other} and returns the resulting matrix. The object is left unchanges.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The matrix to be multiplied to the object. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMatrix_ac391b0910e9f0fc0a6e23c9346cee2ad}\label{classMatrix_ac391b0910e9f0fc0a6e23c9346cee2ad}} 
+\index{Matrix@{Matrix}!operator\%=@{operator\%=}}
+\index{operator\%=@{operator\%=}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{operator\%=()}{operator\%=()}}
+{\footnotesize\ttfamily \hyperlink{classMatrix}{Matrix} \& Matrix\+::operator\%= (\begin{DoxyParamCaption}\item[{\hyperlink{classMatrix}{Matrix} const \&}]{other }\end{DoxyParamCaption})}
+
+Applies the Hadamard product to the object and the matrix {\ttfamily other} and overwrites the current value of the object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The matrix to be multiplied to the object. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMatrix_a087f5fbe295229d2790871bb14b6a2a5}\label{classMatrix_a087f5fbe295229d2790871bb14b6a2a5}} 
+\index{Matrix@{Matrix}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{operator$\ast$()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classMatrix}{Matrix} Matrix\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{\hyperlink{classMatrix}{Matrix} const \&}]{other }\end{DoxyParamCaption}) const}
+
+Multiplies the matrix {\ttfamily other} to this object and returns the resulting matrix. The object is left unchanged.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The matrix to be multiplied to the object. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMatrix_afdd6cdea30961d5ce34be67332c1d0dd}\label{classMatrix_afdd6cdea30961d5ce34be67332c1d0dd}} 
+\index{Matrix@{Matrix}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{operator$\ast$()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classMatrix}{Matrix} Matrix\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{double}]{other }\end{DoxyParamCaption}) const}
+
+Multiplies the real number {\ttfamily other} to this object and returns the resulting matrix. The object is left unchanged.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The real number to be multiplied to the object. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMatrix_a8d3c514ae15700397053fd3402552b1c}\label{classMatrix_a8d3c514ae15700397053fd3402552b1c}} 
+\index{Matrix@{Matrix}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{operator$\ast$=()}{operator*=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classMatrix}{Matrix} \& Matrix\+::operator$\ast$= (\begin{DoxyParamCaption}\item[{\hyperlink{classMatrix}{Matrix} const \&}]{other }\end{DoxyParamCaption})}
+
+Multiplies the matrix {\ttfamily other} into this object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The matrix to be multiplied to the object. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMatrix_ad2fd5772e288eb07a404907e6e1a1dd6}\label{classMatrix_ad2fd5772e288eb07a404907e6e1a1dd6}} 
+\index{Matrix@{Matrix}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{operator$\ast$=()}{operator*=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classMatrix}{Matrix} \& Matrix\+::operator$\ast$= (\begin{DoxyParamCaption}\item[{double}]{other }\end{DoxyParamCaption})}
+
+Multiplies the real number {\ttfamily other} into this object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The real number to be multiplied to the object. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMatrix_a2c888c6a7fe7a4ea3b603d17fe3f77e0}\label{classMatrix_a2c888c6a7fe7a4ea3b603d17fe3f77e0}} 
+\index{Matrix@{Matrix}!operator+@{operator+}}
+\index{operator+@{operator+}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily \hyperlink{classMatrix}{Matrix} Matrix\+::operator+ (\begin{DoxyParamCaption}\item[{\hyperlink{classMatrix}{Matrix} const \&}]{other }\end{DoxyParamCaption}) const}
+
+Adds the matrix {\ttfamily other} to this object and returns the resulting matrix. The object is left unchanged.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The matrix to be added to the object. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMatrix_a5f5d62f853a2ed97f2ba437036b1724d}\label{classMatrix_a5f5d62f853a2ed97f2ba437036b1724d}} 
+\index{Matrix@{Matrix}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily \hyperlink{classMatrix}{Matrix} \& Matrix\+::operator+= (\begin{DoxyParamCaption}\item[{\hyperlink{classMatrix}{Matrix} const \&}]{other }\end{DoxyParamCaption})}
+
+Adds the matrix {\ttfamily other} into this object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The matrix to be added to the object. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMatrix_a5f7129af600c22b69abdcb2c3b204e5a}\label{classMatrix_a5f7129af600c22b69abdcb2c3b204e5a}} 
+\index{Matrix@{Matrix}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{operator-\/()}{operator-()}}
+{\footnotesize\ttfamily \hyperlink{classMatrix}{Matrix} Matrix\+::operator-\/ (\begin{DoxyParamCaption}\item[{\hyperlink{classMatrix}{Matrix} const \&}]{other }\end{DoxyParamCaption}) const}
+
+Subtracts the matrix {\ttfamily other} to this object and returns the resulting matrix. The object is left unchanged.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The matrix to be subtracted to the object. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMatrix_a5871f028dc8b3ae8043a942b5840cdec}\label{classMatrix_a5871f028dc8b3ae8043a942b5840cdec}} 
+\index{Matrix@{Matrix}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily \hyperlink{classMatrix}{Matrix} \& Matrix\+::operator-\/= (\begin{DoxyParamCaption}\item[{\hyperlink{classMatrix}{Matrix} const \&}]{other }\end{DoxyParamCaption})}
+
+Subtracts the matrix {\ttfamily other} into this object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The matrix to be subtracted to the object. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMatrix_a25cb20c90560327240a07d81ed11c746}\label{classMatrix_a25cb20c90560327240a07d81ed11c746}} 
+\index{Matrix@{Matrix}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$double$>$\& Matrix\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{int}]{row }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns the row of numbers indicated by {\ttfamily row}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The index of the row. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMatrix_a120efaa8b3a945230e8a601927cb0e47}\label{classMatrix_a120efaa8b3a945230e8a601927cb0e47}} 
+\index{Matrix@{Matrix}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$double$>$ const\& Matrix\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{int}]{row }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns the row of numbers indicated by {\ttfamily row}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The index of the row. \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

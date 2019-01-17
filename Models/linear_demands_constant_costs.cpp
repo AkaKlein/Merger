@@ -47,6 +47,11 @@ void LinearDemandsConstantCosts::Merge(int i, int j)
     m_D[i][j] = m_D[j][i] = 1;
 }
 
+bool LinearDemandsConstantCosts::AreProducedBySameFirm(int i, int j) const
+{
+    return m_D[i][j];
+}
+
 void LinearDemandsConstantCosts::SaveToFile(string const& file_path) const
 {
     ofstream fout(file_path);

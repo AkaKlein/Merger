@@ -3,7 +3,11 @@
 #include <iostream>
 
 #include <QApplication>
+#include <QMenuBar>
 
+#include "GUI/ModelWindow/MergeDialog/merge_dialog.h"
+
+#include "model_table_data.h"
 #include "model_table_view.h"
 
 ModelWindow::ModelWindow(
@@ -20,6 +24,9 @@ ModelWindow::ModelWindow(
     std::string title = "Model " + std::to_string(model_index) + " [" + ModelTypeToExtendedString(model_type) + "]";
     setWindowTitle(QString::fromStdString(title));
 
+    // Add a "Merge" action.
+    menuBar()->addAction(tr("&Merge"), this, &ModelWindow::MergeClicked);
+
     // Add a widget to show the model results.
     m_model_table_view = new ModelTableView(this, file_path, model_type);
     setCentralWidget(m_model_table_view);
@@ -29,6 +36,11 @@ ModelWindow::ModelWindow(
 
     // Make the window visible.
     show();
+}
+
+void ModelWindow::MergeClicked()
+{
+    MergeDialog* merge_dialog = new MergeDialog(this, static_cast<ModelTableData*>(m_model_table_view->model())->GetModel());
 }
 
 void ModelWindow::closeEvent(QCloseEvent* event)

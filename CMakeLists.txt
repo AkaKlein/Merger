@@ -24,6 +24,14 @@ set(SOURCES
     GUI/MainWindow/load_model_widget.h
     GUI/MainWindow/main_window.cpp
     GUI/MainWindow/main_window.h
+    GUI/ModelWindow/MergeDialog/Helpers/firm_widget.cpp
+    GUI/ModelWindow/MergeDialog/Helpers/firm_widget.h
+    GUI/ModelWindow/MergeDialog/Helpers/multi_product_firms_widget.cpp
+    GUI/ModelWindow/MergeDialog/Helpers/multi_product_firms_widget.h
+    GUI/ModelWindow/MergeDialog/merge_dialog.cpp
+    GUI/ModelWindow/MergeDialog/merge_dialog.h
+    GUI/ModelWindow/MergeDialog/merge_widget.cpp
+    GUI/ModelWindow/MergeDialog/merge_widget.h
     GUI/ModelWindow/model_table_data.cpp
     GUI/ModelWindow/model_table_data.h
     GUI/ModelWindow/model_table_view.cpp

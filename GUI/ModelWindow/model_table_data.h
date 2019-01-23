@@ -11,6 +11,8 @@ class ModelTableData : public QAbstractTableModel
 public:
     ModelTableData(std::string const& file_path, ModelType model_type);
 
+    ModelInterface const& GetModel() const { return *m_model; }
+
     virtual int rowCount(QModelIndex const& parent) const override final { return 5; }
     virtual int columnCount(QModelIndex const& parent) const override final;
     virtual QVariant data(QModelIndex const& index, int role) const override final;

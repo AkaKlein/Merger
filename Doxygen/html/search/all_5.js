@@ -1,11 +1,7 @@
 var searchData=
 [
-  ['mainwindow',['MainWindow',['../classMainWindow.html',1,'MainWindow'],['../classMainWindow.html#a34c4b4207b46d11a4100c9b19f0e81bb',1,'MainWindow::MainWindow()']]],
-  ['matrix',['Matrix',['../classMatrix.html',1,'Matrix'],['../classMatrix.html#a12d35ef1824cd847868a8703035b0d5d',1,'Matrix::Matrix()=default'],['../classMatrix.html#ae157f910061b3e1155b17b62583bde57',1,'Matrix::Matrix(int n, int m)']]],
-  ['merge',['Merge',['../classLinearDemandsConstantCosts.html#a0ee422d927b5a85f9aba8782b02f537b',1,'LinearDemandsConstantCosts::Merge()'],['../classModelInterface.html#a9aa52643da1fe9e74750e31a6c6ec469',1,'ModelInterface::Merge()']]],
-  ['modelfactory',['ModelFactory',['../classModelFactory.html',1,'']]],
-  ['modelinterface',['ModelInterface',['../classModelInterface.html',1,'']]],
-  ['modeltabledata',['ModelTableData',['../classModelTableData.html',1,'']]],
-  ['modeltableview',['ModelTableView',['../classModelTableView.html',1,'']]],
-  ['modelwindow',['ModelWindow',['../classModelWindow.html',1,'']]]
+  ['lineardemandsconstantcosts',['LinearDemandsConstantCosts',['../classLinearDemandsConstantCosts.html',1,'LinearDemandsConstantCosts'],['../classLinearDemandsConstantCosts.html#a79e3cc71f551a3ad3ecfd5ea3818a6c0',1,'LinearDemandsConstantCosts::LinearDemandsConstantCosts()=default'],['../classLinearDemandsConstantCosts.html#a0a7e9c271148594fdc0e4024cfd521a9',1,'LinearDemandsConstantCosts::LinearDemandsConstantCosts(ColumnVector const &amp;income, ColumnVector const &amp;costs, Matrix const &amp;elasticities)']]],
+  ['loaddata',['LoadData',['../classLoadModelWidget.html#a1f2f14a6cfa96c2d4f3524d8ce7c49d7',1,'LoadModelWidget']]],
+  ['loadfromfile',['LoadFromFile',['../classLinearDemandsConstantCosts.html#a075add461e368629b9dfd8f72033e2ad',1,'LinearDemandsConstantCosts::LoadFromFile()'],['../classModelInterface.html#a7f408fdb15c10ce8cabf6b942bbc9c38',1,'ModelInterface::LoadFromFile()']]],
+  ['loadmodelwidget',['LoadModelWidget',['../classLoadModelWidget.html',1,'LoadModelWidget'],['../classLoadModelWidget.html#a1d65aba05b2bcc5f9940cb1fede85b1a',1,'LoadModelWidget::LoadModelWidget()']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['lineardemandsconstantcosts',['LinearDemandsConstantCosts',['../classLinearDemandsConstantCosts.html',1,'']]],
-  ['loadmodelwidget',['LoadModelWidget',['../classLoadModelWidget.html',1,'']]]
+  ['firmwidget',['FirmWidget',['../classFirmWidget.html',1,'']]]
 ];

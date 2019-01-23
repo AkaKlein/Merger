@@ -16,6 +16,9 @@ public:
     ModelWindow(QWidget* parent, std::string const& file_path, ModelType model_type, int model_index,
                 std::vector<ModelWindow*>& model_windows);
 
+private slots:
+    void MergeClicked();
+
 private:
     virtual void closeEvent(QCloseEvent* event) override final;
 

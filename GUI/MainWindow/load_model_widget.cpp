@@ -1,11 +1,8 @@
-#include "model_widget.h"
+#include "load_model_widget.h"
 
 #include <QFileDialog>
 
-#include "Models/linear_demands_constant_costs.h"
-#include "model_result.h"
-
-ModelWidget::ModelWidget()
+LoadModelWidget::LoadModelWidget()
 {
     // Text to display the path that has been selected.
     m_file_path_text = new QLineEdit;
@@ -30,18 +27,13 @@ ModelWidget::ModelWidget()
     m_main_layout->addWidget(m_load_button, 2);
 
     // Add the connections
-    connect(m_select_file_button, &QPushButton::clicked, this, &ModelWidget::SelectFile);
-    connect(m_load_button, &QPushButton::clicked, this, &ModelWidget::LoadData);
+    connect(m_select_file_button, &QPushButton::clicked, this, &LoadModelWidget::SelectFile);
+    connect(m_load_button, &QPushButton::clicked, [this]() { emit LoadData(m_file_path_text->text().toStdString()); });
 
     setLayout(m_main_layout);
 }
 
-void ModelWidget::SetCurrentModel(ModelType type)
-{
-    m_model_type = type;
-}
-
-void ModelWidget::SelectFile()
+void LoadModelWidget::SelectFile()
 {
     QString file_name = QFileDialog::getOpenFileName(this,
         tr("Open data file"), "",
@@ -49,25 +41,4 @@ void ModelWidget::SelectFile()
     
     m_file_path_text->setText(file_name);
     m_load_button->setEnabled(true);
-}
-
-void ModelWidget::LoadData()
-{
-    // Create a model object with the selected type from the selected path.
-    std::unique_ptr<ModelInterface> model;
-    switch (m_model_type)
-    {
-        case ModelType::LinearDemandsConstantCosts:
-        {
-            model = std::make_unique<LinearDemandsConstantCosts>();
-            model->LoadFromFile(m_file_path_text->text().toStdString());
-            break;
-        }
-        case ModelType::LinearDemandsLinearCosts:
-            throw std::runtime_error("Not implemented yet");
-    }
-
-    // Create and show the results window.
-    ModelResult* result = new ModelResult(this, std::move(model), m_model_index++);
-    result->show();
 }

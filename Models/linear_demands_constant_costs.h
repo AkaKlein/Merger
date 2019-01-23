@@ -32,11 +32,11 @@ public:
 
     /*** Functions to get information about the model ***/
 
-    /// Returns the name of the model.
-    virtual std::string GetName() const { return "Linear Demands with Constant Costs"; }
+    /// Returns the type of the model.
+    virtual ModelType GetType() const override final { return ModelType::LinearDemandsConstantCosts; }
 
     /// Returns the number of products.
-    virtual int GetNumberOfProducts() const { return m_a.Size(); }
+    virtual int GetNumberOfProducts() const override final { return m_a.Size(); }
 
 
     /// Computes the equilibrium prices of the model.    
@@ -50,7 +50,7 @@ public:
     /// Computes the costs of the model in equilibrium.
     ///
     /// @param quantities The equilibrium quantities.
-    virtual ColumnVector ComputeCosts(ColumnVector const& /*quantities*/) const override final { return m_c; }
+    virtual ColumnVector ComputeCosts(ColumnVector const& quantities) const override final { (void)quantities; return m_c; }
 
     /// Computes the profits of the model in equilibrium.
     ///

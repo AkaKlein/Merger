@@ -66,6 +66,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>A model in which demands follow a linear function and costs are constant.  
+ <a href="classLinearDemandsConstantCosts.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="linear__demands__constant__costs_8h_source.html">linear_demands_constant_costs.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for LinearDemandsConstantCosts:</div>
@@ -90,22 +93,22 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a79e3cc71f551a3ad3ecfd5ea3818a6c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a7e9c271148594fdc0e4024cfd521a9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinearDemandsConstantCosts.html#a0a7e9c271148594fdc0e4024cfd521a9">LinearDemandsConstantCosts</a> (<a class="el" href="classColumnVector.html">ColumnVector</a> const &amp;income, <a class="el" href="classColumnVector.html">ColumnVector</a> const &amp;costs, <a class="el" href="classMatrix.html">Matrix</a> const &amp;elasticities)</td></tr>
 <tr class="separator:a0a7e9c271148594fdc0e4024cfd521a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b137f8fe14c712fba111a5ddb62ca49"><td class="memItemLeft" align="right" valign="top"><a id="a5b137f8fe14c712fba111a5ddb62ca49"></a>
-virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinearDemandsConstantCosts.html#a5b137f8fe14c712fba111a5ddb62ca49">GetName</a> () const</td></tr>
-<tr class="memdesc:a5b137f8fe14c712fba111a5ddb62ca49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the model. <br /></td></tr>
-<tr class="separator:a5b137f8fe14c712fba111a5ddb62ca49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05de34331dce8d63ebf778d3436780ba"><td class="memItemLeft" align="right" valign="top"><a id="a05de34331dce8d63ebf778d3436780ba"></a>
-virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinearDemandsConstantCosts.html#a05de34331dce8d63ebf778d3436780ba">GetNumberOfProducts</a> () const</td></tr>
-<tr class="memdesc:a05de34331dce8d63ebf778d3436780ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of products. <br /></td></tr>
-<tr class="separator:a05de34331dce8d63ebf778d3436780ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a583af2ebff9e7d09ab02270c97ed57ba"><td class="memItemLeft" align="right" valign="top"><a id="a583af2ebff9e7d09ab02270c97ed57ba"></a>
+virtual ModelType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinearDemandsConstantCosts.html#a583af2ebff9e7d09ab02270c97ed57ba">GetType</a> () const override final</td></tr>
+<tr class="memdesc:a583af2ebff9e7d09ab02270c97ed57ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the type of the model. <br /></td></tr>
+<tr class="separator:a583af2ebff9e7d09ab02270c97ed57ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad968f45ba4a6e9d36b96c1ab92980eb5"><td class="memItemLeft" align="right" valign="top"><a id="ad968f45ba4a6e9d36b96c1ab92980eb5"></a>
+virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinearDemandsConstantCosts.html#ad968f45ba4a6e9d36b96c1ab92980eb5">GetNumberOfProducts</a> () const override final</td></tr>
+<tr class="memdesc:ad968f45ba4a6e9d36b96c1ab92980eb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of products. <br /></td></tr>
+<tr class="separator:ad968f45ba4a6e9d36b96c1ab92980eb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2f4565860b89a5576b54884a4d520d1"><td class="memItemLeft" align="right" valign="top"><a id="ae2f4565860b89a5576b54884a4d520d1"></a>
 virtual <a class="el" href="classColumnVector.html">ColumnVector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinearDemandsConstantCosts.html#ae2f4565860b89a5576b54884a4d520d1">ComputePrices</a> () const override final</td></tr>
 <tr class="memdesc:ae2f4565860b89a5576b54884a4d520d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the equilibrium prices of the model. <br /></td></tr>
 <tr class="separator:ae2f4565860b89a5576b54884a4d520d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a310864e458935098502561540a71a88c"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classColumnVector.html">ColumnVector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinearDemandsConstantCosts.html#a310864e458935098502561540a71a88c">ComputeQuantities</a> (<a class="el" href="classColumnVector.html">ColumnVector</a> const &amp;prices) const override final</td></tr>
 <tr class="separator:a310864e458935098502561540a71a88c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55e0f15cfc00d8c21fbfd95843c06c44"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classColumnVector.html">ColumnVector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinearDemandsConstantCosts.html#a55e0f15cfc00d8c21fbfd95843c06c44">ComputeCosts</a> (<a class="el" href="classColumnVector.html">ColumnVector</a> const &amp;) const override final</td></tr>
-<tr class="separator:a55e0f15cfc00d8c21fbfd95843c06c44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74f907b4737865de086c8aa1f125d7c8"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classColumnVector.html">ColumnVector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinearDemandsConstantCosts.html#a74f907b4737865de086c8aa1f125d7c8">ComputeCosts</a> (<a class="el" href="classColumnVector.html">ColumnVector</a> const &amp;quantities) const override final</td></tr>
+<tr class="separator:a74f907b4737865de086c8aa1f125d7c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48b52dab01d2cf45beae51eab615f7ae"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classColumnVector.html">ColumnVector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinearDemandsConstantCosts.html#a48b52dab01d2cf45beae51eab615f7ae">ComputeProfits</a> (<a class="el" href="classColumnVector.html">ColumnVector</a> const &amp;prices) const override final</td></tr>
 <tr class="separator:a48b52dab01d2cf45beae51eab615f7ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d3fa6a3b151c2f1703f23bbee6954cb"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classColumnVector.html">ColumnVector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinearDemandsConstantCosts.html#a9d3fa6a3b151c2f1703f23bbee6954cb">ComputeConsumerWelfare</a> (<a class="el" href="classColumnVector.html">ColumnVector</a> const &amp;prices) const override final</td></tr>
@@ -120,12 +123,14 @@ virtual <a class="el" href="classColumnVector.html">ColumnVector</a>&#160;</td><
 <tr class="separator:a075add461e368629b9dfd8f72033e2ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A model in which demands follow a linear function and costs are constant.</p>
-<p>More specifically, in this model the demands vector can be written as</p>
+<div class="textblock"><p>A model in which demands follow a linear function and costs are constant. </p>
+<p>A model in which the demands vector can be written as</p>
 <p class="formulaDsp">
 <img class="formulaDsp" alt="\begin{equation} q = a + B' p \end{equation}" src="form_1.png"/>
 </p>
 <p>where <img class="formulaInl" alt="$ a $" src="form_3.png"/> is the income vector, <img class="formulaInl" alt="$ p $" src="form_4.png"/> is the vector of prices and <img class="formulaInl" alt="$ B $" src="form_5.png"/> is the elasticities' matrix. Besides, it defines a <img class="formulaInl" alt="$ c $" src="form_6.png"/> vector that is constant. </p>
+
+<p class="definition">Definition at line <a class="el" href="linear__demands__constant__costs_8h_source.html#l00017">17</a> of file <a class="el" href="linear__demands__constant__costs_8h_source.html">linear_demands_constant_costs.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a79e3cc71f551a3ad3ecfd5ea3818a6c0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a79e3cc71f551a3ad3ecfd5ea3818a6c0">&#9670;&nbsp;</a></span>LinearDemandsConstantCosts() <span class="overload">[1/2]</span></h2>
@@ -194,6 +199,8 @@ virtual <a class="el" href="classColumnVector.html">ColumnVector</a>&#160;</td><
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="linear__demands__constant__costs_8cpp_source.html#l00005">5</a> of file <a class="el" href="linear__demands__constant__costs_8cpp_source.html">linear_demands_constant_costs.cpp</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -241,6 +248,8 @@ virtual <a class="el" href="classColumnVector.html">ColumnVector</a>&#160;</td><
 
 <p>Implements <a class="el" href="classModelInterface.html#abbc3c44c6d41b596b6201a9e61e1ff83">ModelInterface</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="linear__demands__constant__costs_8cpp_source.html#l00050">50</a> of file <a class="el" href="linear__demands__constant__costs_8cpp_source.html">linear_demands_constant_costs.cpp</a>.</p>
+
 </div>
 </div>
 <a id="a9d3fa6a3b151c2f1703f23bbee6954cb"></a>
@@ -276,10 +285,12 @@ virtual <a class="el" href="classColumnVector.html">ColumnVector</a>&#160;</td><
 
 <p>Implements <a class="el" href="classModelInterface.html#a094ebb85618fb13bf38f6faff1f5dd7b">ModelInterface</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="linear__demands__constant__costs_8cpp_source.html#l00035">35</a> of file <a class="el" href="linear__demands__constant__costs_8cpp_source.html">linear_demands_constant_costs.cpp</a>.</p>
+
 </div>
 </div>
-<a id="a55e0f15cfc00d8c21fbfd95843c06c44"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a55e0f15cfc00d8c21fbfd95843c06c44">&#9670;&nbsp;</a></span>ComputeCosts()</h2>
+<a id="a74f907b4737865de086c8aa1f125d7c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74f907b4737865de086c8aa1f125d7c8">&#9670;&nbsp;</a></span>ComputeCosts()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -291,7 +302,7 @@ virtual <a class="el" href="classColumnVector.html">ColumnVector</a>&#160;</td><
           <td class="memname">virtual <a class="el" href="classColumnVector.html">ColumnVector</a> LinearDemandsConstantCosts::ComputeCosts </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classColumnVector.html">ColumnVector</a> const &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><em>quantities</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -310,6 +321,8 @@ virtual <a class="el" href="classColumnVector.html">ColumnVector</a>&#160;</td><
 </dl>
 
 <p>Implements <a class="el" href="classModelInterface.html#ac0a7cc3db9fc177dc75f16abf00275a7">ModelInterface</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="linear__demands__constant__costs_8h_source.html#l00053">53</a> of file <a class="el" href="linear__demands__constant__costs_8h_source.html">linear_demands_constant_costs.h</a>.</p>
 
 </div>
 </div>
@@ -346,6 +359,8 @@ virtual <a class="el" href="classColumnVector.html">ColumnVector</a>&#160;</td><
 
 <p>Implements <a class="el" href="classModelInterface.html#a311a000060cece8fc1058cd27bf07864">ModelInterface</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="linear__demands__constant__costs_8cpp_source.html#l00030">30</a> of file <a class="el" href="linear__demands__constant__costs_8cpp_source.html">linear_demands_constant_costs.cpp</a>.</p>
+
 </div>
 </div>
 <a id="a310864e458935098502561540a71a88c"></a>
@@ -381,6 +396,8 @@ virtual <a class="el" href="classColumnVector.html">ColumnVector</a>&#160;</td><
 
 <p>Implements <a class="el" href="classModelInterface.html#af9a936f6f0d1b1f0f2c5bf35785e7db4">ModelInterface</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="linear__demands__constant__costs_8cpp_source.html#l00025">25</a> of file <a class="el" href="linear__demands__constant__costs_8cpp_source.html">linear_demands_constant_costs.cpp</a>.</p>
+
 </div>
 </div>
 <a id="a075add461e368629b9dfd8f72033e2ad"></a>
@@ -415,6 +432,8 @@ virtual <a class="el" href="classColumnVector.html">ColumnVector</a>&#160;</td><
 </dl>
 
 <p>Implements <a class="el" href="classModelInterface.html#a7f408fdb15c10ce8cabf6b942bbc9c38">ModelInterface</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="linear__demands__constant__costs_8cpp_source.html#l00062">62</a> of file <a class="el" href="linear__demands__constant__costs_8cpp_source.html">linear_demands_constant_costs.cpp</a>.</p>
 
 </div>
 </div>
@@ -462,6 +481,8 @@ virtual <a class="el" href="classColumnVector.html">ColumnVector</a>&#160;</td><
 
 <p>Implements <a class="el" href="classModelInterface.html#a9aa52643da1fe9e74750e31a6c6ec469">ModelInterface</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="linear__demands__constant__costs_8cpp_source.html#l00045">45</a> of file <a class="el" href="linear__demands__constant__costs_8cpp_source.html">linear_demands_constant_costs.cpp</a>.</p>
+
 </div>
 </div>
 <a id="aef2823751866a4933a8611dd4622d78b"></a>
@@ -497,11 +518,13 @@ virtual <a class="el" href="classColumnVector.html">ColumnVector</a>&#160;</td><
 
 <p>Implements <a class="el" href="classModelInterface.html#ab5709db8ecb96fd9efd02f4777d5502a">ModelInterface</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="linear__demands__constant__costs_8cpp_source.html#l00055">55</a> of file <a class="el" href="linear__demands__constant__costs_8cpp_source.html">linear_demands_constant_costs.cpp</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Models/<a class="el" href="linear__demands__constant__costs_8h_source.html">linear_demands_constant_costs.h</a></li>
-<li>Models/linear_demands_constant_costs.cpp</li>
+<li>Models/<a class="el" href="linear__demands__constant__costs_8cpp_source.html">linear_demands_constant_costs.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

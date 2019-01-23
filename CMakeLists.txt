@@ -20,14 +20,21 @@ endif()
 find_package(Qt5Widgets CONFIG REQUIRED)
 
 set(SOURCES
-    GUI/main_window.cpp
-    GUI/main_window.h
-    GUI/model_result.cpp
-    GUI/model_result.h
-    GUI/model_widget.cpp
-    GUI/model_widget.h
+    GUI/MainWindow/load_model_widget.cpp
+    GUI/MainWindow/load_model_widget.h
+    GUI/MainWindow/main_window.cpp
+    GUI/MainWindow/main_window.h
+    GUI/ModelWindow/model_table_data.cpp
+    GUI/ModelWindow/model_table_data.h
+    GUI/ModelWindow/model_table_view.cpp
+    GUI/ModelWindow/model_table_view.h
+    GUI/ModelWindow/model_window.cpp
+    GUI/ModelWindow/model_window.h
     Models/linear_demands_constant_costs.cpp
     Models/linear_demands_constant_costs.h
+    Models/model_factory.h
+    Models/model_interface.h
+    Models/model_type.h
     Utils/algebra.cpp
     Utils/algebra.h
     Utils/column_vector.cpp

@@ -2,6 +2,11 @@
 \label{classLinearDemandsConstantCosts}\index{Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}}
 
 
+A model in which demands follow a linear function and costs are constant.  
+
+
+
+
 {\ttfamily \#include $<$linear\+\_\+demands\+\_\+constant\+\_\+costs.\+h$>$}
 
 
@@ -29,18 +34,18 @@ Collaboration diagram for Linear\+Demands\+Constant\+Costs\+:\nopagebreak
 \item 
 \hyperlink{classLinearDemandsConstantCosts_a0a7e9c271148594fdc0e4024cfd521a9}{Linear\+Demands\+Constant\+Costs} (\hyperlink{classColumnVector}{Column\+Vector} const \&income, \hyperlink{classColumnVector}{Column\+Vector} const \&costs, \hyperlink{classMatrix}{Matrix} const \&elasticities)
 \item 
-\mbox{\Hypertarget{classLinearDemandsConstantCosts_a5b137f8fe14c712fba111a5ddb62ca49}\label{classLinearDemandsConstantCosts_a5b137f8fe14c712fba111a5ddb62ca49}} 
-virtual std\+::string \hyperlink{classLinearDemandsConstantCosts_a5b137f8fe14c712fba111a5ddb62ca49}{Get\+Name} () const
-\begin{DoxyCompactList}\small\item\em Returns the name of the model. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classLinearDemandsConstantCosts_a05de34331dce8d63ebf778d3436780ba}\label{classLinearDemandsConstantCosts_a05de34331dce8d63ebf778d3436780ba}} 
-virtual int \hyperlink{classLinearDemandsConstantCosts_a05de34331dce8d63ebf778d3436780ba}{Get\+Number\+Of\+Products} () const
+\mbox{\Hypertarget{classLinearDemandsConstantCosts_a583af2ebff9e7d09ab02270c97ed57ba}\label{classLinearDemandsConstantCosts_a583af2ebff9e7d09ab02270c97ed57ba}} 
+virtual Model\+Type \hyperlink{classLinearDemandsConstantCosts_a583af2ebff9e7d09ab02270c97ed57ba}{Get\+Type} () const override final
+\begin{DoxyCompactList}\small\item\em Returns the type of the model. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLinearDemandsConstantCosts_ad968f45ba4a6e9d36b96c1ab92980eb5}\label{classLinearDemandsConstantCosts_ad968f45ba4a6e9d36b96c1ab92980eb5}} 
+virtual int \hyperlink{classLinearDemandsConstantCosts_ad968f45ba4a6e9d36b96c1ab92980eb5}{Get\+Number\+Of\+Products} () const override final
 \begin{DoxyCompactList}\small\item\em Returns the number of products. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classLinearDemandsConstantCosts_ae2f4565860b89a5576b54884a4d520d1}\label{classLinearDemandsConstantCosts_ae2f4565860b89a5576b54884a4d520d1}} 
 virtual \hyperlink{classColumnVector}{Column\+Vector} \hyperlink{classLinearDemandsConstantCosts_ae2f4565860b89a5576b54884a4d520d1}{Compute\+Prices} () const override final
 \begin{DoxyCompactList}\small\item\em Computes the equilibrium prices of the model. \end{DoxyCompactList}\item 
 virtual \hyperlink{classColumnVector}{Column\+Vector} \hyperlink{classLinearDemandsConstantCosts_a310864e458935098502561540a71a88c}{Compute\+Quantities} (\hyperlink{classColumnVector}{Column\+Vector} const \&prices) const override final
 \item 
-virtual \hyperlink{classColumnVector}{Column\+Vector} \hyperlink{classLinearDemandsConstantCosts_a55e0f15cfc00d8c21fbfd95843c06c44}{Compute\+Costs} (\hyperlink{classColumnVector}{Column\+Vector} const \&) const override final
+virtual \hyperlink{classColumnVector}{Column\+Vector} \hyperlink{classLinearDemandsConstantCosts_a74f907b4737865de086c8aa1f125d7c8}{Compute\+Costs} (\hyperlink{classColumnVector}{Column\+Vector} const \&quantities) const override final
 \item 
 virtual \hyperlink{classColumnVector}{Column\+Vector} \hyperlink{classLinearDemandsConstantCosts_a48b52dab01d2cf45beae51eab615f7ae}{Compute\+Profits} (\hyperlink{classColumnVector}{Column\+Vector} const \&prices) const override final
 \item 
@@ -57,13 +62,17 @@ virtual void \hyperlink{classLinearDemandsConstantCosts_a075add461e368629b9dfd8f
 
 
 \subsection{Detailed Description}
-A model in which demands follow a linear function and costs are constant.
+A model in which demands follow a linear function and costs are constant. 
 
-More specifically, in this model the demands vector can be written as
+A model in which the demands vector can be written as
 
 \begin{equation} q = a + B' p \end{equation}
 
 where $ a $ is the income vector, $ p $ is the vector of prices and $ B $ is the elasticities\textquotesingle{} matrix. Besides, it defines a $ c $ vector that is constant. 
+
+Definition at line 17 of file linear\+\_\+demands\+\_\+constant\+\_\+costs.\+h.
+
+
 
 \subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classLinearDemandsConstantCosts_a79e3cc71f551a3ad3ecfd5ea3818a6c0}\label{classLinearDemandsConstantCosts_a79e3cc71f551a3ad3ecfd5ea3818a6c0}} 
@@ -91,6 +100,10 @@ Creates a model with {\ttfamily income} being $ a $, {\ttfamily costs} being $ c
 \end{DoxyParams}
 
 
+Definition at line 5 of file linear\+\_\+demands\+\_\+constant\+\_\+costs.\+cpp.
+
+
+
 \subsection{Member Function Documentation}
 \mbox{\Hypertarget{classLinearDemandsConstantCosts_a91ba117b740d0e5cb5d6efd63d61a5f6}\label{classLinearDemandsConstantCosts_a91ba117b740d0e5cb5d6efd63d61a5f6}} 
 \index{Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}!Are\+Produced\+By\+Same\+Firm@{Are\+Produced\+By\+Same\+Firm}}
@@ -111,6 +124,10 @@ Returns true iff the two given products are produced by the same firm.
 
 Implements \hyperlink{classModelInterface_abbc3c44c6d41b596b6201a9e61e1ff83}{Model\+Interface}.
 
+
+
+Definition at line 50 of file linear\+\_\+demands\+\_\+constant\+\_\+costs.\+cpp.
+
 \mbox{\Hypertarget{classLinearDemandsConstantCosts_a9d3fa6a3b151c2f1703f23bbee6954cb}\label{classLinearDemandsConstantCosts_a9d3fa6a3b151c2f1703f23bbee6954cb}} 
 \index{Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}!Compute\+Consumer\+Welfare@{Compute\+Consumer\+Welfare}}
 \index{Compute\+Consumer\+Welfare@{Compute\+Consumer\+Welfare}!Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}}
@@ -128,11 +145,15 @@ Computes the consumer welfare of the model in equilibrium.
 
 Implements \hyperlink{classModelInterface_a094ebb85618fb13bf38f6faff1f5dd7b}{Model\+Interface}.
 
-\mbox{\Hypertarget{classLinearDemandsConstantCosts_a55e0f15cfc00d8c21fbfd95843c06c44}\label{classLinearDemandsConstantCosts_a55e0f15cfc00d8c21fbfd95843c06c44}} 
+
+
+Definition at line 35 of file linear\+\_\+demands\+\_\+constant\+\_\+costs.\+cpp.
+
+\mbox{\Hypertarget{classLinearDemandsConstantCosts_a74f907b4737865de086c8aa1f125d7c8}\label{classLinearDemandsConstantCosts_a74f907b4737865de086c8aa1f125d7c8}} 
 \index{Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}!Compute\+Costs@{Compute\+Costs}}
 \index{Compute\+Costs@{Compute\+Costs}!Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}}
 \subsubsection{\texorpdfstring{Compute\+Costs()}{ComputeCosts()}}
-{\footnotesize\ttfamily virtual \hyperlink{classColumnVector}{Column\+Vector} Linear\+Demands\+Constant\+Costs\+::\+Compute\+Costs (\begin{DoxyParamCaption}\item[{\hyperlink{classColumnVector}{Column\+Vector} const \&}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily virtual \hyperlink{classColumnVector}{Column\+Vector} Linear\+Demands\+Constant\+Costs\+::\+Compute\+Costs (\begin{DoxyParamCaption}\item[{\hyperlink{classColumnVector}{Column\+Vector} const \&}]{quantities }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
 
 Computes the costs of the model in equilibrium.
 
@@ -144,6 +165,10 @@ Computes the costs of the model in equilibrium.
 
 
 Implements \hyperlink{classModelInterface_ac0a7cc3db9fc177dc75f16abf00275a7}{Model\+Interface}.
+
+
+
+Definition at line 53 of file linear\+\_\+demands\+\_\+constant\+\_\+costs.\+h.
 
 \mbox{\Hypertarget{classLinearDemandsConstantCosts_a48b52dab01d2cf45beae51eab615f7ae}\label{classLinearDemandsConstantCosts_a48b52dab01d2cf45beae51eab615f7ae}} 
 \index{Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}!Compute\+Profits@{Compute\+Profits}}
@@ -162,6 +187,10 @@ Computes the profits of the model in equilibrium.
 
 Implements \hyperlink{classModelInterface_a311a000060cece8fc1058cd27bf07864}{Model\+Interface}.
 
+
+
+Definition at line 30 of file linear\+\_\+demands\+\_\+constant\+\_\+costs.\+cpp.
+
 \mbox{\Hypertarget{classLinearDemandsConstantCosts_a310864e458935098502561540a71a88c}\label{classLinearDemandsConstantCosts_a310864e458935098502561540a71a88c}} 
 \index{Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}!Compute\+Quantities@{Compute\+Quantities}}
 \index{Compute\+Quantities@{Compute\+Quantities}!Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}}
@@ -179,6 +208,10 @@ Computes the equilibrium quantities of the model.
 
 Implements \hyperlink{classModelInterface_af9a936f6f0d1b1f0f2c5bf35785e7db4}{Model\+Interface}.
 
+
+
+Definition at line 25 of file linear\+\_\+demands\+\_\+constant\+\_\+costs.\+cpp.
+
 \mbox{\Hypertarget{classLinearDemandsConstantCosts_a075add461e368629b9dfd8f72033e2ad}\label{classLinearDemandsConstantCosts_a075add461e368629b9dfd8f72033e2ad}} 
 \index{Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}!Load\+From\+File@{Load\+From\+File}}
 \index{Load\+From\+File@{Load\+From\+File}!Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}}
@@ -195,6 +228,10 @@ Loads the model values from the given file path.
 
 
 Implements \hyperlink{classModelInterface_a7f408fdb15c10ce8cabf6b942bbc9c38}{Model\+Interface}.
+
+
+
+Definition at line 62 of file linear\+\_\+demands\+\_\+constant\+\_\+costs.\+cpp.
 
 \mbox{\Hypertarget{classLinearDemandsConstantCosts_a0ee422d927b5a85f9aba8782b02f537b}\label{classLinearDemandsConstantCosts_a0ee422d927b5a85f9aba8782b02f537b}} 
 \index{Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}!Merge@{Merge}}
@@ -215,6 +252,10 @@ Sets the two given products to be produced by the same firm.
 
 Implements \hyperlink{classModelInterface_a9aa52643da1fe9e74750e31a6c6ec469}{Model\+Interface}.
 
+
+
+Definition at line 45 of file linear\+\_\+demands\+\_\+constant\+\_\+costs.\+cpp.
+
 \mbox{\Hypertarget{classLinearDemandsConstantCosts_aef2823751866a4933a8611dd4622d78b}\label{classLinearDemandsConstantCosts_aef2823751866a4933a8611dd4622d78b}} 
 \index{Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}!Save\+To\+File@{Save\+To\+File}}
 \index{Save\+To\+File@{Save\+To\+File}!Linear\+Demands\+Constant\+Costs@{Linear\+Demands\+Constant\+Costs}}
@@ -231,6 +272,10 @@ Saves the current model values to the given file path.
 
 
 Implements \hyperlink{classModelInterface_ab5709db8ecb96fd9efd02f4777d5502a}{Model\+Interface}.
+
+
+
+Definition at line 55 of file linear\+\_\+demands\+\_\+constant\+\_\+costs.\+cpp.
 
 
 

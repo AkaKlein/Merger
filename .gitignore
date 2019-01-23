@@ -1,3 +1,4 @@
+.vscode
 build
 Latex/*.pdf
 Latex/*.log

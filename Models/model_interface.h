@@ -2,14 +2,16 @@
 
 #include "Utils/algebra.h"
 
+#include "model_type.h"
+
 /// An interface for any model.
 class ModelInterface
 {
 public:
     /*** Functions to get information about the model ***/
 
-    /// Returns the name of the model for displaying purposes.
-    virtual std::string GetName() const = 0;
+    /// Returns the type of the model.
+    virtual ModelType GetType() const = 0;
 
     /// Returns the number of products.
     virtual int GetNumberOfProducts() const = 0;

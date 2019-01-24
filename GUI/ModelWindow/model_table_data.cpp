@@ -3,9 +3,19 @@
 #include "Models/model_factory.h"
 
 ModelTableData::ModelTableData(std::string const& file_path, ModelType model_type)
-{
+{ 
     m_model = ModelFactory::CreateModel(file_path, model_type);
+    Initialize();
+}
 
+ModelTableData::ModelTableData(std::shared_ptr<ModelInterface>& model)
+{
+    m_model = std::move(model);
+    Initialize();
+}
+
+void ModelTableData::Initialize()
+{
     m_prices = m_model->ComputePrices();
     m_quantities = m_model->ComputeQuantities(m_prices);
     m_costs = m_model->ComputeCosts(m_quantities);

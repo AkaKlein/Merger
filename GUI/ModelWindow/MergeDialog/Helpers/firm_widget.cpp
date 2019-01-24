@@ -5,6 +5,10 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 
+#include "Models/model_interface.h"
+
+#include "product_list_item.h"
+
 FirmWidget::FirmWidget(QWidget* parent)
 {
     QVBoxLayout* layout = new QVBoxLayout;
@@ -22,5 +26,35 @@ FirmWidget::FirmWidget(QWidget* parent)
 
     layout->addLayout(button_layout, 1);
 
+    connect(m_add_button, &QPushButton::clicked, [this]() { emit AddButtonClicked(); });
+    connect(m_remove_button, &QPushButton::clicked, this, &FirmWidget::RemoveSelectedItems);
+
     setLayout(layout);
+}
+
+void FirmWidget::AddProduct(int product_index)
+{
+    int row = m_product_list->count();
+    while (row > 0 && static_cast<ProductListItem*>(m_product_list->item(row - 1))->GetIndex() > product_index)
+        --row;
+
+    m_product_list->insertItem(row, new ProductListItem(nullptr, product_index));    
+}
+
+void FirmWidget::ApplyCurrentMergers(std::shared_ptr<ModelInterface>& model) const
+{
+    for (int i = 0; i < m_product_list->count(); ++i)
+    {
+        for (int j = i + 1; j < m_product_list->count(); ++j)
+            model->Merge(i, j);
+    }
+}
+
+void FirmWidget::RemoveSelectedItems()
+{
+    for (QListWidgetItem* item : m_product_list->selectedItems())
+    {
+        emit RemoveButtonClicked(static_cast<ProductListItem*>(item)->GetIndex());
+        delete m_product_list->takeItem(m_product_list->row(item));
+    }
 }

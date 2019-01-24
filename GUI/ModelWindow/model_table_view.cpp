@@ -18,6 +18,17 @@ ModelTableView::ModelTableView(QWidget* parent, std::string const& file_path, Mo
     show();
 }
 
+ModelTableView::ModelTableView(QWidget* parent, std::shared_ptr<ModelInterface>& model)
+    : QTableView(parent)
+{
+    // Create the model and set it to the view.
+    m_data = new ModelTableData(model);
+    setModel(m_data);
+
+    // Make it visible.
+    show();
+}
+
 void ModelTableView::keyPressEvent(QKeyEvent* event)
 {
     // Implement copy for multiple cells.

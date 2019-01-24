@@ -6,8 +6,11 @@
 #include <QMenuBar>
 
 #include "GUI/ModelWindow/model_window.h"
+#include "Models/model_interface.h"
 
 #include "load_model_widget.h"
+
+class ModelInterface;
 
 MainWindow::MainWindow()
 {
@@ -54,4 +57,11 @@ MainWindow::MainWindow()
 void MainWindow::LoadModel(std::string const& file_path)
 {
     ModelWindow* model_window = new ModelWindow(this, file_path, m_selected_model_type, m_model_index++, m_model_windows);
+    connect(model_window, &ModelWindow::CreateNewModelWindow, this, &MainWindow::CreateMergerModelWindow);
+}
+
+void MainWindow::CreateMergerModelWindow(std::shared_ptr<ModelInterface> model)
+{
+    ModelWindow* merger_window = new ModelWindow(this, model, m_model_index++, m_model_windows);
+    connect(merger_window, &ModelWindow::CreateNewModelWindow, this, &MainWindow::CreateMergerModelWindow);
 }

@@ -13,5 +13,13 @@ MergeDialog::MergeDialog(QWidget* parent, ModelInterface const& model)
     layout->addWidget(m_merge_widget);
     setLayout(layout);
 
+    connect(m_merge_widget, &MergeWidget::CancelButtonClicked, this, &QDialog::close);
+    connect(m_merge_widget, &MergeWidget::ApplyButtonClicked, 
+            [this](std::shared_ptr<ModelInterface> model) 
+            { 
+                emit ApplyButtonClicked(model);
+                close();
+            });
+
     open();
 }

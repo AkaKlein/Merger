@@ -1,10 +1,13 @@
 #pragma once
 
+#include <memory>
+
 #include <QMainWindow>
 
 #include "Models/model_type.h"
 
 class LoadModelWidget;
+class ModelInterface;
 class ModelWindow;
 
 /// The main window of the program. It allows to load models from files and show 
@@ -24,6 +27,9 @@ private slots:
     ///
     /// @param file_path The path from where the model is loaded.
     void LoadModel(std::string const& file_path);
+
+    void CreateMergerModelWindow(std::shared_ptr<ModelInterface> model);
+
 
 private:
     /// A pointer to widget that allows the user to load a model from a file.

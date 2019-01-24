@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include <QDialog>
 
 class MergeWidget;
@@ -11,6 +13,9 @@ class MergeDialog : public QDialog
 
 public:
     MergeDialog(QWidget* parent, ModelInterface const& model);
+
+signals:
+    void ApplyButtonClicked(std::shared_ptr<ModelInterface> model);
 
 private:
     MergeWidget* m_merge_widget;

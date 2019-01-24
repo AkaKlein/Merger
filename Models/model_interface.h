@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include "Utils/algebra.h"
 
 #include "model_type.h"
@@ -69,4 +71,10 @@ public:
     ///
     /// @param file_path The path of the file from where the model has to read its values.
     virtual void LoadFromFile(std::string const& file_path) = 0;
+
+
+    /*** Function to clone ***/
+
+    /// Returns a new model with the same properties but where every product is produced by a different firm.
+    virtual std::shared_ptr<ModelInterface> CloneWithoutMergers() const = 0;
 };

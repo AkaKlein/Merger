@@ -28,6 +28,7 @@ set(SOURCES
     GUI/ModelWindow/MergeDialog/Helpers/firm_widget.h
     GUI/ModelWindow/MergeDialog/Helpers/multi_product_firms_widget.cpp
     GUI/ModelWindow/MergeDialog/Helpers/multi_product_firms_widget.h
+    GUI/ModelWindow/MergeDialog/Helpers/product_list_item.h
     GUI/ModelWindow/MergeDialog/merge_dialog.cpp
     GUI/ModelWindow/MergeDialog/merge_dialog.h
     GUI/ModelWindow/MergeDialog/merge_widget.cpp

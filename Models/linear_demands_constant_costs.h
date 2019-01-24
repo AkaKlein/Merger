@@ -90,6 +90,12 @@ public:
     /// @param file_path The path of the file from where the model has to read its values.
     virtual void LoadFromFile(std::string const& file_path) override final;
 
+
+    /*** Function to clone ***/
+
+    /// Returns a new model with the same properties but where every product is produced by a different firm.
+    virtual std::shared_ptr<ModelInterface> CloneWithoutMergers() const override final;
+
 private:
     /// Income vector.
     ColumnVector m_a;

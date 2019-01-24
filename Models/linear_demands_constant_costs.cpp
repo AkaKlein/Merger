@@ -70,3 +70,8 @@ void LinearDemandsConstantCosts::LoadFromFile(string const& file_path)
         
     fin >> m_a >> m_c >> m_B >> m_D;
 }
+
+std::shared_ptr<ModelInterface> LinearDemandsConstantCosts::CloneWithoutMergers() const
+{
+    return std::make_shared<LinearDemandsConstantCosts>(m_a, m_c, m_B);
+}

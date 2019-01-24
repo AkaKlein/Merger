@@ -10,6 +10,7 @@ class ModelTableData : public QAbstractTableModel
 {
 public:
     ModelTableData(std::string const& file_path, ModelType model_type);
+    ModelTableData(std::shared_ptr<ModelInterface>& model);
 
     ModelInterface const& GetModel() const { return *m_model; }
 
@@ -19,7 +20,9 @@ public:
     virtual QVariant headerData(int section, Qt::Orientation orientation, int role) const override final;
 
 private:
-    std::unique_ptr<ModelInterface> m_model;
+    void Initialize();
+
+    std::shared_ptr<ModelInterface> m_model;
 
     ColumnVector m_prices;
     ColumnVector m_quantities;

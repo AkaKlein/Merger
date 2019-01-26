@@ -20,6 +20,12 @@ endif()
 find_package(Qt5Widgets CONFIG REQUIRED)
 
 set(SOURCES
+    GUI/Common/base_table_view.cpp
+    GUI/Common/base_table_view.h
+    GUI/CompareDialog/compare_table_data.cpp
+    GUI/CompareDialog/compare_table_data.h
+    GUI/CompareDialog/compare_table_view.cpp
+    GUI/CompareDialog/compare_table_view.h
     GUI/MainWindow/load_model_widget.cpp
     GUI/MainWindow/load_model_widget.h
     GUI/MainWindow/main_window.cpp

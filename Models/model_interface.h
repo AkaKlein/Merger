@@ -75,6 +75,9 @@ public:
 
     /*** Function to clone ***/
 
+    /// Returns a new model that is identical.
+    virtual std::shared_ptr<ModelInterface> Clone() const = 0;
+
     /// Returns a new model with the same properties but where every product is produced by a different firm.
     virtual std::shared_ptr<ModelInterface> CloneWithoutMergers() const = 0;
 };

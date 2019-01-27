@@ -19,3 +19,7 @@ ColumnVector operator*(double k, ColumnVector const& v);
 RowVector operator*(double k, RowVector const& v);
 
 ColumnVector Diagonal(Matrix const& matrix);
+
+Matrix operator%(ColumnVector const& v, Matrix const& m);
+
+Matrix operator%(Matrix const& m, ColumnVector const& v);

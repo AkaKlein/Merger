@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "linear_demands_constant_costs.h"
+#include "linear_demands_linear_costs.h"
 
 class ModelFactory
 {
@@ -16,6 +17,9 @@ public:
         {
             case ModelType::LinearDemandsConstantCosts:
                 result = std::make_shared<LinearDemandsConstantCosts>();
+                break;
+            case ModelType::LinearDemandsLinearCosts:
+                result = std::make_shared<LinearDemandsLinearCosts>();
                 break;
             default:
                 throw std::runtime_error("ModelFactory::CreateModel: should not happen");

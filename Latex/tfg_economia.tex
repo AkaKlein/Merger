@@ -184,7 +184,39 @@ p = (B^t + (D \circ B))^{-1}((D \circ B) c - a)
 \end{equation*}
 
 
+\section{Linear Demands with Linear Costs}
 
+Let $N$ be the number of products, and $\mathcal{N} = \{1, 2, \dots, N\}$.
+
+Let $q_k (p)$ be the demand of the $k$-th good. Because it is a linear demand, its curve is defined as
+
+\begin{equation*}
+q_k(p) = a_k + \sum_{j=1}^N b_{kj}p_j
+\end{equation*}
+
+Let $m$ be a firm that produces $\mathcal{N}_m \subseteq \mathcal{N}$. Then, its profit is defined by
+
+\begin{equation*}
+\pi_m(p) = \sum_{j \in \mathcal{N}_m} (p_j - c_j)\cdot q_j(p)
+\end{equation*}
+
+The firm, then, seeks to maximize its profit by setting their prices according to the following formula
+
+\begin{equation*}
+\max_{\{p_j ~ | ~ j \in \mathcal{N}_m\}} \pi_m(p)
+\end{equation*}
+
+Because costs are no longer constant, we must compute the marginal costs $c_j$. Then,
+
+\begin{equation*}
+c_j = \frac{\partial C(q_j)}{\partial q_j}
+\end{equation*}
+
+\begin{equation*}
+C(q_j) = f + v \cdot q_j
+\end{equation*}
+
+Where $f$ is a constant fixed cost of production and $v$ is the variable cost arising from the production of an additional unit of $q_j$. 
 
 %\cleardoublepage \sloppy
 %\begin{raggedright}

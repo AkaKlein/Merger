@@ -47,6 +47,8 @@ set(SOURCES
     GUI/ModelWindow/model_window.h
     Models/linear_demands_constant_costs.cpp
     Models/linear_demands_constant_costs.h
+    Models/linear_demands_linear_costs.cpp
+    Models/linear_demands_linear_costs.h
     Models/model_factory.h
     Models/model_interface.h
     Models/model_type.h

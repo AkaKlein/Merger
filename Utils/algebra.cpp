@@ -56,3 +56,14 @@ ColumnVector Diagonal(Matrix const& matrix)
         diagonal[i] = matrix[i][i];
     return diagonal;
 }
+
+Matrix operator%(ColumnVector const& v, Matrix const& m)
+{
+    Matrix result = m;
+    for (int i = 0; i < m.Rows(); ++i)
+        for (int j = 0; j < m.Columns(); ++j)
+            result[i][j] *= v[i];
+    return result;
+}
+
+Matrix operator%(Matrix const& m, ColumnVector const& v) { return v % m; }

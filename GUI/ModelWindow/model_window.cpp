@@ -30,6 +30,7 @@ ModelWindow::ModelWindow(
     setCentralWidget(m_model_table_view);
 
     show();
+    activateWindow();
 }
 
 ModelWindow::ModelWindow(
@@ -49,6 +50,7 @@ ModelWindow::ModelWindow(
     setCentralWidget(m_model_table_view);
 
     show();
+    activateWindow();
 }
 
 void ModelWindow::MergeClicked()

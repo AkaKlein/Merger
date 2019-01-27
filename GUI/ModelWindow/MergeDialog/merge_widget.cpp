@@ -25,6 +25,7 @@ MergeWidget::MergeWidget(QWidget* parent, ModelInterface const& model)
 
     // Create the list to show the monoproduct firms.
     m_mono_product_firms_list = new QListWidget(this);
+    m_mono_product_firms_list->setSelectionMode(QAbstractItemView::ExtendedSelection);
     layout->addWidget(m_mono_product_firms_list, 1, 0);
 
     // Create the widget to show the different firms with more than one product.

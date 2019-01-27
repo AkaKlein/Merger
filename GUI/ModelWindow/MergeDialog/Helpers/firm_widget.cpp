@@ -14,6 +14,7 @@ FirmWidget::FirmWidget(QWidget* parent)
     QVBoxLayout* layout = new QVBoxLayout;
 
     m_product_list = new QListWidget;
+    m_product_list->setSelectionMode(QAbstractItemView::ExtendedSelection);
     layout->addWidget(m_product_list, 0);
 
     QHBoxLayout* button_layout = new QHBoxLayout;

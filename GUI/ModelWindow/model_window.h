@@ -28,6 +28,7 @@ signals:
 
 private slots:
     void MergeClicked();
+    void PlotClicked();
     void CompareClicked(int model_index);
 
 private:

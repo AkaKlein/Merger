@@ -8,6 +8,7 @@
 
 #include "GUI/CompareDialog/compare_table_view.h"
 #include "GUI/ModelWindow/MergeDialog/merge_dialog.h"
+#include "GUI/PlotDialog/plot_dialog.h"
 
 #include "model_table_data.h"
 #include "model_table_view.h"
@@ -60,6 +61,12 @@ void ModelWindow::MergeClicked()
             [this](std::shared_ptr<ModelInterface> model) { emit CreateNewModelWindow(model); });
 }
 
+void ModelWindow::PlotClicked()
+{
+    ModelInterface const& model = static_cast<ModelTableData*>(m_model_table_view->model())->GetModel();
+    PlotDialog* plot_dialog = new PlotDialog(this, m_model_index, model);
+}
+
 void ModelWindow::CompareClicked(int model_index)
 {
     QDialog* compare_dialog = new QDialog(this);
@@ -96,6 +103,9 @@ void ModelWindow::Initialize(ModelType model_type, int model_index)
     // Add a "Merge" action.
     menuBar()->addAction(tr("&Merge"), this, &ModelWindow::MergeClicked);
 
+    // Add a "Plot" action.
+    menuBar()->addAction(tr("&Plot"), this, &ModelWindow::PlotClicked);
+
     // Add a "Compare" menu.
     m_compare_menu = menuBar()->addMenu(tr("&Compare"));
     for (ModelWindow* model_window : m_model_windows)
@@ -106,6 +116,9 @@ void ModelWindow::Initialize(ModelType model_type, int model_index)
     // Add a compare action for this model in every model window.
     for (ModelWindow* model_window : m_model_windows)
         model_window->AddCompareAction(m_model_index);
+
+    // Close all the open children dialogs when this window is closed.
+    setAttribute(Qt::WA_DeleteOnClose);
 }
 
 void ModelWindow::AddCompareAction(int model_index)

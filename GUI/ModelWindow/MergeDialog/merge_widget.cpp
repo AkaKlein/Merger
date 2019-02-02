@@ -75,34 +75,35 @@ void MergeWidget::RemoveButtonClicked(int product_index)
 
 void MergeWidget::Initialize()
 {
-    std::vector<int> product_group(m_model.GetNumberOfProducts(), -1);
+    std::vector<bool> seen(m_model.GetNumberOfProducts(), false);
     int current_group = 0;
 
     for (int i = 0; i < m_model.GetNumberOfProducts(); ++i)
     {
-        // No group so far, start one with it.
-        if (product_group[i] == -1)
+        // The product has not been seen so far, handle it.
+        if (!seen[i])
         {
             int members_in_group = 1;
-            product_group[i] = current_group;
+            seen[i] = true;
 
             // No point in starting with previous products, as they cannot be in the same firm.
             for (int j = i + 1; j < m_model.GetNumberOfProducts(); ++j)
             {
                 if (m_model.AreProducedBySameFirm(i, j))
                 {
-                    product_group[j] = current_group;
+                    seen[j] = true;
                     m_multi_product_firms_widget->AddProduct(current_group, j);
                     ++members_in_group;
                 }
             }
 
             if (members_in_group > 1)
+            {
                 m_multi_product_firms_widget->AddProduct(current_group, i);
+                ++current_group;
+            }
             else
                 RemoveButtonClicked(i);
-
-            ++current_group;
         }
     }
 }

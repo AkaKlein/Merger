@@ -47,7 +47,11 @@ void FirmWidget::ApplyCurrentMergers(std::shared_ptr<ModelInterface>& model) con
     for (int i = 0; i < m_product_list->count(); ++i)
     {
         for (int j = i + 1; j < m_product_list->count(); ++j)
-            model->Merge(i, j);
+        {
+            int product_index1 = static_cast<ProductListItem const*>(m_product_list->item(i))->GetIndex();
+            int product_index2 = static_cast<ProductListItem const*>(m_product_list->item(j))->GetIndex();
+            model->Merge(product_index1, product_index2);
+        }
     }
 }
 

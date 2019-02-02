@@ -18,13 +18,15 @@ public:
     /// Creates the widget with no file selected.
     LoadModelWidget();
 
+    /// Returns the selected model type.
+    ModelType GetSelectedModelType() const;
 
 signals:
     /// A signal that is emitted when the load button is clicked.
     void LoadData(std::string const& file_path);
 
     /// A signal that is emitted when the model type is changed.
-    void ModelTypeChanged(ModelType model_type);
+    void ModelTypeChanged();
 
 private slots:
     /// Changes #m_file_path_text to contain the path of the selected file and enables

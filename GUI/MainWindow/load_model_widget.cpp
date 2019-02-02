@@ -16,8 +16,7 @@ LoadModelWidget::LoadModelWidget()
     }
 
     // Emit a signal when the model type is changed.
-    connect(m_model_type_combo_box, qOverload<int>(&QComboBox::currentIndexChanged), 
-            [this](int index) { emit ModelTypeChanged(static_cast<ModelType>(index)); });
+    connect(m_model_type_combo_box, qOverload<int>(&QComboBox::currentIndexChanged), [this](int) { emit ModelTypeChanged(); });
 
     // Text to display the path that has been selected.
     m_file_path_text = new QLineEdit;
@@ -48,6 +47,11 @@ LoadModelWidget::LoadModelWidget()
     connect(m_load_button, &QPushButton::clicked, [this]() { emit LoadData(m_file_path_text->text().toStdString()); });
 
     setLayout(m_main_layout);
+}
+
+ModelType LoadModelWidget::GetSelectedModelType() const
+{
+    return static_cast<ModelType>(m_model_type_combo_box->currentIndex());
 }
 
 void LoadModelWidget::SelectFile()

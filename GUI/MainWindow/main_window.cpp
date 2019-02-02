@@ -25,11 +25,17 @@ MainWindow::MainWindow()
     // Open a new model window every time the user loads a file.
     connect(m_load_model_widget, &LoadModelWidget::LoadData, this, &MainWindow::LoadModel);
 
-    // Handle the changes of model types.
-    connect(m_load_model_widget, &LoadModelWidget::ModelTypeChanged, [this](ModelType type) { m_selected_model_type = type; });
+    // Handle the changes of model types and initialize it.
+    connect(m_load_model_widget, &LoadModelWidget::ModelTypeChanged, this, &MainWindow::UpdateModelType);
+    UpdateModelType();
 
     // Make the window visible.
     show();
+}
+
+void MainWindow::UpdateModelType()
+{
+    m_selected_model_type = m_load_model_widget->GetSelectedModelType();
 }
 
 void MainWindow::LoadModel(std::string const& file_path)

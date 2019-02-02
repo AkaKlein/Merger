@@ -28,6 +28,8 @@ private slots:
     /// @param file_path The path from where the model is loaded.
     void LoadModel(std::string const& file_path);
 
+    void UpdateModelType();
+
     void CreateMergerModelWindow(std::shared_ptr<ModelInterface> model);
 
 

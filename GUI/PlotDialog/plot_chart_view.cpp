@@ -2,8 +2,8 @@
 
 #include <QMouseEvent>
 
-PlotChartView::PlotChartView(QChart* chart, QWidget* parent) 
-    : QChartView(chart, parent)
+PlotChartView::PlotChartView(QtCharts::QChart* chart, QWidget* parent) 
+    : QtCharts::QChartView(chart, parent)
 {
     setRubberBand(QChartView::RectangleRubberBand);
 }
@@ -20,9 +20,9 @@ bool PlotChartView::viewportEvent(QEvent* event)
 
         // Turn off animations when handling gestures they
         // will only slow us down.
-        chart()->setAnimationOptions(QChart::NoAnimation);
+        chart()->setAnimationOptions(QtCharts::QChart::NoAnimation);
     }
-    return QChartView::viewportEvent(event);
+    return QtCharts::QChartView::viewportEvent(event);
 }
 
 void PlotChartView::mousePressEvent(QMouseEvent* event)
@@ -30,7 +30,7 @@ void PlotChartView::mousePressEvent(QMouseEvent* event)
     if (m_is_touching)
         return;
 
-    QChartView::mousePressEvent(event);
+    QtCharts::QChartView::mousePressEvent(event);
 }
 
 void PlotChartView::mouseMoveEvent(QMouseEvent* event)
@@ -38,7 +38,7 @@ void PlotChartView::mouseMoveEvent(QMouseEvent* event)
     if (m_is_touching)
         return;
 
-    QChartView::mouseMoveEvent(event);
+    QtCharts::QChartView::mouseMoveEvent(event);
 }
 
 void PlotChartView::mouseReleaseEvent(QMouseEvent* event)
@@ -48,9 +48,9 @@ void PlotChartView::mouseReleaseEvent(QMouseEvent* event)
 
     // Because we disabled animations when touch event was detected
     // we must put them back on.
-    chart()->setAnimationOptions(QChart::SeriesAnimations);
+    chart()->setAnimationOptions(QtCharts::QChart::SeriesAnimations);
 
-    QChartView::mouseReleaseEvent(event);
+    QtCharts::QChartView::mouseReleaseEvent(event);
 }
 
 void PlotChartView::keyPressEvent(QKeyEvent* event)

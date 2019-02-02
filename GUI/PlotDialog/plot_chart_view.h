@@ -3,12 +3,11 @@
 #include <QtCharts/QChartView>
 #include <QRubberBand>
 
-QT_CHARTS_USE_NAMESPACE
 
-class PlotChartView : public QChartView
+class PlotChartView : public QtCharts::QChartView
 {
 public:
-    PlotChartView(QChart* chart, QWidget* parent = 0);
+    PlotChartView(QtCharts::QChart* chart, QWidget* parent = 0);
 
 protected:
     virtual bool viewportEvent(QEvent* event) override final;

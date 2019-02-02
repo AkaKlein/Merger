@@ -5,20 +5,26 @@
 class ModelInterface;
 class QGestureEvent;
 
-QT_CHARTS_USE_NAMESPACE
+namespace QtCharts {
+class QLineSeries;
+}
 
-class PlotChart : public QChart
+class PlotChart : public QtCharts::QChart
 {
 public:
     PlotChart(ModelInterface const& model, QGraphicsItem* parent = nullptr, Qt::WindowFlags window_flags = 0);
+
+public slots:
+    void SelectedProductChanged(int product_index);
 
 protected:
     virtual bool sceneEvent(QEvent* event) override final;
 
 private:
     bool gestureEvent(QGestureEvent* event);
+    void AddData();    
     
-    void AddData();
-
     ModelInterface const& m_model;
+    QtCharts::QLineSeries* m_series;
+    int m_product_index = 0;
 };

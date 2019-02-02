@@ -1,6 +1,8 @@
 #pragma once
 
-#include <QHBoxLayout>
+#include <QComboBox>
+#include <QGridLayout>
+#include <QLabel>
 #include <QLineEdit>
 #include <QMainWindow>
 #include <QPushButton>
@@ -21,6 +23,9 @@ signals:
     /// A signal that is emitted when the load button is clicked.
     void LoadData(std::string const& file_path);
 
+    /// A signal that is emitted when the model type is changed.
+    void ModelTypeChanged(ModelType model_type);
+
 private slots:
     /// Changes #m_file_path_text to contain the path of the selected file and enables
     /// the #m_load_button.
@@ -28,7 +33,13 @@ private slots:
 
 private:
     /// The layout that includes everything.
-    QHBoxLayout* m_main_layout;
+    QGridLayout* m_main_layout;
+    
+    /// A label for the model type combo box.
+    QLabel* m_model_type_label;
+
+    /// The combo box to select the type of model that will be loaded.
+    QComboBox* m_model_type_combo_box;
 
     /// The line where the file path will be shown when a file is selected.
     QLineEdit* m_file_path_text;

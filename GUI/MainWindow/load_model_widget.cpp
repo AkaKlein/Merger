@@ -4,6 +4,21 @@
 
 LoadModelWidget::LoadModelWidget()
 {
+    // Create the label for the model type combo box.
+    m_model_type_label = new QLabel(tr("Model type"));
+
+    // Create a combo box will all the types of models.
+    m_model_type_combo_box = new QComboBox;
+    for (int i = 0; i < static_cast<int>(ModelType::Count); ++i)
+    {
+        ModelType model_type = static_cast<ModelType>(i);
+        m_model_type_combo_box->addItem(QString::fromStdString(ModelTypeToExtendedString(model_type)));
+    }
+
+    // Emit a signal when the model type is changed.
+    connect(m_model_type_combo_box, qOverload<int>(&QComboBox::currentIndexChanged), 
+            [this](int index) { emit ModelTypeChanged(static_cast<ModelType>(index)); });
+
     // Text to display the path that has been selected.
     m_file_path_text = new QLineEdit;
     m_file_path_text->setReadOnly(true);
@@ -21,10 +36,12 @@ LoadModelWidget::LoadModelWidget()
     m_load_button->setFixedWidth(100);
 
     // Add the elements to the layout
-    m_main_layout = new QHBoxLayout;
-    m_main_layout->addWidget(m_file_path_text, 0);
-    m_main_layout->addWidget(m_select_file_button, 1);
-    m_main_layout->addWidget(m_load_button, 2);
+    m_main_layout = new QGridLayout;
+    m_main_layout->addWidget(m_model_type_label, 0, 0);
+    m_main_layout->addWidget(m_model_type_combo_box, 0, 1, 1, 2);
+    m_main_layout->addWidget(m_file_path_text, 1, 0);
+    m_main_layout->addWidget(m_select_file_button, 1, 1);
+    m_main_layout->addWidget(m_load_button, 1, 2, Qt::AlignRight);
 
     // Add the connections
     connect(m_select_file_button, &QPushButton::clicked, this, &LoadModelWidget::SelectFile);

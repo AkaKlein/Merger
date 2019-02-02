@@ -37,10 +37,10 @@ LoadModelWidget::LoadModelWidget()
     // Add the elements to the layout
     m_main_layout = new QGridLayout;
     m_main_layout->addWidget(m_model_type_label, 0, 0);
-    m_main_layout->addWidget(m_model_type_combo_box, 0, 1, 1, 2);
-    m_main_layout->addWidget(m_file_path_text, 1, 0);
-    m_main_layout->addWidget(m_select_file_button, 1, 1);
-    m_main_layout->addWidget(m_load_button, 1, 2, Qt::AlignRight);
+    m_main_layout->addWidget(m_model_type_combo_box, 0, 1);
+    m_main_layout->addWidget(m_file_path_text, 1, 0, 1, 2);
+    m_main_layout->addWidget(m_select_file_button, 1, 2);
+    m_main_layout->addWidget(m_load_button, 1, 3, Qt::AlignRight);
 
     // Add the connections
     connect(m_select_file_button, &QPushButton::clicked, this, &LoadModelWidget::SelectFile);

@@ -1,5 +1,8 @@
 #include "matrix.h"
 
+#include <cassert>
+#include <cmath>
+
 #include "row_vector.h"
 #include "column_vector.h"
 
@@ -111,46 +114,52 @@ Matrix Matrix::Transpose() const
 
 Matrix Matrix::Inverse() const
 {
+    assert(Rows() == Columns());
     int n = Rows();
 
-    Matrix a(Rows(), 2 * Columns());
+    Matrix matrix(Rows(), 2 * Columns());
     for (int i = 0; i < n; ++i)
         for (int j = 0; j < n; ++j)
-            a[i][j] = m_data[i][j];
+            matrix[i][j] = m_data[i][j];
+    for (int i = 0; i < n; ++i)
+        for (int j = n; j < 2 * n; ++j)
+            matrix[i][j] = (i == j - n) ? 1 : 0;
 
     for (int i = 0; i < n; ++i)
     {
-        for (int j = n; j < 2 * n; ++j)
-        {
-            if (i == j - n)
-                a[i][j] = 1;
-            else
-                a[i][j] = 0;
-        }
-    }
+        // Look for the best pivot.
+        int pivot = i;
+        for (int k = i + 1; k < n; ++k)
+            if (std::fabs(matrix[pivot][i]) < std::fabs(matrix[k][i]))
+                pivot = k;
 
-   for (int i = 0; i < n; ++i)
-   {
-        double t = a[i][i];
-        for (int j = i; j < 2 * n; ++j)
-            a[i][j] = a[i][j] / t;
+        // No pivot different of zero, so the matrix has no inverse.
+        if (std::fabs(matrix[pivot][i]) < 1e-5)
+            throw std::runtime_error("Matrix::Inverse: The matrix is not invertible");
+        
+        // Swap the pivot row.
+        std::swap(matrix[i], matrix[pivot]);
 
-        for (int j = 0; j < n; ++j)
+        // Divide the row by the pivot.
+        double pivot_value = matrix[i][i];
+        for (int k = 0; k < 2 * n; ++k)
+            matrix[i][k] /= pivot_value;
+
+        for (int k = 0; k < n; ++k)
         {
-            if (i != j)
+            if (k != i)
             {
-                t = a[j][i];
-                for (int k = 0; k < 2 * n; ++k)
-                    a[j][k] = a[j][k] - t * a[i][k];
+                double coefficient = matrix[k][i];
+                for (int h = 0; h < 2 * n; ++h)
+                    matrix[k][h] -= matrix[i][h] * coefficient; 
             }
         }
     }
 
-    Matrix result(n, n);
+    Matrix result(Rows(), Columns());
     for (int i = 0; i < n; ++i)
-        for (int j = n; j < 2 * n; ++j)
-            result[i][j - n] = a[i][j];
-
+        for (int j = 0; j < n; ++j)
+            result[i][j] = matrix[i][j + n];
     return result;
 }
 

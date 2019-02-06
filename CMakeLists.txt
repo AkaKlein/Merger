@@ -18,7 +18,7 @@ else()
 endif()
 
 find_package(Qt5Widgets CONFIG REQUIRED)
-find_package(Qt5Charts CONFIG REQUIRED)
+# find_package(Qt5Charts CONFIG REQUIRED)
 
 set(SOURCES
     GUI/Common/base_table_view.cpp
@@ -46,12 +46,12 @@ set(SOURCES
     GUI/ModelWindow/model_table_view.h
     GUI/ModelWindow/model_window.cpp
     GUI/ModelWindow/model_window.h
-    GUI/PlotDialog/plot_chart_view.cpp
-    GUI/PlotDialog/plot_chart_view.h
-    GUI/PlotDialog/plot_chart.cpp
-    GUI/PlotDialog/plot_chart.h
-    GUI/PlotDialog/plot_dialog.cpp
-    GUI/PlotDialog/plot_dialog.h
+    #GUI/PlotDialog/plot_chart_view.cpp
+    #GUI/PlotDialog/plot_chart_view.h
+    #GUI/PlotDialog/plot_chart.cpp
+    #GUI/PlotDialog/plot_chart.h
+    #GUI/PlotDialog/plot_dialog.cpp
+    #GUI/PlotDialog/plot_dialog.h
     Models/linear_demands_constant_costs.cpp
     Models/linear_demands_constant_costs.h
     Models/linear_demands_linear_costs.cpp
@@ -70,5 +70,6 @@ set(SOURCES
     main.cpp)
 
 add_executable(Merger ${SOURCES})
-target_link_libraries(Merger Qt5::Widgets Qt5::Charts)
+#target_link_libraries(Merger Qt5::Widgets Qt5::Charts)
+target_link_libraries(Merger Qt5::Widgets)
 

@@ -8,7 +8,7 @@
 
 #include "GUI/CompareDialog/compare_table_view.h"
 #include "GUI/ModelWindow/MergeDialog/merge_dialog.h"
-//#include "GUI/PlotDialog/plot_dialog.h"
+#include "GUI/PlotDialog/plot_dialog.h"
 
 #include "model_table_data.h"
 #include "model_table_view.h"
@@ -63,8 +63,8 @@ void ModelWindow::MergeClicked()
 
 void ModelWindow::PlotClicked()
 {
-    // ModelInterface const& model = static_cast<ModelTableData*>(m_model_table_view->model())->GetModel();
-    // PlotDialog* plot_dialog = new PlotDialog(this, m_model_index, model);
+    ModelInterface const& model = static_cast<ModelTableData*>(m_model_table_view->model())->GetModel();
+    PlotDialog* plot_dialog = new PlotDialog(this, m_model_index, model);
 }
 
 void ModelWindow::CompareClicked(int model_index)

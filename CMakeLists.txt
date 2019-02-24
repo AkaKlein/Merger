@@ -46,12 +46,15 @@ set(SOURCES
     GUI/ModelWindow/model_table_view.h
     GUI/ModelWindow/model_window.cpp
     GUI/ModelWindow/model_window.h
+    GUI/PlotDialog/model_plot_data.h
     GUI/PlotDialog/plot_chart_view.cpp
     GUI/PlotDialog/plot_chart_view.h
     GUI/PlotDialog/plot_chart.cpp
     GUI/PlotDialog/plot_chart.h
     GUI/PlotDialog/plot_dialog.cpp
     GUI/PlotDialog/plot_dialog.h
+    GUI/PlotDialog/select_models_dialog.cpp
+    GUI/PlotDialog/select_models_dialog.h
     Models/linear_demands_constant_costs.cpp
     Models/linear_demands_constant_costs.h
     Models/linear_demands_linear_costs.cpp

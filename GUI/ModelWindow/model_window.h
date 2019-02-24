@@ -9,6 +9,7 @@
 
 class ModelInterface;
 class ModelTableView;
+class PlotDialog;
 class QAction;
 class QMenu;
 
@@ -22,6 +23,11 @@ public:
     
     ModelWindow(QWidget* parent, std::shared_ptr<ModelInterface>& model, int model_index,
                 std::vector<ModelWindow*>& model_windows);
+
+    int GetModelIndex() const { return m_model_index; }
+
+    void ReportModelCreated(int id, std::shared_ptr<ModelInterface> const& model);
+    void ReportModelDeleted(int id);
 
 signals:
     void CreateNewModelWindow(std::shared_ptr<ModelInterface> model);
@@ -44,4 +50,6 @@ private:
     QMenu* m_compare_menu;
 
     std::map<int, QAction*> m_compare_actions;
+
+    std::vector<PlotDialog*> m_plot_dialogs;
 };

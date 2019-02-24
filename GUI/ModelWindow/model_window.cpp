@@ -30,6 +30,13 @@ ModelWindow::ModelWindow(
     m_model_table_view = new ModelTableView(this, file_path, model_type);
     setCentralWidget(m_model_table_view);
 
+    // Notify the other models about this model.
+    for (auto it = m_model_windows.begin(); it != m_model_windows.end(); ++it)
+    {
+        if (*it != this)
+            (*it)->ReportModelCreated(m_model_index, static_cast<ModelTableData*>(m_model_table_view->model())->GetModel().Clone());
+    }
+
     show();
     activateWindow();
 }
@@ -50,8 +57,28 @@ ModelWindow::ModelWindow(
     m_model_table_view = new ModelTableView(this, model);
     setCentralWidget(m_model_table_view);
 
+    // Notify the other models about this model.
+    for (auto it = m_model_windows.begin(); it != m_model_windows.end(); ++it)
+    {
+        if (*it != this)
+            (*it)->ReportModelCreated(m_model_index, static_cast<ModelTableData*>(m_model_table_view->model())->GetModel().Clone());
+    }
+
     show();
     activateWindow();
+}
+
+void ModelWindow::ReportModelCreated(int id, std::shared_ptr<ModelInterface> const& model)
+{
+    for (PlotDialog* plot_dialog : m_plot_dialogs)
+        plot_dialog->AddModel(id, model);
+}
+
+void ModelWindow::ReportModelDeleted(int id)
+{
+    m_compare_menu->removeAction(m_compare_actions[id]);
+    for (PlotDialog* plot_dialog : m_plot_dialogs)
+        plot_dialog->RemoveModel(id);
 }
 
 void ModelWindow::MergeClicked()
@@ -65,6 +92,27 @@ void ModelWindow::PlotClicked()
 {
     ModelInterface const& model = static_cast<ModelTableData*>(m_model_table_view->model())->GetModel();
     PlotDialog* plot_dialog = new PlotDialog(this, m_model_index, model);
+    
+    for (ModelWindow* model_window : m_model_windows)
+    {
+        auto other_model = static_cast<ModelTableData*>(model_window->m_model_table_view->model())->GetModel().Clone();
+        if (this != model_window)
+            plot_dialog->AddModel(model_window->GetModelIndex(), other_model);
+    }
+
+    m_plot_dialogs.push_back(plot_dialog);
+
+    connect(plot_dialog, &QDialog::finished, [this, plot_dialog]() 
+    { 
+        for (auto it = m_plot_dialogs.begin(); it != m_plot_dialogs.end(); ++it)
+        {
+            if (*it == plot_dialog)
+            {
+                m_plot_dialogs.erase(it);
+                return;
+            }
+        }
+    });
 }
 
 void ModelWindow::CompareClicked(int model_index)
@@ -138,7 +186,7 @@ void ModelWindow::closeEvent(QCloseEvent* event)
             it = m_model_windows.erase(it);
         else
         {
-            (*it)->m_compare_menu->removeAction((*it)->m_compare_actions[m_model_index]);
+            (*it)->ReportModelDeleted(m_model_index);
             ++it;
         }
     }

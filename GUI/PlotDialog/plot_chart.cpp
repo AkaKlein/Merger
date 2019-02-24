@@ -1,14 +1,21 @@
 #include "plot_chart.h"
 
 #include <QtCharts/QLineSeries>
+#include <QtCharts/QScatterSeries>
+#include <QtCharts/QValueAxis>
 #include <QGesture>
 #include <QGraphicsScene>
 #include <QGraphicsView>
 
 #include "Models/model_interface.h"
 
-PlotChart::PlotChart(ModelInterface const& model, QGraphicsItem* parent, Qt::WindowFlags window_flags)
-    : QtCharts::QChart(QChart::ChartTypeCartesian, parent, window_flags), m_model(model)
+PlotChart::PlotChart(
+    std::map<int, std::shared_ptr<ModelInterface>> const& selected_models_by_id, 
+    QGraphicsItem* parent, 
+    Qt::WindowFlags window_flags)
+    : 
+    QtCharts::QChart(QChart::ChartTypeCartesian, parent, window_flags), 
+    m_selected_models_by_id(selected_models_by_id)
 {
     // Seems that QGraphicsView (QChartView) does not grab gestures.
     // They can only be grabbed here in the QGraphicsWidget (QChart).
@@ -51,22 +58,112 @@ bool PlotChart::gestureEvent(QGestureEvent* event)
 
 void PlotChart::AddData()
 {
+    // Remove everything from before.
     removeAllSeries();
+    for (QtCharts::QAbstractAxis* axis : axes())
+        removeAxis(axis);
 
-    QtCharts::QLineSeries* series = new QtCharts::QLineSeries;
-    ColumnVector optimum_prices = m_model.ComputePrices();
+    // Obtain the data for every selected model.
+    std::vector<ModelPlotData> data_vector;
+    for (auto const& kv : m_selected_models_by_id)
+        data_vector.push_back(ComputeDataForModel(kv.first, *kv.second));
 
-    double p_opt = optimum_prices[m_product_index];
-    for (double p = p_opt * 0.9; p <= p_opt * 1.1; p += p_opt * 0.01)
+    // Get the interval of each axis.
+    double price_start_range = std::numeric_limits<double>::max();
+    double price_end_range = std::numeric_limits<double>::min();
+    double profit_start_range = std::numeric_limits<double>::max();
+    double profit_end_range = std::numeric_limits<double>::min();
+    double quantity_start_range = std::numeric_limits<double>::max();
+    double quantity_end_range = std::numeric_limits<double>::min();
+
+    for (ModelPlotData const& data : data_vector)
     {
-        ColumnVector prices = optimum_prices;
-        prices[m_product_index] = p;
-        *series << QPointF(m_model.ComputeQuantities(prices)[m_product_index], p);
+        price_start_range = std::min(price_start_range, data.m_price_start_range);
+        price_end_range = std::max(price_end_range, data.m_price_end_range);
+        profit_start_range = std::min(profit_start_range, data.m_profit_start_range);
+        profit_end_range = std::max(profit_end_range, data.m_profit_end_range);
+        quantity_start_range = std::min(quantity_start_range, data.m_quantity_start_range);
+        quantity_end_range = std::max(quantity_end_range, data.m_quantity_end_range);
     }
 
-    addSeries(series);
+    // Add the axes.
+    QtCharts::QValueAxis* x_axis = new QtCharts::QValueAxis;
+    x_axis->setTitleText("Quantity");
+    x_axis->setRange(quantity_start_range, quantity_end_range);
+    addAxis(x_axis, Qt::AlignBottom);
 
-    createDefaultAxes();
-    axisX()->setTitleText("Quantity");
-    axisY()->setTitleText("Price");
+    QtCharts::QValueAxis* left_axis = new QtCharts::QValueAxis;
+    left_axis->setTitleText("Price");
+    left_axis->setRange(price_start_range, price_end_range);
+    addAxis(left_axis, Qt::AlignLeft);
+
+    QtCharts::QValueAxis* right_axis = new QtCharts::QValueAxis;
+    right_axis->setTitleText("Firm Profit");
+    right_axis->setRange(profit_start_range, profit_end_range);
+    addAxis(right_axis, Qt::AlignRight);
+
+    // Add the series
+    for (ModelPlotData const& data : data_vector)
+    {
+        addSeries(data.m_price_series);
+        data.m_price_series->attachAxis(x_axis);
+        data.m_price_series->attachAxis(left_axis);
+
+        addSeries(data.m_profit_series);
+        data.m_profit_series->attachAxis(x_axis);
+        data.m_profit_series->attachAxis(right_axis);
+    }
+}
+
+ModelPlotData PlotChart::ComputeDataForModel(int model_index, ModelInterface const& model) const
+{
+    ModelPlotData result;
+
+    // Initialize the series.
+    result.m_price_series = new QtCharts::QLineSeries;
+    result.m_profit_series = new QtCharts::QLineSeries;
+
+    // Initialize the ranges.
+    ColumnVector optimum_prices = model.ComputePrices();
+    result.m_price_start_range = 0.9 * optimum_prices[m_product_index];
+    result.m_price_end_range = 1.1 * optimum_prices[m_product_index];
+    result.m_profit_start_range = std::numeric_limits<double>::max();
+    result.m_profit_end_range = std::numeric_limits<double>::min();
+    result.m_quantity_start_range = std::numeric_limits<double>::max();
+    result.m_quantity_end_range = std::numeric_limits<double>::min();
+
+    // Populate the series and update the ranges.
+    for (double p = result.m_price_start_range; p <= result.m_price_end_range; p += optimum_prices[m_product_index] * 0.01)
+    {
+        // Change the price of the selected product.
+        ColumnVector prices = optimum_prices;
+        prices[m_product_index] = p;
+
+        // Compute the quantity with the changed price.
+        double quantity = model.ComputeQuantities(prices)[m_product_index];
+
+        // Compute the profit with the changed price.
+        ColumnVector profits = model.ComputeProfits(prices);
+        double firm_profit = 0;
+        for (int i = 0; i < profits.Size(); ++i)
+        {
+            if (model.AreProducedBySameFirm(i, m_product_index))
+                firm_profit += profits[i];
+        }
+
+        // Add the points to the series.
+        *result.m_price_series << QPointF(quantity, p);
+        *result.m_profit_series << QPointF(quantity, firm_profit);
+
+        // Update the ranges.
+        result.m_profit_start_range = std::min(result.m_profit_start_range, firm_profit);
+        result.m_profit_end_range = std::max(result.m_profit_end_range, firm_profit);
+        result.m_quantity_start_range = std::min(result.m_quantity_start_range, quantity);
+        result.m_quantity_end_range = std::max(result.m_quantity_end_range, quantity);
+    }
+
+    // We want the maximum profit to be at the middle, so adjust the range.
+    result.m_profit_end_range += result.m_profit_end_range - result.m_profit_start_range;
+
+    return result;
 }

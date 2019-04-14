@@ -6,6 +6,9 @@ Latex/*.gz
 Latex/*.aux
 Latex/*.idx
 Latex/*.toc
+Latex/*.lof
+Latex/*.lot
+Latex/*.TOC
 Doxygen/latex/*.ps 
 Doxygen/latex/*.dvi 
 Doxygen/latex/*.aux 

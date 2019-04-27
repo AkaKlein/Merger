@@ -1,4 +1,5 @@
-\documentclass{tfg}
+\documentclass[12pt]{article}
+\renewcommand{\baselinestretch}{1.5}
 
 %%%%%%%%%%packages
 \usepackage[english]{babel}
@@ -18,10 +19,21 @@
 \usepackage[postscript]{ucs}
 \usepackage{fancyhdr}
 \usepackage{listings}
-\usepackage[a4paper]{geometry}
+\usepackage[a4paper,left=3cm,right=3cm,top=2.5cm,bottom=2.5cm]{geometry}
 \usepackage{url}
 \usepackage{pdfpages}
 \usepackage{mathtools}
+\usepackage{titling}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage{mathptmx}
+\usepackage[explicit]{titlesec}
+
+
+\titleformat{\section}[block]{\filcenter}{\thesection. \MakeUppercase{#1}}{1em}{}
+\titleformat{name=\section, numberless}[block]{\filcenter}{\MakeUppercase{#1}}{1em}{}
+\titleformat{\subsection}[hang]{}{}{1em}{\thesubsection. #1}
+\titleformat{\subsubsection}[hang]{}{}{1em}{{\normalfont\thesubsubsection. \textit{#1}}}
+
 
 \newtheorem{theorem}{{Theorem}}
 \newtheorem{prop}{{Proposition}}
@@ -30,93 +42,57 @@
 
 \makeindex
 
+\pretitle{%
+  \begin{center}
+  \LARGE
+  \vspace{1in}
+  \includegraphics[width=4.56in]{logo_uab2}\\[\bigskipamount]
+  \vspace{1.5in}
+}
+\posttitle{\end{center}}
+
 \begin{document}
 
 
 \selectlanguage{english}
 
-
-\title{Merger Simulations: A Theoretical and Practical Approach}
-
-
-\def\autor{Andrea Dana Klein Villalba}
-
-\def\treball{Bachelor's Degree Thesis}
-
-\def\advisor{Jordi Perdiguero Garc\'ia}
-
-\vfill
-
-\def\departament{Departament d'Economia Aplicada}
-
-
+\title{{\large TITLE: Merger Simulations: A Theoretical and Practical Approach\\
+AUTHOR: Andrea Dana Klein Villalba\\
+DEGREE: Economics\\
+ADVISOR: Jordi Perdiguero Garc\'ia\\
+DATE: June 7th, 2019\\}}
+\date{}
 
 %-------------------------------------------------------------%
-\maketitle
+\clearpage\maketitle
+\thispagestyle{empty}
+\newpage
 
-
-
-%-------------------------------------------------------------%
-%%%Dedicatoria (opcional)
-%-------------------------------------------------------------%
-%\dedicatoria{To my family, advisors and everyone that has made this thesis possible}
-
-%\dedicatoria{\textit{If you find that you're spending almost all your time on theory, start turning some attention to practical things; it will improve your theories. If you find that you're spending almost all your time on practice, start turning some attention to theoretical things; it will improve your practice.}}
-
-%\hfill Donald Knuth
-
-%-------------------------------------------------------------%
-%-------------------------------------------------------------%
-%%%Prefaci (opcional)
-%-------------------------------------------------------------%
-
-%\begin{preface}
-%\thispagestyle{empty}
-
-%\end{preface}
-
-
-%\clearpage
-
-%---------------------------------------------------------------
-% Abstract: un resum del contingut del treball (sobre 500 paraules)
-% Ha de contenir una relacio de paraules clau i dels codis MSC
-%(Math. Subject Classification 2000)
-% Ha d'estar tambe en angles.
-%---------------------------------------------------------------
-\pagenumbering{roman}
-\setcounter{page}{5}
-\markboth{}{}
-
-\begin{abstracteng}
-
-\keywordseng{}
-
-\vspace{1cm}
-%%%Here the text
-
-Hello, it's me.
- 
-
-\end{abstracteng}
-
-
-\cleardoublepage
+\begin{abstract}
+Hello, it's me,
+\end{abstract}
+\newpage
 
 %--------------------------------------------------------------
 % Taula de continguts
 % S'elabora automaticament
 %-------------------------------------------------------------
  \tableofcontents
- \cleardoublepage
+ \newpage
 %------------------------------------------------------------
 % Cos del treball
 %Es poden fer servir Parts, Capitols, Seccions i Subseccions
 %-------------------------------------------------------------
 \pagenumbering{arabic}
 
-\chapter{Introduction}
+\section{Introduction}
 I was wondering if after all these years you'd like to meet.
+
+\subsection{Patata}
+sdfsfs
+
+\subsubsection{Frita}
+sdfsdffs
 
 \section{Linear Demands with Constant Costs}
 Let $N$ be the number of products, and $\mathcal{N} = \{1, 2, \dots, N\}$.
@@ -218,33 +194,25 @@ C(q_j) = f + v \cdot q_j
 
 Where $f$ is a constant fixed cost of production and $v$ is the variable cost arising from the production of an additional unit of $q_j$. 
 
-%\cleardoublepage \sloppy
-%\begin{raggedright}
-%\input{exemple_tfm.ind}
-%\end{raggedright}
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{logo_uab}
+\caption{Patata}
+\end{figure}
 
+\begin{table}[]
+\begin{tabular}{lllll}
+1 & 2  & 3 & 4 & 5 \\
+  & 11 &   &   &   \\
+  &    &   & 1 &   \\
+  &    & 1 &   &  
+\end{tabular}
+\caption{Frita}
+\end{table}
 
+An example of reference is \cite{abc}.
 
-%--------------------------------------------------------------
-%Seccions addicionals: Apendixs, Glosari, Bibliografia
-%
-%Els apendixs son com capitols pero van precedits de \apendix,
-%es a dir: \apendix \chapter{Nom de l'apendix}
-%
-%\input{apendix1}
-
-%Per a la bibliografia es pot fer servir els fitxers .bib
-%(consulteu un manual de LaTex per al seu us)
-%o simplement amb \begin{thebibliography}{100} \end{thebibliography}
-%
-%\bibliographystyle{amsplain}
-%\bibliography{tfm}
-
-%El glosari de termes es crea automaticament. Consulteu un manual
-%de LaTex
-
-%--------------------------------------------------------------
-
+\newpage
 \begin{thebibliography}{9}
 
 \bibitem{abc}
@@ -259,50 +227,15 @@ CUDD: CU Decision Diagram Package. Fabio Somenzi, Colorado University. \url{http
 \bibitem{elmore48}
 W. C. Elmore. The Transient Response of Damped Linear Networks with Particular Regard to Wideband Amplifiers. Journal of Applied Physics, Vol. 19, 1948.
 
-\bibitem{iscas85}
-ISCAS85 Combinational Benchmark Circuits. \url{http://www.cbl.ncsu.edu/benchmarks/}.
-
-\bibitem{rudellphd}
-R. Rudell. Logic Synthesis for VLSI Designs. PhD thesis, University of California, Berkeley, 1989.
-
-\bibitem{brayton89}
-R. Brayton, R. Rudell, A. Sangiovanni-Vincentelli and A. Wang. Multilevel logic synthesis. Notes for lectures at Oxford/Berkeley Summer Engineering Programme, July 1989.
-
-\bibitem{kk97}
-Andreas Kuehlmann and Florian Krohm. Equivalence checking using
-cuts and heaps. In DAC '97: Proceedings of the 34th annual conference
- on Design automation, pages 263?268, New York, NY, USA, 1997. ACM
-  Press.
-
-\bibitem{pl98}
-Peichen Pan and Chih-Chang Lin. A new retiming-based technology
-mapping algorithm for LUT-based FPGAs. In FPGA '98: Proceedings
- of the 1998 ACM/SIGDA sixth international symposium on Field pro-
-grammable gate arrays, pages 35-42, New York, NY, USA, 1998. ACM
- Press.
- 
-\bibitem{bl70}
-Burton H. Bloom. Space/time trade-offs in hash coding with allowable
-errors. Commun. ACM, 13(7):422-426, 1970.
-
-\bibitem{ck06}
-Donald Chai and Andreas Kuehlmann. Building a better Boolean matcher and symmetry detector. DATE '06 Proceedings of the conference on Design, automation and test in Europe, pages 1079-1084. 
-
-\bibitem{bula89}
-O. Bula, J. Moser, J. Trinko, M. Weismann and F. Woytowich. Gross Delay Defect Evaluation for a CMOS Logic Design System Product. IBM Technical Memorandum, May 1989.
-
-\bibitem{caisso91}
-Jean-Paul Caisso, Eduard Cerny and Nicholas C. Rumin. A Recursive Technique for Computing Delays in Series-Parallel MOS Transistor Circuits. IEEE Transactions on Computer-Aided Design, Vol. 10, No. 5, May 1991, pages 589-595.
-
-\bibitem{rockafellar}
-R. Tyrrell Rockafellar. Convex Analysis. Princeton University Press. 1970.
-
-\bibitem{fishburn}
-Alfred E. Dunlop, John P. Fishburn, Dwight D. Hill and Donald D. Shugard. Experiments Using Automatic Physical Design Techniques for Optimizing Circuit Performance. 1990 IEEE.
-
 \bibitem{nangate_library}
 NanGate Open Cell Library. \url{http://www.nangate.com/?page_id=22}.
 \end{thebibliography}
+
+\newpage
+\listoffigures
+
+\newpage
+\listoftables
 
 %
 \end{document}

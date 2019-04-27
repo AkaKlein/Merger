@@ -1,3 +1,4 @@
+.qmake.stash
 .vscode
 build
 Latex/*.pdf
@@ -19,3 +20,6 @@ Doxygen/latex/*.brf
 Doxygen/latex/*.blg 
 Doxygen/latex/*.bbl 
 Doxygen/latex/refman.pdf
+obj
+Makefile
+merge-v1.0-alpha_plugin_import.cpp

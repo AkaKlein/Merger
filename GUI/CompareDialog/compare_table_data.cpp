@@ -22,7 +22,7 @@ void CompareTableData::Initialize()
     m_diff_consumer_welfare = m_model1->ComputeConsumerWelfare(prices1) - m_model2->ComputeConsumerWelfare(prices2);
 }
 
-int CompareTableData::columnCount(QModelIndex const& parent) const
+int CompareTableData::columnCount(QModelIndex const& /*parent*/) const
 {
     return m_model1->GetNumberOfProducts();
 }

@@ -21,7 +21,7 @@ MultiProductFirmsWidget::MultiProductFirmsWidget(QWidget* parent)
 
 void MultiProductFirmsWidget::AddProduct(int firm_index, int product_index)
 {
-    while (firm_index >= m_firm_widgets.size())
+    while (firm_index >= static_cast<int>(m_firm_widgets.size()))
         CreateNewFirm();
 
     m_firm_widgets[firm_index]->AddProduct(product_index);

@@ -23,7 +23,7 @@ void ModelTableData::Initialize()
     m_consumer_welfare = m_model->ComputeConsumerWelfare(m_prices);
 }
 
-int ModelTableData::columnCount(QModelIndex const& parent) const
+int ModelTableData::columnCount(QModelIndex const& /*parent*/) const
 {
     return m_model->GetNumberOfProducts();
 }

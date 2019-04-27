@@ -14,7 +14,7 @@ public:
 
     ModelInterface const& GetModel() const { return *m_model; }
 
-    virtual int rowCount(QModelIndex const& parent) const override final { return 5; }
+    virtual int rowCount(QModelIndex const& /*parent*/) const override final { return 5; }
     virtual int columnCount(QModelIndex const& parent) const override final;
     virtual QVariant data(QModelIndex const& index, int role) const override final;
     virtual QVariant headerData(int section, Qt::Orientation orientation, int role) const override final;

@@ -10,6 +10,7 @@
 #include "product_list_item.h"
 
 FirmWidget::FirmWidget(QWidget* parent)
+    : QWidget(parent)
 {
     QVBoxLayout* layout = new QVBoxLayout;
 

@@ -124,7 +124,7 @@ void ModelWindow::CompareClicked(int model_index)
 
     // Get the other model.
     std::shared_ptr<ModelInterface> model2;
-    for (int i = 0; i < m_model_windows.size(); ++i)
+    for (std::size_t i = 0; i < m_model_windows.size(); ++i)
     {
         if (m_model_windows[i]->m_model_index == model_index)
         {

@@ -19,7 +19,7 @@ ColumnVector ColumnVector::operator+(ColumnVector const& other) const
 
 ColumnVector& ColumnVector::operator+=(ColumnVector const& other)
 {
-    for (int i = 0; i < m_data.size(); ++i)
+    for (int i = 0; i < Size(); ++i)
         m_data[i] += other.m_data[i];
 
     return *this;
@@ -34,7 +34,7 @@ ColumnVector ColumnVector::operator-(ColumnVector const& other) const
 
 ColumnVector& ColumnVector::operator-=(ColumnVector const& other)
 {
-    for (int i = 0; i < m_data.size(); ++i)
+    for (int i = 0; i < Size(); ++i)
         m_data[i] -= other.m_data[i];
 
     return *this;
@@ -49,7 +49,7 @@ ColumnVector ColumnVector::operator*(double other) const
 
 ColumnVector& ColumnVector::operator*=(double other)
 {
-    for (int i = 0; i < m_data.size(); ++ i)
+    for (int i = 0; i < Size(); ++ i)
         m_data[i] *= other;
     
     return *this;
@@ -64,7 +64,7 @@ ColumnVector ColumnVector::operator%(ColumnVector const& other) const
 
 ColumnVector& ColumnVector::operator%=(ColumnVector const& other)
 {
-    for (int i = 0; i < m_data.size(); ++i)
+    for (int i = 0; i < Size(); ++i)
        m_data[i] *= other[i]; 
 
     return *this;

@@ -19,7 +19,7 @@ RowVector RowVector::operator+(RowVector const& other) const
 
 RowVector& RowVector::operator+=(RowVector const& other)
 {
-    for (int i = 0; i < m_data.size(); ++i)
+    for (int i = 0; i < Size(); ++i)
         m_data[i] += other.m_data[i];
 
     return *this;
@@ -34,7 +34,7 @@ RowVector RowVector::operator-(RowVector const& other) const
 
 RowVector& RowVector::operator-=(RowVector const& other)
 {
-    for (int i = 0; i < m_data.size(); ++i)
+    for (int i = 0; i < Size(); ++i)
         m_data[i] -= other.m_data[i];
 
     return *this;
@@ -49,11 +49,11 @@ RowVector RowVector::operator*(Matrix const& other) const
 
 RowVector& RowVector::operator*=(Matrix const& other)
 {
-    RowVector result(other[0].size());
-    for (int i = 0; i < other[0].size(); ++i)
+    RowVector result(other.Columns());
+    for (int i = 0; i < other.Columns(); ++i)
     {
         result[i] = 0;
-        for (int j = 0; j < m_data.size(); ++j)
+        for (int j = 0; j < Size(); ++j)
             result[i] += m_data[j] * other[j][i];
     }
     
@@ -64,7 +64,7 @@ RowVector& RowVector::operator*=(Matrix const& other)
 double RowVector::operator*(ColumnVector const& other) const
 {
     double result = 0;
-    for (int i = 0; i < m_data.size(); ++i)
+    for (int i = 0; i < Size(); ++i)
         result += m_data[i] * other[i];
 
     return result;
@@ -79,7 +79,7 @@ RowVector RowVector::operator*(double other) const
 
 RowVector& RowVector::operator*=(double other)
 {
-    for (int i = 0; i < m_data.size(); ++i)
+    for (int i = 0; i < Size(); ++i)
         m_data[i] *= other; 
 
     return *this;

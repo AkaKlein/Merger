@@ -115,7 +115,7 @@ void PlotChart::AddData()
     }
 }
 
-ModelPlotData PlotChart::ComputeDataForModel(int model_index, ModelInterface const& model) const
+ModelPlotData PlotChart::ComputeDataForModel(int /*model_index*/, ModelInterface const& model) const
 {
     ModelPlotData result;
 

@@ -14,7 +14,7 @@ set(CMAKE_AUTOUIC ON)
 if (WIN32)
     set(CMAKE_PREFIX_PATH "E:\\Qt\\5.11.2\\mingw53_32\\" )
 else()
-    set(CMAKE_PREFIX_PATH "/opt/Qt/5.11.2/gcc_64/" )
+    set(CMAKE_PREFIX_PATH "/opt/Qt/5.12.3/gcc_64/" )
 endif()
 
 find_package(Qt5Widgets CONFIG REQUIRED)
@@ -62,6 +62,8 @@ set(SOURCES
     Models/model_factory.h
     Models/model_interface.h
     Models/model_type.h
+    Models/quadratic_demands_constant_costs.cpp
+    Models/quadratic_demands_constant_costs.h
     Utils/algebra.cpp
     Utils/algebra.h
     Utils/column_vector.cpp
@@ -73,5 +75,5 @@ set(SOURCES
     main.cpp)
 
 add_executable(Merger ${SOURCES})
-target_link_libraries(Merger Qt5::Widgets Qt5::Charts)
+target_link_libraries(Merger Qt5::Widgets Qt5::Charts nlopt m)
 

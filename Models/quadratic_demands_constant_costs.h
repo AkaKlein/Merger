@@ -39,6 +39,15 @@ public:
     /// Returns the number of products.
     virtual int GetNumberOfProducts() const override final { return m_a.Size(); }
 
+    /// Returns the elasticities' matrix.
+    Matrix const& GetElasticities() const { return m_B; }
+
+    /// Returns the quadratic elasticities' matrix.
+    Matrix const& GetQuadraticElasticities() const { return m_E; }
+
+    /// Returns the marginal costs.
+    ColumnVector const& GetMarginalCosts() const { return m_c; }
+
 
     /// Computes the equilibrium prices of the model.    
     virtual ColumnVector ComputePrices() const override final;

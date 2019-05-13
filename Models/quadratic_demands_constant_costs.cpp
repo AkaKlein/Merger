@@ -4,6 +4,51 @@
 
 using namespace std;
 
+double ForcePositiveQuantities(unsigned n, const double *x, double *grad, void *void_data)
+{
+    auto* data = static_cast<std::pair<QuadraticDemandsConstantCosts*, int>*>(void_data);
+    QuadraticDemandsConstantCosts const& model = *data->first;
+    int index = data->second;
+
+    if (grad) 
+    {
+        for (unsigned k = 0; k < n; ++k)
+            grad[k] = model.GetElasticities()[k][index] + 2 * model.GetQuadraticElasticities()[k][index] * x[k];
+    }
+
+    ColumnVector prices(n);
+    for (int i = 0; i < prices.Size(); ++i)
+        prices[i] = x[i];
+
+    return -model.ComputeQuantities(prices)[index];
+}
+
+double ProfitPerFirm(unsigned n, const double *x, double *grad, void *void_data)
+{
+    auto* data = static_cast<std::pair<QuadraticDemandsConstantCosts*, std::vector<int>>*>(void_data);
+    QuadraticDemandsConstantCosts const& model = *data->first;
+    std::vector<int> const& firm_products = data->second;
+
+    if (grad) 
+    {
+        // TODO:
+        grad[0] = 0.0;
+        grad[1] = 0.5 / sqrt(x[1]);
+    }
+
+    ColumnVector prices(n);
+    for (int i = 0; i < prices.Size(); ++i)
+        prices[i] = x[i];
+    
+    ColumnVector quantities = model.ComputeQuantities(prices);
+    
+    double res = 0;
+    for (int j : firm_products)
+        res += quantities[j] * (prices[j] - model.GetMarginalCosts()[j]);
+
+    return res;
+}
+
 QuadraticDemandsConstantCosts::QuadraticDemandsConstantCosts(ColumnVector const& income, ColumnVector const& costs, Matrix const& elasticities, Matrix const& quad_elasticities)
     : m_a(income), m_c(costs), m_B(elasticities), m_E(quad_elasticities), m_D(elasticities.Rows(), elasticities.Columns())
 {
@@ -23,34 +68,55 @@ ColumnVector QuadraticDemandsConstantCosts::ComputePrices() const
 {
     return ColumnVector();
 
-    nlopt::opt opt(nlopt::LD_MMA, m_a.Size());
+    std::vector<bool> seen(m_a.Size(), false);
     
-    std::vector<double> lb(m_a.Size(), 0);
-    opt.set_lower_bounds(lb);
-    
-    opt.set_min_objective(myfunc, NULL);
-
-
-    // my_constraint_data data[2] = { {2,0}, {-1,1} };
-    // opt.add_inequality_constraint(myconstraint, &data[0], 1e-8);
-    // opt.add_inequality_constraint(myconstraint, &data[1], 1e-8);
-    opt.set_xtol_rel(1e-4);
-
-    std::vector<double> x(m_a.Size(), 1.0);
-    double minimum;
-
-    try
+    for (int i = 0; i < m_a.Size(); ++i)
     {
-        nlopt::result result = opt.optimize(x, minimum);
-        ColumnVector prices(m_a.Size());
-        for (std::size_t i = 0; i < prices.Size(); ++i)
-            prices[i] = x[i];
-        return result;
-    }
-    catch(std::exception &e) 
-    {
-        std::cout << "nlopt failed: " << e.what() << std::endl;
-        return ColumnVector(m_a.Size());
+        if (seen[i])
+            continue;
+
+        std::vector<int> firm_products;
+        for (int j = i; j < m_a.Size(); ++j)
+        {
+            if (AreProducedBySameFirm(i, j))
+            {
+                firm_products.push_back(j);
+                seen[j] = true;
+            }
+        }
+
+        nlopt::opt opt(nlopt::LD_MMA, m_a.Size());
+        
+        std::vector<double> lb(m_a.Size(), 0);
+        opt.set_lower_bounds(lb);
+        
+        std::pair<QuadraticDemandsConstantCosts const*, std::vector<int>> func_data(this, firm_products);
+        opt.set_min_objective(ProfitPerFirm, &func_data);
+
+        for (int i = 0; i < m_a.Size(); ++i)
+        {
+            std::pair<QuadraticDemandsConstantCosts const*, int> data(this, i);
+            opt.add_inequality_constraint(ForcePositiveQuantities, &data, 1e-8);
+        }
+
+        opt.set_xtol_rel(1e-4);
+
+        std::vector<double> x(m_a.Size(), 1.0);
+        double minimum;
+
+        try
+        {
+            nlopt::result result = opt.optimize(x, minimum);
+            ColumnVector prices(m_a.Size());
+            for (std::size_t i = 0; i < prices.Size(); ++i)
+                prices[i] = x[i];
+            return result;
+        }
+        catch(std::exception &e) 
+        {
+            std::cout << "nlopt failed: " << e.what() << std::endl;
+            return ColumnVector(m_a.Size());
+        }
     }
 }
 

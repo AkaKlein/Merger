@@ -23,3 +23,5 @@ ColumnVector Diagonal(Matrix const& matrix);
 Matrix operator%(ColumnVector const& v, Matrix const& m);
 
 Matrix operator%(Matrix const& m, ColumnVector const& v);
+
+double norm(ColumnVector const& v);

@@ -75,5 +75,5 @@ set(SOURCES
     main.cpp)
 
 add_executable(Merger ${SOURCES})
-target_link_libraries(Merger Qt5::Widgets Qt5::Charts nlopt m)
+target_link_libraries(Merger Qt5::Widgets Qt5::Charts)
 

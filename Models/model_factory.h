@@ -4,6 +4,7 @@
 
 #include "linear_demands_constant_costs.h"
 #include "linear_demands_linear_costs.h"
+#include "quadratic_demands_constant_costs.h"
 
 class ModelFactory
 {
@@ -20,6 +21,9 @@ public:
                 break;
             case ModelType::LinearDemandsLinearCosts:
                 result = std::make_shared<LinearDemandsLinearCosts>();
+                break;
+            case ModelType::QuadraticDemandsConstantCosts:
+                result = std::make_shared<QuadraticDemandsConstantCosts>();
                 break;
             default:
                 throw std::runtime_error("ModelFactory::CreateModel: should not happen");

@@ -3,41 +3,41 @@
 #include "Utils/algebra.h"
 #include "model_interface.h"
 
-/// @brief A model in which demands follow a quadratic function and costs are constant.
+/// @brief A model in which demands follow a hyperbolic function and costs are constant.
 ///
 /// A model in which the demands vector can be written as
 ///
 /// @f{equation}{
-///     q = a + B' p + E' (p \odot p)  
+///     q = a + B' * 1 / p   
 /// @f}
 ///
 /// where @f$ a @f$ is the income vector, @f$ p @f$ is the vector of prices
-/// @f$ B @f$ is the elasticities' matrix, and @f$ E @f$ is the quadratic 
-/// elasticities' matrix. Besides, it defines a @f$ c @f$ vector that is constant.
-class QuadraticDemandsConstantCosts : public ModelInterface
+/// and @f$ B @f$ is the elasticities' matrix. Besides, it defines a @f$ c @f$
+/// vector that is constant.
+class HyperbolicDemandsConstantCosts : public ModelInterface
 {
 public:
     /// Creates a model with no products. It should only be used to load the model
     /// from a file after calling it.
-    QuadraticDemandsConstantCosts() = default;
+    HyperbolicDemandsConstantCosts() = default;
 
-    /// Creates a model with @p income being @f$ a @f$, @p costs being @f$ c @f$, @p elasticities
-    /// being @f$ B @f$ and @p quad_elasticities being @f$ E @f$ in the model definition.
+    /// Creates a model with @p income being @f$ a @f$, @p costs being @f$ c @f$ and @p elasticities
+    /// being @f$ B @f$ in the model definition.
     ///
     /// @param income The income vector as defined in the model.
     /// @param costs The costs vector as defined in the model.
     /// @param elasticities The matrix of elasticities as defined in the model.
-    /// @param quad_elasticities The matrix of quadratic elasticities defined in the model.
-    QuadraticDemandsConstantCosts(ColumnVector const& income, ColumnVector const& costs, Matrix const& elasticities, Matrix const& quad_elasticities);
+    HyperbolicDemandsConstantCosts(ColumnVector const& income, ColumnVector const& costs, Matrix const& elasticities);
 
 
     /*** Functions to get information about the model ***/
 
     /// Returns the type of the model.
-    virtual ModelType GetType() const override final { return ModelType::QuadraticDemandsConstantCosts; }
+    virtual ModelType GetType() const override final { return ModelType::HyperbolicDemandsConstantCosts; }
 
     /// Returns the number of products.
     virtual int GetNumberOfProducts() const override final { return m_a.Size(); }
+
 
     /// Computes the equilibrium prices of the model.    
     virtual ColumnVector ComputePrices() const override final;
@@ -108,9 +108,6 @@ private:
 
     /// Elasticities' matrix.
     Matrix m_B;
-
-    /// Quadratic Elasticities' matrix.
-    Matrix m_E;
 
     /// Merger matrix.
     Matrix m_D;

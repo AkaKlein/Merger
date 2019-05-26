@@ -3,7 +3,7 @@
 #include "Utils/algebra.h"
 #include "model_interface.h"
 
-/// @brief A model in which demands follow a quadratic function and costs are constant.
+/// @brief A model in which demands follow a quadratic function and costs are linear.
 ///
 /// A model in which the demands vector can be written as
 ///
@@ -13,28 +13,29 @@
 ///
 /// where @f$ a @f$ is the income vector, @f$ p @f$ is the vector of prices
 /// @f$ B @f$ is the elasticities' matrix, and @f$ E @f$ is the quadratic 
-/// elasticities' matrix. Besides, it defines a @f$ c @f$ vector that is constant.
-class QuadraticDemandsConstantCosts : public ModelInterface
+/// elasticities' matrix. Besides, it defines a @f$ v @f$ and a @f$ w @f$ vector that is constant.
+class QuadraticDemandsLinearCosts : public ModelInterface
 {
 public:
     /// Creates a model with no products. It should only be used to load the model
     /// from a file after calling it.
-    QuadraticDemandsConstantCosts() = default;
+    QuadraticDemandsLinearCosts() = default;
 
-    /// Creates a model with @p income being @f$ a @f$, @p costs being @f$ c @f$, @p elasticities
+    /// Creates a model with @p income being @f$ a @f$, @p linear_costs being @f$ v @f$, quadratic_costs @f$ w @f$, @p elasticities
     /// being @f$ B @f$ and @p quad_elasticities being @f$ E @f$ in the model definition.
     ///
     /// @param income The income vector as defined in the model.
-    /// @param costs The costs vector as defined in the model.
+    /// @param linear_costs The linear costs vector as defined in the model.
+    /// @param quadratic_costs The quadratic costs vector as defined in the model. 
     /// @param elasticities The matrix of elasticities as defined in the model.
     /// @param quad_elasticities The matrix of quadratic elasticities defined in the model.
-    QuadraticDemandsConstantCosts(ColumnVector const& income, ColumnVector const& costs, Matrix const& elasticities, Matrix const& quad_elasticities);
+    QuadraticDemandsLinearCosts(ColumnVector const& income, ColumnVector const& linear_costs, ColumnVector const& quadratic_costs, Matrix const& elasticities, Matrix const& quad_elasticities);
 
 
     /*** Functions to get information about the model ***/
 
     /// Returns the type of the model.
-    virtual ModelType GetType() const override final { return ModelType::QuadraticDemandsConstantCosts; }
+    virtual ModelType GetType() const override final { return ModelType::QuadraticDemandsLinearCosts; }
 
     /// Returns the number of products.
     virtual int GetNumberOfProducts() const override final { return m_a.Size(); }
@@ -50,7 +51,7 @@ public:
     /// Computes the costs of the model in equilibrium.
     ///
     /// @param quantities The equilibrium quantities.
-    virtual ColumnVector ComputeCosts(ColumnVector const& quantities) const override final { (void)quantities; return m_c; }
+    virtual ColumnVector ComputeCosts(ColumnVector const& quantities) const override final;
 
     /// Computes the profits of the model in equilibrium.
     ///
@@ -103,8 +104,11 @@ private:
     /// Income vector.
     ColumnVector m_a;
 
-    /// Costs vector.
-    ColumnVector m_c;
+    /// Linear Costs vector.
+    ColumnVector m_v;
+
+    /// Quadratic Costs vector.
+    ColumnVector m_w;
 
     /// Elasticities' matrix.
     Matrix m_B;

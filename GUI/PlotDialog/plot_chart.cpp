@@ -1,5 +1,7 @@
 #include "plot_chart.h"
 
+#include <cmath>
+
 #include <QtCharts/QLineSeries>
 #include <QtCharts/QScatterSeries>
 #include <QtCharts/QValueAxis>
@@ -131,9 +133,11 @@ ModelPlotData PlotChart::ComputeDataForModel(int /*model_index*/, ModelInterface
     result.m_profit_end_range = std::numeric_limits<double>::min();
     result.m_quantity_start_range = std::numeric_limits<double>::max();
     result.m_quantity_end_range = std::numeric_limits<double>::min();
+    if (result.m_price_start_range > result.m_price_end_range)
+        std::swap(result.m_price_start_range, result.m_price_end_range);
 
     // Populate the series and update the ranges.
-    for (double p = result.m_price_start_range; p <= result.m_price_end_range; p += optimum_prices[m_product_index] * 0.01)
+    for (double p = result.m_price_start_range; p <= result.m_price_end_range; p += std::fabs(optimum_prices[m_product_index]) * 0.01)
     {
         // Change the price of the selected product.
         ColumnVector prices = optimum_prices;

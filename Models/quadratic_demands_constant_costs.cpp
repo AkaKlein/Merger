@@ -63,7 +63,7 @@ ColumnVector QuadraticDemandsConstantCosts::ComputePrices() const
     ColumnVector aux;
     ColumnVector p(m_a.Size());
     for (int i = 0; i < p.Size(); ++i)
-        p[i] = 0;
+        p[i] = 10;
 
     do
     {

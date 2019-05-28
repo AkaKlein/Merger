@@ -58,7 +58,7 @@ set(SOURCES
     Models/hyperbolic_demands_constant_costs.cpp
     Models/hyperbolic_demands_constant_costs.h
     Models/hyperbolic_demands_linear_costs.cpp
-    Model/hyperbolic_demands_linear_costs.h
+    Models/hyperbolic_demands_linear_costs.h
     Models/linear_demands_constant_costs.cpp
     Models/linear_demands_constant_costs.h
     Models/linear_demands_linear_costs.cpp

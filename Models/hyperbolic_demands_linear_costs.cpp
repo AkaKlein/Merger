@@ -46,8 +46,8 @@ ColumnVector HyperbolicDemandsLinearCosts::ComputePrices() const
         {
             for (int j = 0; j < m_a.Size(); ++j)
             {
-                double partial_q_i_partial_p_j = (-1) * m_B[i][j] * (1 / (p[j] * p[j]));
-                double partial_q_j_partial_p_i = (-1) * m_B[j][i] * (1 / (p[i] * p[i]));
+                double partial_q_i_partial_p_j = -m_B[i][j] * (1 / (p[j] * p[j]));
+                double partial_q_j_partial_p_i = -m_B[j][i] * (1 / (p[i] * p[i]));
                 jacobian[i][j] = partial_q_i_partial_p_j + m_D[i][j] * partial_q_j_partial_p_i;
 
                 for (int k = 0; k < m_a.Size(); ++k)
@@ -85,8 +85,8 @@ ColumnVector HyperbolicDemandsLinearCosts::ComputePrices() const
 
 ColumnVector HyperbolicDemandsLinearCosts::ComputeQuantities(ColumnVector const& prices) const
 {
-    ColumnVector inverse_prices;
-    for (int i = 0; i < prices.Size(), ++i)
+    ColumnVector inverse_prices(prices.Size());
+    for (int i = 0; i < prices.Size(); ++i)
     {
         inverse_prices[i] = 1 / prices[i];
     }
@@ -123,7 +123,7 @@ void HyperbolicDemandsLinearCosts::SaveToFile(string const& file_path) const
 {
     ofstream fout(file_path);
 
-    fout << GetType() << " " << m_a << ' ' << m_v << ' ' << m_w << ' ' << m_B << ' ' << m_E << ' ' << m_D << endl;
+    fout << GetType() << " " << m_a << ' ' << m_v << ' ' << m_w << ' ' << m_B << ' ' << m_D << endl;
 }
 
 void HyperbolicDemandsLinearCosts::LoadFromFile(string const& file_path)
@@ -135,17 +135,17 @@ void HyperbolicDemandsLinearCosts::LoadFromFile(string const& file_path)
     if (type != ModelTypeToCompactString(GetType()))
         throw runtime_error("The model is not correct");
         
-    fin >> m_a >> m_v >> m_w >> m_B >> m_E >> m_D;
+    fin >> m_a >> m_v >> m_w >> m_B >> m_D;
 }
 
 std::shared_ptr<ModelInterface> HyperbolicDemandsLinearCosts::Clone() const
 {
-    auto res = std::make_shared<HyperbolicDemandsLinearCosts>(m_a, m_v, m_w, m_B, m_E);
+    auto res = std::make_shared<HyperbolicDemandsLinearCosts>(m_a, m_v, m_w, m_B);
     res->m_D = m_D;
     return std::move(res);
 }
 
 std::shared_ptr<ModelInterface> HyperbolicDemandsLinearCosts::CloneWithoutMergers() const
 {
-    return std::make_shared<HyperbolicDemandsLinearCosts>(m_a, m_v, m_w, m_B, m_E);
+    return std::make_shared<HyperbolicDemandsLinearCosts>(m_a, m_v, m_w, m_B);
 }

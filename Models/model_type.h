@@ -5,8 +5,8 @@
 
 enum class ModelType
 {
-    HyperbolicDemandsConstantCosts
-    HyperbolicDemandLinearCosts
+    HyperbolicDemandsConstantCosts,
+    HyperbolicDemandsLinearCosts,
     LinearDemandsConstantCosts,
     LinearDemandsLinearCosts,
     QuadraticDemandsConstantCosts, 

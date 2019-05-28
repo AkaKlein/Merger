@@ -19,23 +19,66 @@ HyperbolicDemandsConstantCosts::HyperbolicDemandsConstantCosts(ColumnVector cons
 
 ColumnVector HyperbolicDemandsConstantCosts::ComputePrices() const
 {
-    ColumnVector result;
-    ColumnVector q = ComputeQuantities(result);
-    for (int i = 0; i < prices.Size(); ++i)
+    // Construct a vector with the first order conditions functions of the profit.
+    auto GetFOC = [this](ColumnVector const& p)
     {
-        for (int j = 0; j < m_a.Size(); ++j)
+        ColumnVector result(p.Size());
+        for (int i = 0; i < p.Size(); ++i)
         {
-            result[i] = ((p[i] - c[i]) * m_B[j][i] * m_D[j][i]) / q[j];
+            result[i] = ComputeQuantities(p)[i];
+            for (int j = 0; j < m_a.Size(); ++j)
+            {
+                double partial_q_j_partial_p_i = (-1) * m_B[j][i] * (1 / (p[i] * p[i]));
+                result[i] += m_D[i][j] * (p[j] - m_c[j]) * partial_q_j_partial_p_i;
+            }
         }
-    }
+        return result;
+    };
 
+    // Construct a function to get the Jacobian matrix.
+    auto GetJacobian = [this](ColumnVector const& p)
+    {
+        Matrix jacobian(m_a.Size(), m_a.Size());
+        for (int i = 0; i < m_a.Size(); ++i)
+        {
+            for (int j = 0; j < m_a.Size(); ++j)
+            {
+                double partial_q_i_partial_p_j = (-1) * m_B[i][j] * (1 / (p[j] * p[j]));
+                double partial_q_j_partial_p_i = (-1) * m_B[j][i] * (1 / (p[i] * p[i]));
+                jacobian[i][j] = partial_q_i_partial_p_j + m_D[i][j] * partial_q_j_partial_p_i;
+                if (i == j)
+                {
+                    for (int k = 0; k < m_a.Size(); ++k)
+                    {
+                        double partial2_q_k_partial2_p_i = 2 * m_B[k][i] * (1 / (p[i] * p[i] * p[i]));
+                        jacobian[i][j] += m_D[i][k] * (p[k] - m_c[k]) * partial2_q_k_partial2_p_i;
+                    }
+                }
+            }
+        }
+        return jacobian;
+    };
 
+    // Initial prices.
+    ColumnVector aux;
+    ColumnVector p(m_a.Size());
+    for (int i = 0; i < p.Size(); ++i)
+        p[i] = 10;
+
+    do
+    {
+        std::cerr << p << std::endl << GetJacobian(p) << std::endl;
+        aux = p - GetJacobian(p).Inverse() * GetFOC(p);
+        swap(p, aux);
+    } while (norm(p - aux) > 1e-6);
+
+    return p;
 }
 
 ColumnVector HyperbolicDemandsConstantCosts::ComputeQuantities(ColumnVector const& prices) const
 {
-    ColumnVector inverse_prices;
-    for (int i = 0; i < prices.Size(), ++i)
+    ColumnVector inverse_prices(prices.Size());
+    for (int i = 0; i < prices.Size(); ++i)
     {
         inverse_prices[i] = 1 / prices[i];
     }

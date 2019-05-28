@@ -12,7 +12,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 
 if (WIN32)
-    set(CMAKE_PREFIX_PATH "E:\\Qt\\5.11.2\\mingw53_32\\" )
+    set(CMAKE_PREFIX_PATH "C:\\Qt\\5.12.3\\mingw73_64\\" )
 else()
     set(CMAKE_PREFIX_PATH "/opt/Qt/5.11.2/gcc_64/" )
 endif()

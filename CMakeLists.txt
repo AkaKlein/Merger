@@ -14,7 +14,7 @@ set(CMAKE_AUTOUIC ON)
 if (WIN32)
     set(CMAKE_PREFIX_PATH "C:\\Qt\\5.12.3\\mingw73_64\\" )
 else()
-    set(CMAKE_PREFIX_PATH "/opt/Qt/5.11.2/gcc_64/" )
+    set(CMAKE_PREFIX_PATH "/opt/Qt/5.12.3/gcc_64/" )
 endif()
 
 find_package(Qt5Widgets CONFIG REQUIRED)
@@ -55,6 +55,10 @@ set(SOURCES
     GUI/PlotDialog/plot_dialog.h
     GUI/PlotDialog/select_models_dialog.cpp
     GUI/PlotDialog/select_models_dialog.h
+    Models/hyperbolic_demands_constant_costs.cpp
+    Models/hyperbolic_demands_constant_costs.h
+    Models/hyperbolic_demands_linear_costs.cpp
+    Models/hyperbolic_demands_linear_costs.h
     Models/linear_demands_constant_costs.cpp
     Models/linear_demands_constant_costs.h
     Models/linear_demands_linear_costs.cpp
@@ -62,6 +66,10 @@ set(SOURCES
     Models/model_factory.h
     Models/model_interface.h
     Models/model_type.h
+    Models/quadratic_demands_constant_costs.cpp
+    Models/quadratic_demands_constant_costs.h
+    Models/quadratic_demands_linear_costs.cpp
+    Models/quadratic_demands_linear_costs.h
     Utils/algebra.cpp
     Utils/algebra.h
     Utils/column_vector.cpp

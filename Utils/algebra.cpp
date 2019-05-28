@@ -1,5 +1,7 @@
 #include "algebra.h"
 
+#include <cmath>
+
 ColumnVector operator*(Matrix const& matrix, ColumnVector const& v)
 {
     ColumnVector result(matrix.Rows());
@@ -67,3 +69,11 @@ Matrix operator%(ColumnVector const& v, Matrix const& m)
 }
 
 Matrix operator%(Matrix const& m, ColumnVector const& v) { return v % m; }
+
+double norm(ColumnVector const& v)
+{
+    double result = 0;
+    for (int i = 0; i < v.Size(); ++i)
+        result += v[i] * v[i];
+    return std::sqrt(result);
+}

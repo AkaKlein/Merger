@@ -56,7 +56,7 @@ void LinearDemandsConstantCosts::SaveToFile(string const& file_path) const
 {
     ofstream fout(file_path);
 
-    fout << "LinearDemandsConstantCosts " << m_a << ' ' << m_c << ' ' << m_B << ' ' << m_D << endl;
+    fout << GetType() << " " << m_a << ' ' << m_c << ' ' << m_B << ' ' << m_D << endl;
 }
 
 void LinearDemandsConstantCosts::LoadFromFile(string const& file_path)
@@ -65,7 +65,7 @@ void LinearDemandsConstantCosts::LoadFromFile(string const& file_path)
 
     string type;
     fin >> type;
-    if (type != "LinearDemandsConstantCosts")
+    if (type != ModelTypeToCompactString(GetType()))
         throw runtime_error("The model is not correct");
         
     fin >> m_a >> m_c >> m_B >> m_D;

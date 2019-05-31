@@ -94,7 +94,10 @@ sdfsfs
 \subsubsection{Frita}
 sdfsdffs
 
-\section{Linear Demands with Constant Costs}
+\section{Models}
+
+
+\subsection{Linear Demands with Constant Marginal Costs}
 Let $N$ be the number of products, and $\mathcal{N} = \{1, 2, \dots, N\}$.
 
 Let $q_k (p)$ be the demand of the $k$-th good. Because it is a linear demand, its curve is defined as
@@ -109,6 +112,19 @@ Let $m$ be a firm that produces $\mathcal{N}_m \subseteq \mathcal{N}$. Then, its
 \pi_m(p) = \sum_{j \in \mathcal{N}_m} (p_j - c_j)\cdot q_j(p)
 \end{equation*}
 
+And its costs $C_j$ are characterized by
+
+\begin{equation*}
+C_j (q_j)= f_j + v_j \cdot q_j
+\end{equation*}
+
+Where $j \subseteq \mathcal{N}_m$. Thus, marginal costs are
+
+\begin{equation*}
+c_j = \frac{\partial C_j(q_j)}{\partial q_j}= v_j
+\end{equation*}
+
+
 The firm, then, seeks to maximize its profit by setting their prices according to the following formula
 
 \begin{equation*}
@@ -120,7 +136,7 @@ If we derive with respect to $p_k$ where $k\in \mathcal{N}_m$, then we obtain
 \begin{eqnarray*}
 \frac{\partial\pi_m(p)}{\partial p_k} &=& \frac{\partial}{\partial p_k} \sum_{j \in \mathcal{N}_m} (p_j - c_j) \cdot q_j(p) \\
 &=& \sum_{j \in \mathcal{N}_m} \frac{\partial}{\partial p_k} \left[(p_j - c_j) \cdot q_j(p)\right] \\
-&=& \sum_{j \in \mathcal{N}_m} \frac{\partial (p_j - c_j)}{\partial p_k} \cdot q_j(p) + \frac{\partial q_j(p)}{\partial p_k} \cdot (p_j - c_j)\\
+&=& \sum_{j \in \mathcal{N}_m} \frac{\partial (p_j - c_j)}{\partial p_k} \cdot q_j(p) + \sum_{j \in \mathcal{N}_m} \frac{\partial q_j(p)}{\partial p_k} \cdot (p_j - c_j)\\
 &=& q_k(p) + \sum_{j \in \mathcal{N}_m} b_{jk} \cdot (p_j - c_j) 
 \end{eqnarray*}
 
@@ -160,7 +176,7 @@ p = (B^t + (D \circ B))^{-1}((D \circ B) c - a)
 \end{equation*}
 
 
-\section{Linear Demands with Linear Costs}
+\subsection{Linear Demands with Linear Marginal Costs}
 
 Let $N$ be the number of products, and $\mathcal{N} = \{1, 2, \dots, N\}$.
 
@@ -176,39 +192,128 @@ Let $m$ be a firm that produces $\mathcal{N}_m \subseteq \mathcal{N}$. Then, its
 \pi_m(p) = \sum_{j \in \mathcal{N}_m} (p_j - c_j)\cdot q_j(p)
 \end{equation*}
 
+The costs $C_j$ are characterized by
+
+\begin{equation*}
+C(q_j) = f + v_j \cdot q_j + \frac{w_j}{2} \cdot q_j ^ {2}
+\end{equation*}
+
+where $j \subseteq \mathcal{N}_m$, $f$ is a constant fixed cost of production, $v$ is the variable cost and $w$ is a quadratic variable cost arising from the production of an additional unit of $q_j$. Thus, marginal costs are
+
+\begin{equation*}
+c_j = \frac{\partial C(q_j)}{\partial q_j}= v_j + w_j \cdot q_j.
+\end{equation*}
 The firm, then, seeks to maximize its profit by setting their prices according to the following formula
 
 \begin{equation*}
 \max_{\{p_j ~ | ~ j \in \mathcal{N}_m\}} \pi_m(p)
 \end{equation*}
 
-Because costs are no longer constant, we must compute the marginal costs $c_j$. Then,
+If we derive with respect to $p_k$, where $k \subseteq \mathcal{N}_m$, then we obtain
+
+\begin{eqnarray*}
+\frac{\partial\pi_m(p)}{\partial p_k} &=& \frac{\partial}{\partial p_k} \sum_{j \in \mathcal{N}_m} (p_j - c_j) \cdot q_j(p) \\
+&=& \sum_{j \in \mathcal{N}_m} \frac{\partial}{\partial p_k} \left[(p_j - c_j) \cdot q_j(p)\right] \\
+&=& \sum_{j \in \mathcal{N}_m} \frac{\partial (p_j - c_j)}{\partial p_k} \cdot q_j(p) + \sum_{j \in \mathcal{N}_m} \frac{\partial q_j(p)}{\partial p_k} \cdot (p_j - c_j)\\
+&=& q_k(p) + \sum_{j \in \mathcal{N}_m} b_{jk} \cdot p_j - \sum_{j \in \mathcal{N}_m} b_{jk} \cdot v_j - 2 \cdot \sum_{j \in \mathcal{N}_m} b_{jk} \cdot w_j \cdot q_j (p) 
+\end{eqnarray*}
+
+From here we obtain the first order condition
 
 \begin{equation*}
-c_j = \frac{\partial C(q_j)}{\partial q_j}
+q_k(p) + \sum_{j \in \mathcal{N}_m} b_{jk} \cdot p_j - \sum_{j \in \mathcal{N}_m} v_j \cdot b_{jk} - 2 \cdot \sum_{j \in \mathcal{N}_m} w_j \cdot q_j (p) \cdot b_{jk} = 0
 \end{equation*}
+
+It is now useful to introduce a matrix $D$ of size $N \times N$ such that
 
 \begin{equation*}
-C(q_j) = f + v \cdot q_j
+d_{ij} = \left\{
+\begin{tabular}{ll}
+1 & if $i,j$ produced by the same firm\\
+0 & otherwise
+\end{tabular}\right.
 \end{equation*}
 
-Where $f$ is a constant fixed cost of production and $v$ is the variable cost arising from the production of an additional unit of $q_j$. 
+With $D$ we can write the previous first order condition as
 
-\begin{figure}
-\centering
-\includegraphics[scale=0.5]{logo_uab}
-\caption{Patata}
-\end{figure}
+\begin{equation*}
+q_k(p) + \sum_{j \in \mathcal{N}_m} b_{jk} \cdot d_{jk} \cdot p_j - \sum_{j \in \mathcal{N}_m} b_{jk} \cdot d_{jk} \cdot v_j - 2 \cdot \sum_{j \in \mathcal{N}_m} b_{jk} \cdot d_{jk} \cdot w_j \cdot q_j (p) = 0
+\end{equation*}
 
-\begin{table}[]
-\begin{tabular}{lllll}
-1 & 2  & 3 & 4 & 5 \\
-  & 11 &   &   &   \\
-  &    &   & 1 &   \\
-  &    & 1 &   &  
-\end{tabular}
-\caption{Frita}
-\end{table}
+In this model each product is produced by exactly one firm. Therefore, we have one such first order condition for each product. Thus, we can write the system in a more compact way.
+
+\begin{equation*}
+a + B ^ t p + (D \circ B)(p - v - 2 \cdot w \cdot (a + B^t p)) = 0
+\end{equation*}
+
+Isolating for $p$, we obtain the optimum prices
+
+\begin{equation*}
+p = [B^t + (D \circ B) - 2 (D \circ B)(w \circ B^t]^{-1} \cdot [-a + (D \circ B) v + 2 (D \circ B)(w \circ a)]
+\end{equation*}
+
+\subsection{Quadratic Demands with Constant Marginal Costs}
+
+Let $N$ be the number of products, and $\mathcal{N} = {1, 2, ..., N}.$
+Let $q_k(p)$ be the demand of the k-th good. Because it is a linear demand, its curve is defined as 
+\begin{equation*}
+q_k(p) = a_k + \sum_{j=1}^N b_{kj}p_j + \sum_{j=1}^N e_{kj} p_j^2
+\end{equation*}
+
+Let $m$ be a firm tthat produces $\mathcal{N}_m \subseteq \mathcal{N}$. Then, its profit is defined by
+\begin{equation*}
+pi_m(p) = \sum_{j \in \mathcal{N}_m} (p_j - c_j) \cdot q_j(p)
+\end{equation*}
+
+And its costs $C_j$ are characterized by 
+\begin{equation*}
+C_j(q_j) = f_j + vj \cdot q_j
+\end{equation*}
+
+Where $j \subseteq \mathcal{N}_m$. Thus, marginal costs are,
+\begin{equation*}
+c_j = \frac{\partial C_j(q_j)}{\partial q_j} = v_j
+\end{equation*}
+
+The firm, then, seeks to maximize its profit by setting their prices according to the following formula
+\begin{equation*}
+\max_{\{p_j ~ | ~ j \in \mathcal{N}_m\}} \pi_m(p)
+\end{equation*}
+
+If we derive with respect to $p_k$ where $k \in \mathcal{N}_m$, we obtain
+\begin{eqnarray*}
+\frac{\partial pi_m(p)}{\partial p_k} &=& \frac{\partial}{\partial p_k} \sum_{j \in \mathcal{N}_m} (p_j - c_j) \cdot q_j(p)\\
+&=& \sum_{j \in \mathcal{N}_m} \frac{\partial}{\partial	p_k} [(p_j - c_j) \cdot q_j(p)]\\
+&=& \sum_{j \in \mathcal{N}_m]} \frac{\partial (p_j - c_j)}{\partial p_k} \cdot q_j(p) + \sum_{i \in \mathcal{N}_m} \frac{\partial q_j(p)}{\partial p_k} \cdot (p_j - c_j)\\
+&=& q_j(p) + \sum_{j \in \mathcal{N}_m} (b_{jk} + 2 \cdot e_{jk} \cdot p_k) \cdot (p_j - c_j)\\
+\end{eqnarray*}
+
+From here we obtain the first order condition
+\begin{equation*}
+q_j(p) + \sum_{j \in \mathcal{N}_m} (b_{jk} + 2 \cdot e_{jk} \cdot p_k) \cdot (p_j - c_j) = 0
+\end{equation*}
+
+It is useful, now, to introduce a matrix $D$ of size $N \times N$ such that
+\begin{equation*}
+d_{ij} = \left\{
+\begin{tabular}{ll}
+1 & if $i,j$ produced by the same firm\\
+0 & otherwise
+\end{tabular}\right.
+\end{equation*}
+
+With $D$ we can write the previous first order condition as
+
+\begin{equation*}
+q_j(p) + \sum_{j \in \mathcal{N}_m} (d_{jk} \cdot b_{jk} + 2 \cdot d_{jk} \cdot e_{jk} \cdot p_k) \cdot (p_j - c_j) = 0
+\end{equation*}
+
+In this model, each product is produced by exactly one firm. Therefore, we have one such first order condition for each product. Thus, we can write the system in a more compact way.
+\begin{equation*}
+a +(B \circ D) p + (E \circ D) (p \circ p) + ((B \circ D) + 2 (E \circ D) p) (p - c) = 0 
+\end{equation*}
+
+Because this equation cannot be isolated for $p$, we obtain the optimum prices through the Newton-Raphson Method.
 
 An example of reference is \cite{abc}.
 

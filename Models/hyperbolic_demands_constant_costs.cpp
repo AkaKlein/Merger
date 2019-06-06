@@ -105,24 +105,24 @@ bool HyperbolicDemandsConstantCosts::AreProducedBySameFirm(int i, int j) const
     return m_D[i][j];
 }
 
-void HyperbolicDemandsConstantCosts::SaveToFile(string const& file_path) const
-{
-    ofstream fout(file_path);
+//void HyperbolicDemandsConstantCosts::SaveToFile(string const& file_path) const
+//{
+//    ofstream fout(file_path);
+//
+//    fout << GetType() << " " << m_a << ' ' << m_c << ' ' << m_B << ' ' << m_D << endl;
+//}
 
-    fout << GetType() << " " << m_a << ' ' << m_c << ' ' << m_B << ' ' << m_D << endl;
-}
-
-void HyperbolicDemandsConstantCosts::LoadFromFile(string const& file_path)
-{
-    ifstream fin(file_path);
-
-    string type;
-    fin >> type;
-    if (type != ModelTypeToCompactString(GetType()))
-        throw runtime_error("The model is not correct");
-        
-    fin >> m_a >> m_c >> m_B >> m_D;
-}
+//void HyperbolicDemandsConstantCosts::LoadFromFile(string const& file_path)
+//{
+//  ifstream fin(file_path);
+//
+//    string type;
+//    fin >> type;
+//    if (type != ModelTypeToCompactString(GetType()))
+//        throw runtime_error("The model is not correct");
+//        
+//    fin >> m_a >> m_c >> m_B >> m_D;
+//}
 
 std::shared_ptr<ModelInterface> HyperbolicDemandsConstantCosts::Clone() const
 {

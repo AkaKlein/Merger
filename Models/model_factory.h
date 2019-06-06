@@ -2,8 +2,8 @@
 
 #include <memory>
 
-#include "hyperbolic_demands_constant_costs.h"
-#include "hyperbolic_demands_linear_costs.h"
+//#include "hyperbolic_demands_constant_costs.h"
+//#include "hyperbolic_demands_linear_costs.h"
 #include "linear_demands_constant_costs.h"
 #include "linear_demands_linear_costs.h"
 #include "quadratic_demands_constant_costs.h"
@@ -19,12 +19,12 @@ public:
         // Create an empty model.
         switch (model_type)
         {
-            case ModelType::HyperbolicDemandsConstantCosts:
-                result = std::make_shared<HyperbolicDemandsConstantCosts>();
-                break;
-            case ModelType::HyperbolicDemandsLinearCosts:
-                result = std::make_shared<HyperbolicDemandsLinearCosts>();
-                break;
+            //case ModelType::HyperbolicDemandsConstantCosts:
+                //result = std::make_shared<HyperbolicDemandsConstantCosts>();
+                //break;
+            //case ModelType::HyperbolicDemandsLinearCosts:
+                //result = std::make_shared<HyperbolicDemandsLinearCosts>();
+                //break;
             case ModelType::LinearDemandsConstantCosts:
                 result = std::make_shared<LinearDemandsConstantCosts>();
                 break;

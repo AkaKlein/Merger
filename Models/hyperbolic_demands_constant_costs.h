@@ -33,7 +33,7 @@ public:
     /*** Functions to get information about the model ***/
 
     /// Returns the type of the model.
-    virtual ModelType GetType() const override final { return ModelType::HyperbolicDemandsConstantCosts; }
+    //virtual ModelType GetType() const override final { return ModelType::HyperbolicDemandsConstantCosts; }
 
     /// Returns the number of products.
     virtual int GetNumberOfProducts() const override final { return m_a.Size(); }
@@ -83,12 +83,12 @@ public:
     /// Saves the current model values to the given file path.
     ///
     /// @param file_path The path of the file to where the model will be saved.
-    virtual void SaveToFile(std::string const& file_path) const override final;
+    //virtual void SaveToFile(std::string const& file_path) const override final;
 
     /// Loads the model values from the given file path.
     ///
     /// @param file_path The path of the file from where the model has to read its values.
-    virtual void LoadFromFile(std::string const& file_path) override final;
+    //virtual void LoadFromFile(std::string const& file_path) override final;
 
 
     /*** Function to clone ***/

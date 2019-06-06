@@ -55,10 +55,6 @@ set(SOURCES
     GUI/PlotDialog/plot_dialog.h
     GUI/PlotDialog/select_models_dialog.cpp
     GUI/PlotDialog/select_models_dialog.h
-    Models/hyperbolic_demands_constant_costs.cpp
-    Models/hyperbolic_demands_constant_costs.h
-    Models/hyperbolic_demands_linear_costs.cpp
-    Models/hyperbolic_demands_linear_costs.h
     Models/linear_demands_constant_costs.cpp
     Models/linear_demands_constant_costs.h
     Models/linear_demands_linear_costs.cpp

@@ -5,8 +5,8 @@
 
 enum class ModelType
 {
-    HyperbolicDemandsConstantCosts,
-    HyperbolicDemandsLinearCosts,
+    //HyperbolicDemandsConstantCosts,
+    //HyperbolicDemandsLinearCosts,
     LinearDemandsConstantCosts,
     LinearDemandsLinearCosts,
     QuadraticDemandsConstantCosts, 
@@ -19,10 +19,10 @@ inline std::string ModelTypeToCompactString(ModelType type)
 {
     switch (type)
     {
-        case ModelType::HyperbolicDemandsConstantCosts:
-            return "HyperbolicDemandsConstantCosts";
-        case ModelType::HyperbolicDemandsLinearCosts:
-            return "HyperbolicDemandsLinearCosts";
+        //case ModelType::HyperbolicDemandsConstantCosts:
+            //return "HyperbolicDemandsConstantCosts";
+        //case ModelType::HyperbolicDemandsLinearCosts:
+            //return "HyperbolicDemandsLinearCosts";
         case ModelType::LinearDemandsConstantCosts:
             return "LinearDemandsConstantCosts";
         case ModelType::LinearDemandsLinearCosts:
@@ -40,10 +40,10 @@ inline std::string ModelTypeToExtendedString(ModelType type)
 {
     switch (type)
     {
-        case ModelType::HyperbolicDemandsConstantCosts:
-            return "Hyperbolic Demands with Constant Costs";
-        case ModelType::HyperbolicDemandsLinearCosts:
-            return "Hyperbolic Demands with Linear Costs";
+        //case ModelType::HyperbolicDemandsConstantCosts:
+            //return "Hyperbolic Demands with Constant Costs";
+        //case ModelType::HyperbolicDemandsLinearCosts:
+            //return "Hyperbolic Demands with Linear Costs";
         case ModelType::LinearDemandsConstantCosts:
             return "Linear Demands with Constant Costs";
         case ModelType::LinearDemandsLinearCosts:

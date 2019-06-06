@@ -1,6 +1,5 @@
 \documentclass[12pt]{article}
 \renewcommand{\baselinestretch}{1.5}
-
 %%%%%%%%%%packages
 \usepackage[english]{babel}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -28,7 +27,7 @@
 \usepackage{mathptmx}
 \usepackage[explicit]{titlesec}
 \usepackage{pgfplots}
-
+\usepackage{float}
 
 \titleformat{\section}[block]{\filcenter}{\thesection. \MakeUppercase{#1}}{1em}{}
 \titleformat{name=\section, numberless}[block]{\filcenter}{\MakeUppercase{#1}}{1em}{}
@@ -91,7 +90,8 @@ Hello, it's me,
 When we are first introduced into economic theory, we start talking about perfect competition models, where a single supplier's or consumer's decision does not affect the market. However, these models are far from the truth, which raises the question about how market power affects market equilibria.\\
 This has been the conundrum that researchers and policy makers have faced and continue to do so. Theoretically, in the presence of market concentration, firms tend to perceive a higher level of profits, while consumer welfare is reduced. When we translate this theory into the real world, we find that most markets have some concentration of market power, and so we try to measure the impact that changes -or mergers- may have in it. Since this technique relies on quantitative estimations of demand and cost functions, there is some skepticism around it (\cite{peters} Peters, 2006). But even though it may be somewhat limited by the models, researchers do recognize its usefulness. Other researchers focus on the use of merger simulation and its implementation, particularly for antitrust and competition agencies, (\cite{ivaldi} \cite{bjorn} Ivaldi and Verboven, 2005; Bj\"{o}rnerstedt and Verboven, 2015), finding that the models do make correct predictions to an extent. \\
 Another common issue is actually computing the mergers. When teaching oligopolies and mergers, we focus on markets where initially there are two producers, since that leads to relatively simple equations. These allow us to get an intuitive idea about what would happen in a market with three players, and so forth. However, when we want to analyze a market with more than two players, we find that our equations become considerably complex. This is where computer science comes into play, introducing programming into economic theory. This idea is far from new, and Davis (2006) \cite{davis} already defined a theoretical approach to compute mergers with linear demands and constant marginal costs.\\
-Thus, in this project, we continue on Davis's (2006) \cite{davis} and we seek to create a tool that enables researchers, teaching staff, and students to easily compute and better understand the effects of a merger in a market with different characteristics. Therefore, we propose a program that does so for four different combinations of demands and costs, with pure algebraic methods and numerical methods when the former is not possible. We then move on to give user instructions, and move forward by proposing future applications and developments. 
+Thus, in this project, we continue on Davis's (2006) \cite{davis} and we seek to create a tool that enables researchers, teaching staff, and students to easily compute and better understand the effects of a merger in a market with different characteristics. Hence, this project may contribute to better and more precise assessments of competition and market regulation.\\
+Therefore, we propose a program that does so for several combinations of demands and costs, with pure algebraic methods and numerical methods when the former is not possible. In this project we will describe the different models to be used, then move on to give user instructions, and move forward by proposing future applications and developments. 
 
 
 \section{Models}
@@ -156,7 +156,7 @@ q_k(p) - \sum_{j=1}^N q_j(p) \frac{\partial c_j}{\partial p_k} (q_j)d_{jk} + \su
 
 Finally, we need a measure of welfare. For the producer welfare (or surplus), we compute the profits for the prices $p^*$ and quantities $q^*$ at equilibrium. The consumer welfare $CW$, will be computed as follows
 \begin{equation}
-CS = \int_{p^*}^{p(q=0)} q(p) \ dp = \int_0^{q^*} p(q) \ dq \label{consumer_welfare_eq}
+CW = \int_{p^*}^{p(q=0)} q(p) \ dp = \int_0^{q^*} p(q) \ dq \label{consumer_welfare_eq}
 \end{equation}
 
 \subsection{Linear Demands with Constant Marginal Costs}
@@ -198,9 +198,9 @@ Then, optimum quantities are defined by
 q^* = a + B^t \cdot p^*
 \end{equation*}
 
-We are now interested in computing consumer welfare $CS$, following the form in equation \ref{consumer_welfare_eq}. 
+We are now interested in computing consumer welfare $CW$, following the form in equation \ref{consumer_welfare_eq}. 
 \begin{equation*}
-CS = \int_{p^*}^{p(q = 0)} q(p) dq = \frac{-q^*}{b_{kk}} \cdot q^*
+CW = \int_{p^*}^{p(q = 0)} q(p) dq = \frac{-q^*}{b_{kk}} \cdot q^*
 \end{equation*}
 
 \subsection{Linear Demands with Linear Marginal Costs}
@@ -240,9 +240,9 @@ Then, the optimum quantites are defined by
 q^* = a + B^t \cdot p^*
 \end{equation*}
 
-We are now interested in computing consumer welfare $CS$, following the form in equation \ref{consumer_welfare_eq}.
+We are now interested in computing consumer welfare $CW$, following the form in equation \ref{consumer_welfare_eq}.
 \begin{equation*}
-CS = \int_{p^*}^{p(q = 0)} q(p) dq = \frac{-q^*}{b_{kk}} \cdot q^*
+CW = \int_{p^*}^{p(q = 0)} q(p) dq = \frac{-q^*}{b_{kk}} \cdot q^*
 \end{equation*}
 
 \subsection{Quadratic Demands with Constant Marginal Costs}
@@ -290,9 +290,9 @@ Then, the optimum quantities are defined by
 q^* = a + B^t p^* + E^t p^{*2}
 \end{equation*}
 
-We are now interested in computing consumer welfare $CS_i$ following the form in equation \ref{consumer_welfare_eq}.
+We are now interested in computing consumer welfare $CW_i$ following the form in equation \ref{consumer_welfare_eq}.
 \begin{equation*}
-CS_i = \int_0^{q_k^*} p_k(q_k) \ dq_k = \int_o^{q_k^*} (\frac{-b_{kk}}{2e_{kk}} - \frac{\sqrt{\Delta}}{2e_{kk}} \ dq_k
+CW_k = \int_0^{q_k^*} p_k(q_k) \ dq_k = -\frac{b_{kk}}{2 \cdot e_{kk}} \cdot q^* -\frac{1}{2 \cdot e_{kk}} \cdot \bigg[\frac{2}{12 \cdot e_{kk}} (b_{kk}^2 - 4 \cdot e_{kk}(H - q))^{\frac{3}{2}}\bigg]_0^{q^*} - p_k^* \cdot q_k^*
 \end{equation*}
 
 See appendix 1 for the computation of the integral in this model.  
@@ -342,34 +342,171 @@ Then, the optimum quantities are defined by
 q^* = a + B^t p^* + E^t p^{*2}
 \end{equation*}
 
-We are now interested in computing consumer welfare $CS_i$ following the form in equation \ref{consumer_welfare_eq}.
+We are now interested in computing consumer welfare $CW_i$ following the form in equation \ref{consumer_welfare_eq}.
 \begin{equation*}
-CS_i = \int_0^{q_k^*} p_k(q_k) \ dq_k = \int_o^{q_k^*} (\frac{-b_{kk}}{2e_{kk}} - \frac{\sqrt{\Delta}}{2e_{kk}} \ dq_k
+CW_k = \int_0^{q_k^*} p_k(q_k) \ dq_k = -\frac{b_{kk}}{2 \cdot e_{kk}} \cdot q^* -\frac{1}{2 \cdot e_{kk}} \cdot \bigg[\frac{2}{12 \cdot e_{kk}} (b_{kk}^2 - 4 \cdot e_{kk}(H - q))^{\frac{3}{2}}\bigg]_0^{q^*} - p_k^* \cdot q_k^*
 \end{equation*}
 
 See appendix 1 for the computation of the integral in this model.  
 
-\section{Conclusion}
+\section{Users' Experience}
 
-An example of reference is \cite{abc}.
+Since the objective of the project is to ease merger simulations, we have chosen to make the program as simple and straightforward as possible. However, it is important to choose the correct settings to obtain the desired results.
+\begin{figure}
+\begin{center}
+  \includegraphics[width=10 cm]{home}
+\caption{\label{home}Home page of the prgram}
+\end{center}
+\end{figure}
+
+In figure \ref{home}, we can see the initial interface the user faces. The user should first choose the model that they whish to compute from the drop list at "Model Type". Once the model is chosen, the user should upload a data set fulfilling the required charactheristics. For linear demands, the user should upload the vector $a$ and matrix $B$, and for quadratic demands they should also upload the matrix $E$. For constant marginal costs, the user should upload $v$ or $c$, and in the case of lineal marginal costs, it would be $v$ and $w$. In any case, the user should upload the matrix $D$, which would be an identity matrix if each firm produces only one product. In table \ref{tab:sample}, we see the order in which the vectors and matrices should be. Note that, the size of the vectors and matrices should be indicated before these start. For a matrix, the size $(n \times m)$ refers to columns and rows respectively. The data should be uploaded as a text file (.txt). To ensure that the loaded model is the correct one, the program is set to read the name of the model without spaces at the beggining of the file (i.e. "QuadraticDemandsLinearCosts").
+
+\begin{table}
+\begin{center}
+\begin{tabular}{c|c|c|c} 
+Linear-Constant&Linear-Linear&Quadratic-Constant&Quadratic-Linear\\
+\hline
+\hline
+a&a&a&a\\
+\hline
+c&v&c&v\\
+\hline
+&w&&w\\
+\hline
+B&B&B&B\\
+\hline
+&&E&E\\
+\hline
+D&D&D&D\\
+\hline
+\end{tabular}
+\caption{\label{tab:sample}Input Data Order}
+\end{center}
+\end{table}
+
+To upload the data, it is enough to click on select data, choose the desired file, and then click on load data. With that, the program will automatically compute equilibrium prices $p^*$, equilibrium quantities $q^*$, costs -if required-, profits $\pi$ and consumer welfare $CW$. In figure \ref{first_results} we can see the output after loading the data for a model with quadratic demands and linear marginal costs. This results were obtained by using the data in table \ref{tab:input}, and an identity matrix for $D$.
+
+\begin{figure}
+\begin{center}
+  \includegraphics[width=10 cm]{first_results}
+\caption{\label{first_results} Output after Loading Data}
+\end{center}
+\end{figure}
+
+\begin{table}
+\begin{center}
+\begin{minipage}{1in}
+\begin{tabular}{c}
+a\\
+\hline
+\hline
+3\\
+\hline
+30\\
+30\\
+30\\
+\end{tabular}
+\end{minipage}
+\begin{minipage}{1in}
+\begin{tabular}{c}
+v\\
+\hline
+\hline
+3\\
+\hline
+2\\
+2\\
+2\\
+\end{tabular}
+\end{minipage}
+\begin{minipage}{1in}
+\begin{tabular}{c}
+w\\
+\hline
+\hline
+3\\
+\hline
+0.5\\
+0.5\\
+0.5\\
+\end{tabular}
+\end{minipage}
+\begin{minipage}{1.5in}
+\begin{tabular}{ccc}
+&B&\\
+\hline
+\hline
+3&3&\\
+\hline
+-4&1.9&1.9\\
+1.9&-4&1.9\\
+1.9&1.9&-4\\
+\end{tabular}
+\end{minipage}
+\begin{minipage}{1in}
+\begin{tabular}{ccc}
+&E&\\
+\hline
+\hline
+3&3&\\
+\hline
+-1&0&0\\
+0&-1&0\\
+0&0&-1\\
+\end{tabular}
+\end{minipage}
+\caption{\label{tab:input}Data Set Introduced to Obtain Figure \ref{first_results}}
+\end{center}
+\end{table}
+
+From here users can compute a merger, by clicking on "Merge". In figure \ref{merge_1}, we see the initial interface the user is faced with. By clicking "Add group", the user can create a separate list of firms that would merge. It is possible to create several groups, and if every group contains only one product the market remains the same. As we see in figure \ref{merge_2}, the user may add products by selecting them on the left and clicking "Add". Similarly, be selecting products on the right and clicking "Remove" they can do exactly that. Once the new market concentration is determined, the user should click "Apply".
+\begin{figure}
+\begin{center}
+\begin{minipage}{2.75in}
+  \includegraphics[width=5 cm]{merge_1}
+\caption{\label{merge_1} Initial Interface of the Merge Function}
+\end{minipage}
+\begin{minipage}{2.75in}
+ \includegraphics[width=5 cm]{merge_2}
+\caption{\label{merge_2} Interface to Create Merging Groups}
+\end{minipage}
+\end{center}
+\end{figure}
+
+In figure \ref{after_merger}, we see the new market equilibrium values after the merger. Note that this one is called "Model 2", since the parameters are not the same as in the previous phase. From this point, it is interesting to be able to compare the two models, which we can do by clicking on "Compare".
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=10 cm]{after_merger}
+\caption{\label{after_merger} New Market Equilibrium after Merger}
+\end{center}
+\end{figure}
+
+The function "Compare" returns the difference between pre and post-merger values. As we can see in figure \ref{compare}, prices and profits have increased after the merger, while quantities, costs and consumer welfare have dropped. Thus, the compare function highlights the variation, allowing the user to better comprehend the consequences of the merger. 
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=10 cm]{compare}
+\caption{\label{compare} Output of the Compare Function for Model 1 and Model 2}
+\end{center}
+\end{figure}
+
+Going back to figure \ref{after_merger}, we see that there is also de function "Plot".
+\begin{figure}
+\begin{center}
+\begin{minipage}{2.75in}
+  \includegraphics[width=5 cm]{plot_1}
+\caption{\label{plot_1} Plot for Model 2}
+\end{minipage}
+\begin{minipage}{2.75in}
+ \includegraphics[width=5 cm]{plot_2}
+\caption{\label{plot_2} Plot for Model 1 and Model 2}
+\end{minipage}
+\end{center}
+\end{figure}
+
+\section{Conclusion}
 
 \newpage
 \begin{thebibliography}{9}
-
-\bibitem{abc}
-ABC: A System for Sequential Synthesis and Verification. Berkeley Logic Synthesis and Verification Group.
- 
-\bibitem{dc}
-Design Compiler, from Synopsys. \url{http://www.synopsys.com/Tools/Implementation/RTLSynthesis/DesignCompiler/Pages/default.aspx}
-
-\bibitem{cudd}
-CUDD: CU Decision Diagram Package. Fabio Somenzi, Colorado University. \url{http://vlsi.colorado.edu/~fabio/CUDD/}.
-
-\bibitem{elmore48}
-W. C. Elmore. The Transient Response of Damped Linear Networks with Particular Regard to Wideband Amplifiers. Journal of Applied Physics, Vol. 19, 1948.
-
-\bibitem{nangate_library}
-NanGate Open Cell Library. \url{http://www.nangate.com/?page_id=22}.
 
 \bibitem{peters}
 Peters, C. (2006). Evaluating the performance of merger simulation: Evidence from the US airline industry. The Journal of law and economics, 49(2), 627-649.
@@ -392,7 +529,7 @@ Davis, P. (2006). Coordinated effects merger simulation with linear demands.
 \listoftables
 
 \newpage
-\section{Appendix 1: Computation of the Integral of the Consumer Welfare for Quadratic Models}
+\section*{Appendix 1: Computation of the Integral of the Consumer Welfare for Quadratic Models}
 
 Write the demand function as follows,
 \begin{equation} \label{demand}
@@ -405,23 +542,23 @@ H = a_k + \sum_{j \neq k} b_{jk} \cdot p_j + \sum_{j \neq k} e_{jk} \cdot p_j^2
 \end{equation}
 
 Combining \ref{demand} and \ref{H}, and equalizing to $0$ we obtain,
-\begin{equation}
+\begin{equation*}
 0 = H + b_{kk} \cdot p_k + e_{kk} \cdot p_{kk}^2
-\end{equation}
+\end{equation*}
 
 This follows the structure of a second degree equation, which can be easily solved. Then, consider the following,
-\begin{equation}
+\begin{equation*}
 \Delta = b_{kk}^2 - 4 \cdot e_{kk} (H - q_k) = b_{kk}^2 - 4 \cdot e_{kk} \cdot H + 4 \cdot e_{kk} \cdot q_k 
-\end{equation}
+\end{equation*}
 
 Therefore, we obtain,
-\begin{equation}
+\begin{equation*}
 p_k = \frac{-b_{kk}}{2 \cdot e_{kk}} \pm \frac{\sqrt{\Delta}}{2 \cdot e_{kk}}
-\end{equation}
+\end{equation*}
 
-Let us now decide on the sign. Inside $\sqrt{\Delta}$, the factor multiplying $q_k$ is negative, since $e_kk < 0$. Looking at the plots of $y = \sqrt{-x}$ and $y = -\sqrt{-x}$, we can make such an assessment. \\
+Let us now decide on the sign. Inside $\sqrt{\Delta}$, the factor multiplying $q_k$ is negative, since $e_kk < 0$. Looking at the plots of $y = \sqrt{-x}$ and $y = -\sqrt{-x}$, we can make such an assessment.\\
 
-\begin{figure}
+\begin{figure}[H]
     \begin{minipage}{0.45\textwidth}
 \begin{tikzpicture}
 \begin{axis}[
@@ -435,10 +572,11 @@ Let us now decide on the sign. Inside $\sqrt{\Delta}$, the factor multiplying $q
 \addplot+[mark=none,samples=200,unbounded coords=jump] {sqrt(-x)};
 \legend{$y=\sqrt{-x}$}
 \end{axis}
-\end{tikzpicture}        \caption{first figure}
-    \end{minipage}\hfill
-    \begin{minipage}{0.45\textwidth}
-\begin{tikzpicture}
+\end{tikzpicture}        
+\caption{$y = \sqrt{-x}$}
+\end{minipage}\hfill
+\begin{minipage}{0.45\textwidth}
+\begin{tikzpicture} 
 \begin{axis}[
   axis lines=middle,
   clip=false,
@@ -450,10 +588,26 @@ Let us now decide on the sign. Inside $\sqrt{\Delta}$, the factor multiplying $q
 \addplot+[mark=none,samples=200,unbounded coords=jump] {-sqrt(-x)};
 \legend{$y=-\sqrt{-x}$}
 \end{axis}
-\end{tikzpicture}        
-\caption{second figure}
+\end{tikzpicture}       
+\caption{$y = -\sqrt{-x}$}
     \end{minipage}
 \end{figure}
+
+From here, it is clear that the demand function should look like the first one. Since we divide by $2 \cdot e_{kk} <0$, we choose the negative root. Hence,
+\begin{equation*}
+p_k(q_k) = \frac{-b_{kk}}{2 \cdot e_{kk}} - \frac{\sqrt{\Delta}}{2 \cdot e_{kk}}
+\end{equation*}
+
+With this approach, it is easier to compute the are comprised by the producers' revenue and consumer surplus, and then substract the former. Thus, we first want to compute
+\begin{equation} \label{integral}
+\int_0^{q_k^*} p_k(q_k) \ dq_k = -\frac{b_{kk}}{2 \cdot e_{kk}} \cdot q^* -\frac{1}{2 \cdot e_{kk}} \cdot \bigg[\frac{2}{12 \cdot e_{kk}} (b_{kk}^2 - 4 \cdot e_{kk}(H - q))^{\frac{3}{2}}\bigg]_0^{q^*}
+\end{equation}
+
+Finally to obtain the consumer surplus as a measure of consumer welfare, we substract revenue from equation \ref{integral}, such that,
+\begin{equation}
+CW_k= \int_0^{q_k^*} p_k(q_k) \ dq_k  - p_k^* \cdot q_k^*
+\end{equation}
+
 %
 \end{document}
 %--------------------------------------------------------------%

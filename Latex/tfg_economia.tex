@@ -349,9 +349,161 @@ CW_k = \int_0^{q_k^*} p_k(q_k) \ dq_k = -\frac{b_{kk}}{2 \cdot e_{kk}} \cdot q^*
 
 See appendix 1 for the computation of the integral in this model.  
 
-\section{Conclusion}
+\section{Users' Experience}
 
-An example of reference is \cite{abc}.
+Since the objective of the project is to ease merger simulations, we have chosen to make the program as simple and straightforward as possible. However, it is important to choose the correct settings to obtain the desired results.
+\begin{figure}
+\begin{center}
+  \includegraphics[width=10 cm]{home}
+\caption{\label{home}Home page of the prgram}
+\end{center}
+\end{figure}
+
+In figure \ref{home}, we can see the initial interface the user faces. The user should first choose the model that they whish to compute from the drop list at "Model Type". Once the model is chosen, the user should upload a data set fulfilling the required charactheristics. For linear demands, the user should upload the vector $a$ and matrix $B$, and for quadratic demands they should also upload the matrix $E$. For constant marginal costs, the user should upload $v$ or $c$, and in the case of lineal marginal costs, it would be $v$ and $w$. In any case, the user should upload the matrix $D$, which would be an identity matrix if each firm produces only one product. In table \ref{tab:sample}, we see the order in which the vectors and matrices should be. Note that, the size of the vectors and matrices should be indicated before these start. For a matrix, the size $(n \times m)$ refers to columns and rows respectively. The data should be uploaded as a text file (.txt). To ensure that the loaded model is the correct one, the program is set to read the name of the model without spaces at the beggining of the file (i.e. "QuadraticDemandsLinearCosts").
+
+\begin{table}
+\begin{center}
+\begin{tabular}{c|c|c|c} 
+Linear-Constant&Linear-Linear&Quadratic-Constant&Quadratic-Linear\\
+\hline
+\hline
+a&a&a&a\\
+\hline
+c&v&c&v\\
+\hline
+&w&&w\\
+\hline
+B&B&B&B\\
+\hline
+&&E&E\\
+\hline
+D&D&D&D\\
+\hline
+\end{tabular}
+\caption{\label{tab:sample}Input Data Order}
+\end{center}
+\end{table}
+
+To upload the data, it is enough to click on select data, choose the desired file, and then click on load data. With that, the program will automatically compute equilibrium prices $p^*$, equilibrium quantities $q^*$, costs -if required-, profits $\pi$ and consumer welfare $CW$. In figure \ref{first_results} we can see the output after loading the data for a model with quadratic demands and linear marginal costs. This results were obtained by using the data in table \ref{tab:input}, and an identity matrix for $D$.
+
+\begin{figure}
+\begin{center}
+  \includegraphics[width=10 cm]{first_results}
+\caption{\label{first_results} Output after Loading Data}
+\end{center}
+\end{figure}
+
+\begin{table}
+\begin{center}
+\begin{minipage}{1in}
+\begin{tabular}{c}
+a\\
+\hline
+\hline
+3\\
+\hline
+30\\
+30\\
+30\\
+\end{tabular}
+\end{minipage}
+\begin{minipage}{1in}
+\begin{tabular}{c}
+v\\
+\hline
+\hline
+3\\
+\hline
+2\\
+2\\
+2\\
+\end{tabular}
+\end{minipage}
+\begin{minipage}{1in}
+\begin{tabular}{c}
+w\\
+\hline
+\hline
+3\\
+\hline
+0.5\\
+0.5\\
+0.5\\
+\end{tabular}
+\end{minipage}
+\begin{minipage}{1.5in}
+\begin{tabular}{ccc}
+&B&\\
+\hline
+\hline
+3&3&\\
+\hline
+-4&1.9&1.9\\
+1.9&-4&1.9\\
+1.9&1.9&-4\\
+\end{tabular}
+\end{minipage}
+\begin{minipage}{1in}
+\begin{tabular}{ccc}
+&E&\\
+\hline
+\hline
+3&3&\\
+\hline
+-1&0&0\\
+0&-1&0\\
+0&0&-1\\
+\end{tabular}
+\end{minipage}
+\caption{\label{tab:input}Data Set Introduced to Obtain Figure \ref{first_results}}
+\end{center}
+\end{table}
+
+From here users can compute a merger, by clicking on "Merge". In figure \ref{merge_1}, we see the initial interface the user is faced with. By clicking "Add group", the user can create a separate list of firms that would merge. It is possible to create several groups, and if every group contains only one product the market remains the same. As we see in figure \ref{merge_2}, the user may add products by selecting them on the left and clicking "Add". Similarly, be selecting products on the right and clicking "Remove" they can do exactly that. Once the new market concentration is determined, the user should click "Apply".
+\begin{figure}
+\begin{center}
+\begin{minipage}{2.75in}
+  \includegraphics[width=5 cm]{merge_1}
+\caption{\label{merge_1} Initial Interface of the Merge Function}
+\end{minipage}
+\begin{minipage}{2.75in}
+ \includegraphics[width=5 cm]{merge_2}
+\caption{\label{merge_2} Interface to Create Merging Groups}
+\end{minipage}
+\end{center}
+\end{figure}
+
+In figure \ref{after_merger}, we see the new market equilibrium values after the merger. Note that this one is called "Model 2", since the parameters are not the same as in the previous phase. From this point, it is interesting to be able to compare the two models, which we can do by clicking on "Compare".
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=10 cm]{after_merger}
+\caption{\label{after_merger} New Market Equilibrium after Merger}
+\end{center}
+\end{figure}
+
+The function "Compare" returns the difference between pre and post-merger values. As we can see in figure \ref{compare}, prices and profits have increased after the merger, while quantities, costs and consumer welfare have dropped. Thus, the compare function highlights the variation, allowing the user to better comprehend the consequences of the merger. 
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=10 cm]{compare}
+\caption{\label{compare} Output of the Compare Function for Model 1 and Model 2}
+\end{center}
+\end{figure}
+
+Going back to figure \ref{after_merger}, we see that there is also de function "Plot".
+\begin{figure}
+\begin{center}
+\begin{minipage}{2.75in}
+  \includegraphics[width=5 cm]{plot_1}
+\caption{\label{plot_1} Plot for Model 2}
+\end{minipage}
+\begin{minipage}{2.75in}
+ \includegraphics[width=5 cm]{plot_2}
+\caption{\label{plot_2} Plot for Model 1 and Model 2}
+\end{minipage}
+\end{center}
+\end{figure}
+
+\section{Conclusion}
 
 \newpage
 \begin{thebibliography}{9}
@@ -377,7 +529,7 @@ Davis, P. (2006). Coordinated effects merger simulation with linear demands.
 \listoftables
 
 \newpage
-\section{Appendix 1: Computation of the Integral of the Consumer Welfare for Quadratic Models}
+\section*{Appendix 1: Computation of the Integral of the Consumer Welfare for Quadratic Models}
 
 Write the demand function as follows,
 \begin{equation} \label{demand}

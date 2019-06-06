@@ -1,5 +1,7 @@
 #include "quadratic_demands_linear_costs.h"
 
+#include <cmath>
+
 using namespace std;
 
 QuadraticDemandsLinearCosts::QuadraticDemandsLinearCosts(ColumnVector const& income, ColumnVector const& linear_costs, ColumnVector const& quadratic_costs, Matrix const& elasticities, Matrix const& quad_elasticities)
@@ -101,7 +103,26 @@ ColumnVector QuadraticDemandsLinearCosts::ComputeProfits(ColumnVector const& pri
 
 ColumnVector QuadraticDemandsLinearCosts::ComputeConsumerWelfare(ColumnVector const& prices) const
 {
-    return ColumnVector(m_a.Size());
+    ColumnVector cw(m_a.Size());
+
+    ColumnVector opt_q = ComputeQuantities(prices);
+
+    for (int i = 0; i < cw.Size(); ++i)
+    {
+        double c = opt_q[i] - m_B[i][i] * prices[i] - m_E[i][i] * prices[i] * prices[i];
+
+        // Compute the area by solving the integral.
+        cw[i] = -m_B[i][i] * opt_q[i] / (2 * m_E[i][i]) 
+                - ( 
+                    (  
+                       std::pow(m_B[i][i] * m_B[i][i] - 4 * m_E[i][i] * (c - opt_q[i]), 1.5) 
+                     - std::pow(m_B[i][i] * m_B[i][i] - 4 * m_E[i][i] * c, 1.5)
+                    ) 
+                    * 2 / (12 * m_E[i][i])
+                  ) / (2 * m_E[i][i]) - opt_q[i] * prices[i]; 
+    }
+
+    return cw;
 }
 
 void QuadraticDemandsLinearCosts::Merge(int i, int j)

@@ -2,6 +2,7 @@
 
 #include <cmath>
 
+#include <QtCharts/QLegendMarker>
 #include <QtCharts/QLineSeries>
 #include <QtCharts/QScatterSeries>
 #include <QtCharts/QValueAxis>
@@ -114,6 +115,12 @@ void PlotChart::AddData()
         addSeries(data.m_profit_series);
         data.m_profit_series->attachAxis(x_axis);
         data.m_profit_series->attachAxis(right_axis);
+
+        addSeries(data.m_optimum_series);
+        data.m_optimum_series->attachAxis(x_axis);
+        data.m_optimum_series->attachAxis(left_axis);
+
+        legend()->markers(data.m_optimum_series)[0]->setVisible(false);
     }
 }
 
@@ -124,6 +131,7 @@ ModelPlotData PlotChart::ComputeDataForModel(int model_index, ModelInterface con
     // Initialize the series.
     result.m_price_series = new QtCharts::QLineSeries;
     result.m_profit_series = new QtCharts::QLineSeries;
+    result.m_optimum_series = new QtCharts::QLineSeries;
 
     result.m_price_series->setName("Price Model " + QString::number(model_index));
     result.m_profit_series->setName("Profit Model " + QString::number(model_index));
@@ -140,7 +148,7 @@ ModelPlotData PlotChart::ComputeDataForModel(int model_index, ModelInterface con
         std::swap(result.m_price_start_range, result.m_price_end_range);
 
     // Populate the series and update the ranges.
-    for (double p = 0; ; p += std::fabs(optimum_prices[m_product_index]) * 0.01)
+    for (double p = 0; ; p += std::fabs(optimum_prices[m_product_index]) * 0.001)
     {
         // Change the price of the selected product.
         ColumnVector prices = optimum_prices;
@@ -174,6 +182,16 @@ ModelPlotData PlotChart::ComputeDataForModel(int model_index, ModelInterface con
 
     // We want the maximum profit to be at the middle, so adjust the range.
     result.m_profit_end_range += result.m_profit_end_range - result.m_profit_start_range;
+
+    // Add the points for the vertical line through q*.
+    double optimum_quantity = model.ComputeQuantities(optimum_prices)[m_product_index];
+    *result.m_optimum_series << QPointF(optimum_quantity, 0);
+    *result.m_optimum_series << QPointF(optimum_quantity, optimum_prices[m_product_index]);
+    *result.m_optimum_series << QPointF(0, optimum_prices[m_product_index]);
+    
+    QPen pen = result.m_optimum_series->pen();
+    pen.setStyle(Qt::DotLine);
+    result.m_optimum_series->setPen(pen);
 
     return result;
 }

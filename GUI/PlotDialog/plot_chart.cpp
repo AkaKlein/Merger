@@ -117,7 +117,7 @@ void PlotChart::AddData()
     }
 }
 
-ModelPlotData PlotChart::ComputeDataForModel(int /*model_index*/, ModelInterface const& model) const
+ModelPlotData PlotChart::ComputeDataForModel(int model_index, ModelInterface const& model) const
 {
     ModelPlotData result;
 
@@ -125,19 +125,22 @@ ModelPlotData PlotChart::ComputeDataForModel(int /*model_index*/, ModelInterface
     result.m_price_series = new QtCharts::QLineSeries;
     result.m_profit_series = new QtCharts::QLineSeries;
 
+    result.m_price_series->setName("Price Model " + QString::number(model_index));
+    result.m_profit_series->setName("Profit Model " + QString::number(model_index));
+
     // Initialize the ranges.
     ColumnVector optimum_prices = model.ComputePrices();
-    result.m_price_start_range = 0.9 * optimum_prices[m_product_index];
-    result.m_price_end_range = 1.1 * optimum_prices[m_product_index];
+    result.m_price_start_range = 0;
+    result.m_price_end_range = std::numeric_limits<double>::min();
     result.m_profit_start_range = std::numeric_limits<double>::max();
     result.m_profit_end_range = std::numeric_limits<double>::min();
-    result.m_quantity_start_range = std::numeric_limits<double>::max();
+    result.m_quantity_start_range = 0;
     result.m_quantity_end_range = std::numeric_limits<double>::min();
     if (result.m_price_start_range > result.m_price_end_range)
         std::swap(result.m_price_start_range, result.m_price_end_range);
 
     // Populate the series and update the ranges.
-    for (double p = result.m_price_start_range; p <= result.m_price_end_range; p += std::fabs(optimum_prices[m_product_index]) * 0.01)
+    for (double p = 0; ; p += std::fabs(optimum_prices[m_product_index]) * 0.01)
     {
         // Change the price of the selected product.
         ColumnVector prices = optimum_prices;
@@ -145,6 +148,8 @@ ModelPlotData PlotChart::ComputeDataForModel(int /*model_index*/, ModelInterface
 
         // Compute the quantity with the changed price.
         double quantity = model.ComputeQuantities(prices)[m_product_index];
+        if (quantity < 0)
+            break;
 
         // Compute the profit with the changed price.
         ColumnVector profits = model.ComputeProfits(prices);
@@ -160,6 +165,7 @@ ModelPlotData PlotChart::ComputeDataForModel(int /*model_index*/, ModelInterface
         *result.m_profit_series << QPointF(quantity, firm_profit);
 
         // Update the ranges.
+        result.m_price_end_range = p;
         result.m_profit_start_range = std::min(result.m_profit_start_range, firm_profit);
         result.m_profit_end_range = std::max(result.m_profit_end_range, firm_profit);
         result.m_quantity_start_range = std::min(result.m_quantity_start_range, quantity);

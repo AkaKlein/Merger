@@ -45,7 +45,6 @@ PlotDialog::PlotDialog(QWidget* parent, int model_index, ModelInterface const& m
     // Add the plot.
     m_plot_chart = new PlotChart(m_selected_models_by_id);
     m_plot_chart->setAnimationOptions(QtCharts::QChart::SeriesAnimations);
-    m_plot_chart->legend()->hide();
 
     // Connect the product box to the chart.
     connect(product_box, qOverload<int>(&QComboBox::currentIndexChanged), m_plot_chart, &PlotChart::SelectedProductChanged);

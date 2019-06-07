@@ -166,6 +166,10 @@ In this model we will assume that demands are linear, such that
 q_k(p) = a_k + \sum_{j=1}^N b_{kj}p_j
 \end{equation*}
 
+where
+\begin{equation*}
+\sum_{j \neq k} b_{kj} < |b_{kk}|
+\end{equation*}
 Because marginal costs are constant, the costs function $C_j$ will be characterized by
 \begin{equation*}
 C_j (q_j)= f_j + v_j \cdot q_j
@@ -208,6 +212,10 @@ CW = \int_{p^*}^{p(q = 0)} q(p) dq = \frac{-q^*}{b_{kk}} \cdot q^*
 In this model we will assume that demands are linear, such that
 \begin{equation*}
 q_k(p) = a_k + \sum_{j=1}^N b_{kj}p_j
+\end{equation*}
+where
+\begin{equation*}
+\sum_{j \neq k} b_{kj} < |b_{kk}|
 \end{equation*}
 
 Because marginal costs are linear, the costs function $C_j$ will be characterized by
@@ -252,6 +260,10 @@ In this model we will assume that demands are quadratic, such that
 q_k(p) = a_k + \sum_{j=1}^N b_{kj}p_j + \sum_{j=1}^N e_{kj} p_j^2
 \end{equation*}
 
+where
+\begin{equation*}
+\sum_{j \neq k} b_{kj} < |b_{kk}| \ \ and \ \ \sum_{j \neq k} e_{kj} < |e_{kk}|
+\end{equation*}
 
 Because marginal costs are constant, $C_j$ will be characterized by 
 \begin{equation*}
@@ -304,6 +316,11 @@ In this model we will assume that demands are quadratic, such that
 q_k(p) = a_k + \sum_{j = 1}^N b_{kj} p_j + \sum_{j = 1}^N e_{kj}p_j^2
 \end{equation*}
 
+where
+\begin{equation*}
+\sum_{j \neq k} b_{kj} < |b_{kk}| \ \ and \ \ \sum_{j \neq k} e_{kj} < |e_{kk}|
+\end{equation*}
+
 Because marginal costs are quadratic, $C_j$ will be characterized by
 \begin{equation*}
 C_j(q_j) = f_j + v_j \cdot q_j + w_j \cdot q_j^2
@@ -351,8 +368,9 @@ See appendix 1 for the computation of the integral in this model.
 
 \section{Users' Experience}
 
-Since the objective of the project is to ease merger simulations, we have chosen to make the program as simple and straightforward as possible. However, it is important to choose the correct settings to obtain the desired results.
-\begin{figure}
+The program is accessible at \urlstyle{same} \url{https://github.com/AkaKlein/Merger}. Because the code is consituted of several folders and an array of files, we have decided not to physically include it in this paper, but it can also be accessed through the previous link. By accessing this files, we can appreciate that the program has been written on C++ and that the visual interface was done with Qt.\\
+Since the objective of the project is to ease merger simulations, we have chosen to make the program as simple and straightforward as possible.  However, it is important to choose the correct settings to obtain the desired results.
+\begin{figure}[H]
 \begin{center}
   \includegraphics[width=10 cm]{home}
 \caption{\label{home}Home page of the prgram}
@@ -361,7 +379,7 @@ Since the objective of the project is to ease merger simulations, we have chosen
 
 In figure \ref{home}, we can see the initial interface the user faces. The user should first choose the model that they whish to compute from the drop list at "Model Type". Once the model is chosen, the user should upload a data set fulfilling the required charactheristics. For linear demands, the user should upload the vector $a$ and matrix $B$, and for quadratic demands they should also upload the matrix $E$. For constant marginal costs, the user should upload $v$ or $c$, and in the case of lineal marginal costs, it would be $v$ and $w$. In any case, the user should upload the matrix $D$, which would be an identity matrix if each firm produces only one product. In table \ref{tab:sample}, we see the order in which the vectors and matrices should be. Note that, the size of the vectors and matrices should be indicated before these start. For a matrix, the size $(n \times m)$ refers to columns and rows respectively. The data should be uploaded as a text file (.txt). To ensure that the loaded model is the correct one, the program is set to read the name of the model without spaces at the beggining of the file (i.e. "QuadraticDemandsLinearCosts").
 
-\begin{table}
+\begin{table}[H]
 \begin{center}
 \begin{tabular}{c|c|c|c} 
 Linear-Constant&Linear-Linear&Quadratic-Constant&Quadratic-Linear\\
@@ -385,7 +403,6 @@ D&D&D&D\\
 \end{table}
 
 To upload the data, it is enough to click on select data, choose the desired file, and then click on load data. With that, the program will automatically compute equilibrium prices $p^*$, equilibrium quantities $q^*$, costs -if required-, profits $\pi$ and consumer welfare $CW$. In figure \ref{first_results} we can see the output after loading the data for a model with quadratic demands and linear marginal costs. This results were obtained by using the data in table \ref{tab:input}, and an identity matrix for $D$.
-
 \begin{figure}
 \begin{center}
   \includegraphics[width=10 cm]{first_results}
@@ -489,8 +506,8 @@ The function "Compare" returns the difference between pre and post-merger values
 \end{center}
 \end{figure}
 
-Going back to figure \ref{after_merger}, we see that there is also de function "Plot".
-\begin{figure}
+Going back to figure \ref{after_merger}, we see that there is also de function "Plot". By clicking there, it plots the profits curve for product 1, against the demand function. We can see that equilibrium quantities are located at the same point as maximum profits. Thus, the are over the equilibrium prices under the demand curve would correspond to the measure of consumer welfare. In figure \ref{plot_2}, we see both models plotted, and can appreciate that there is a shift in both curves, but the above premise is still true. 
+\begin{figure}[H]
 \begin{center}
 \begin{minipage}{2.75in}
   \includegraphics[width=5 cm]{plot_1}
@@ -503,7 +520,25 @@ Going back to figure \ref{after_merger}, we see that there is also de function "
 \end{center}
 \end{figure}
 
+\section{Applications and Future Developments}
+Throughout this project we have developed the essential features necessary for the program to work. However, there are developments that could be useful and continue to make the user experience more enjoyable.
+\subsection{Modeling Developments}
+In this project we present four models that allow for little variation. Thus, it would be interesting to include models for other demand functions and other marginal cost functions -particulary hyperbolic and square root models. \\
+As for making the models more flexible, it would be useful to allow for binary variables that may affect demand, like qualitative characteristics of the product.\\ 
+Moreover, it would be interesting to compute models with other types of competition. While in this project we have worked with Bertrand competition, it would also be possible to do it with Cournot or Stackelberg competition, since they also converge to Nash equilibria. 
+\subsection{Functionality Developments}
+While the program reads a text file (.txt), which is common to all operating systems, users may find it more comfortable to work with excel or other spreadshit applications. It is possible to transform these into CSV formats, which the program would be able to read. However, this implementation lies beyond the scope of this project.\\
+Since we seek to make merger simulation more accessible to students and researchers, it would be interesting to prepare the program for Mac OS systems (Apple). Right now, the program is available for its use in Windows and Ubuntu operating systems. 
+\subsection{Applications}
+This program is primarily focused towards students and researchers. Thus, it is thought as a simple tool that can help students taking introductory microeconomics courses visualize better the effects of mergers in Bertrand Competition. As for students at an intermediate level, it allows for empirical exercises that enable students to test the competition theories thaught in the classroom.\\
+From a teaching perspective, this program would allow the instructor to reinforce the class content in a more dynamic way. By allowing students to research the effects of mergers, the instructor ensures a better understanding on the students' behalf.\\
+For researchers, this tool may largely decrease the time invested in programming the merger simulation themselves. Even if they wish to do so, this program would allow them to check for consistency with their own results. Moreover, if we allow the program to read from a CSV file, it would become very simple to export data from statistics software to the program, easing the use of econometric estimations.\\
+Finally, this tool might be useful for competition and antitrust agencies. While it should not be the only measure to be taken into account, merger simulations may be reflective of the possible new equilibrium in the market. Thus, it may work as a good complement to the already existing indicators and analysis.
+
 \section{Conclusion}
+Throughout this project, we have considered several different models with Bertrand Competition, and we have programmed them for easy computations of market equilibria. By doing so, we have had to create a visual framework to allow for a simple interface that suits the users' needs. We have also had to consider the mathematical implications of the models, relying on algebraic and numeric methods, with preference for the former. By programming the models with matrices and vectors, we have created a program that is able to compute market equilibria for economies with a large number of products and suppliers. Thus, by using a large enough number of these, we can see convergence with perfect competition economies. \\
+After the completion of the final version of the program, we are left with a tool that can be useful for students to get a better understanding of the effects of mergers in an oligopoly, as well as with perfect competition. This tool is also useful for researchers, who might benefit from avoiding the programming process after computing quantitative estimations. As for competition and antitrust agencies, such a program may help to assess the possible effects of mergers given the market characteristics.\\
+While this particular program still has possible future developments that may be of use, it opens the door for other developments in this area of economics together with computer science. Beyond this project, the nexus between programming and economics should continue to grow, and merger simulation may be an intrinsic path to follow. 
 
 \newpage
 \begin{thebibliography}{9}
@@ -573,7 +608,7 @@ Let us now decide on the sign. Inside $\sqrt{\Delta}$, the factor multiplying $q
 \legend{$y=\sqrt{-x}$}
 \end{axis}
 \end{tikzpicture}        
-\caption{$y = \sqrt{-x}$}
+\caption{Plot for $y = \sqrt{-x}$}
 \end{minipage}\hfill
 \begin{minipage}{0.45\textwidth}
 \begin{tikzpicture} 
@@ -589,7 +624,7 @@ Let us now decide on the sign. Inside $\sqrt{\Delta}$, the factor multiplying $q
 \legend{$y=-\sqrt{-x}$}
 \end{axis}
 \end{tikzpicture}       
-\caption{$y = -\sqrt{-x}$}
+\caption{Plot for $y = -\sqrt{-x}$}
     \end{minipage}
 \end{figure}
 
